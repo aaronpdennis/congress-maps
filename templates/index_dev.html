@@ -26,12 +26,10 @@
 <script src='./bboxes.js'></script>
 
 <script>
-
-// replace ACCESS_TOKEN with your default Mapbox access token
 var accessToken = 'ACCESS_TOKEN',
-    styleURL = 'mapox://styles/USER/congressional-districts'
 
-//'pk.eyJ1IjoiYWFyb25kZW5uaXMiLCJhIjoiem5LLURoYyJ9.T3tswGTI5ve8_wE-a02cMw';
+// replace MAPBOX_STYLE_URL with your uploaded style URL
+var styleURL = MAPBOX_STYLE_URL;
 
 if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 

@@ -99,10 +99,6 @@
             "url": "mapbox://USER.congress",
             "type": "vector"
         },
-        "mapbox://USER.4hshcrqs": {
-            "url": "mapbox://USER.4hshcrqs",
-            "type": "vector"
-        },
         "mapbox://USER.congress-labels": {
             "url": "mapbox://USER.congress-labels",
             "type": "vector"
@@ -7586,9 +7582,5 @@
             "source-layer": "US_Congressional_Districts_Labels"
         }
     ],
-    "created": "2016-03-20T14:59:29.001Z",
-    "id": "congressional-districts",
-    "modified": "2016-03-20T16:23:33.438Z",
-    "owner": "USER",
     "draft": false
 }
