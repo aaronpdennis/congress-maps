@@ -4,9 +4,8 @@ var fs = require('fs'),
 
 var districtsFile = process.argv[2],
     labelsFile = process.argv[3],
-    styleFile = process.argv[4],
-    user = process.argv[5],
-    accessToken = process.argv[6];
+    user = process.env.MAPBOX_USERNAME,
+    accessToken = process.env.MAPBOX_WRITE_SCOPE_ACCESS_TOKEN;
 
 var client = new MapboxClient(accessToken);
 
