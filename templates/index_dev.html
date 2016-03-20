@@ -26,10 +26,10 @@
 <script src='./bboxes.js'></script>
 
 <script>
-var accessToken = 'ACCESS_TOKEN',
+var accessToken = 'ACCESS_TOKEN';
 
 // replace MAPBOX_STYLE_URL with your uploaded style URL
-var styleURL = MAPBOX_STYLE_URL;
+var styleURL = 'MAPBOX_STYLE_URL';
 
 if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
@@ -68,6 +68,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         var layerFilter = filter.concat([exisitingFilter]);
         map.setFilter('districts_' + i, layerFilter);
         map.setFilter('districts_' + i + '_boundary', layerFilter);
+        map.setFilter('districts_' + i + '_labels', layerFilter);
 
       }
 
