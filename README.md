@@ -22,7 +22,7 @@ cd congress-maps
 npm install
 ```
 
-Next steps: 
+Next steps:
 
 1. make a directory to store the data files you'll be creating
 2. use `wget` to download district boundaries from the US Census
@@ -60,11 +60,11 @@ tippecanoe -o data/congress.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Co
 node upload.js data/congress.mbtiles data/map_labels.geojson style.json $MAPBOX_USERNAME $MAPBOX_WRITE_SCOPE_ACCESS_TOKEN
 
 # modify congressional-districts-style-v8.json to use your Mapbox account
-sed s/'USER'/"$MAPBOX_USERNAME"/ congressional-districts-style-v8_dev.json > congressional-districts-style-v8.json
+sed s/'USER'/"$MAPBOX_USERNAME"/ templates/congressional-districts-style-v8_dev.json > congressional-districts-style-v8.json
 
 # modify website/index.html to use your Mapbox account
-sed s/'USER'/"$MAPBOX_USERNAME"/ website_dev/index_dev.html > website_dev/index_dev2.html
-sed s/'USER'/"$MAPBOX_DEFAULT_ACCESS_TOKEN"/ website_dev/index_dev2.html > website/index.html
+sed s/'USER'/"$MAPBOX_USERNAME"/ templates/index_dev.html > templates/index_dev2.html
+sed s/'USER'/"$MAPBOX_DEFAULT_ACCESS_TOKEN"/ templates/index_dev2.html > website/index.html
 ```
 
 Finally, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
