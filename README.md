@@ -67,7 +67,9 @@ sed s/'USER'/"$MAPBOX_USERNAME"/ templates/index_dev.html > templates/index_dev2
 sed s/'ACCESS_TOKEN'/"$MAPBOX_DEFAULT_ACCESS_TOKEN"/ templates/index_dev2.html > website/index.html
 ```
 
-Finally, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
+Next, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
+
+Once the style is uploaded, copy the style URL and paste it into `website/index.html` on line 32;
 
 Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing your upload, you will be able to use the files in the `website` directory for a US Congressional web map.
 
