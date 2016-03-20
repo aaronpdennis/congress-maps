@@ -60,11 +60,11 @@ tippecanoe -o data/congress.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Co
 node upload.js data/congress.mbtiles data/map_labels.geojson style.json $MAPBOX_USERNAME $MAPBOX_WRITE_SCOPE_ACCESS_TOKEN
 
 # modify congressional-districts-style-v8.json to use your Mapbox account
-sed -i "s/USER/$MAPBOX_USERNAME/g" congressional-districts-style-v8.json
+sed s/'USER'/"$MAPBOX_USERNAME"/ congressional-districts-style-v8_dev.json > congressional-districts-style-v8.json
 
 # modify website/index.html to use your Mapbox account
-sed -i "s/USER/$MAPBOX_USERNAME/g" website/index.html
-sed -i "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website/index.html
+sed s/'USER'/"$MAPBOX_USERNAME"/ website_dev/index_dev.html > website_dev/index_dev2.html
+sed s/'USER'/"$MAPBOX_DEFAULT_ACCESS_TOKEN"/ website_dev/index_dev2.html > website/index.html
 ```
 
 Finally, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
