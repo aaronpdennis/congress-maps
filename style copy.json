@@ -498,7 +498,7 @@
                 "fill-color": "#fed9a6",
                 "fill-opacity": 0.45
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -521,7 +521,7 @@
                 "fill-color": "#fbb4ae",
                 "fill-opacity": 0.45
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -544,7 +544,7 @@
                 "fill-color": "#decbe4",
                 "fill-opacity": 0.45
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -567,7 +567,7 @@
                 "fill-color": "#ccebc5",
                 "fill-opacity": 0.45
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -590,7 +590,7 @@
                 "fill-color": "#b3cde3",
                 "fill-opacity": 0.45
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "id": "water_edge",
@@ -681,7 +681,7 @@
                 "line-color": "#fed9a6",
                 "line-opacity": 0.9
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -728,7 +728,7 @@
                 "line-color": "#fbb4ae",
                 "line-opacity": 0.9
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -775,7 +775,7 @@
                 "line-color": "#decbe4",
                 "line-opacity": 0.9
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -822,7 +822,7 @@
                 "line-color": "#ccebc5",
                 "line-opacity": 0.9
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -871,7 +871,7 @@
                 "line-color": "#b3cde3",
                 "line-opacity": 0.9
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "id": "waterway",
@@ -3641,7 +3641,7 @@
                 "line-opacity": 1,
                 "line-blur": 5
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -7311,7 +7311,7 @@
                 },
                 "line-color": "#b3cde3"
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -7359,7 +7359,7 @@
                 },
                 "line-color": "#ccebc5"
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -7407,7 +7407,7 @@
                 },
                 "line-color": "#decbe4"
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -7455,7 +7455,7 @@
                 },
                 "line-color": "#fbb4ae"
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         },
         {
             "interactive": true,
@@ -7503,7 +7503,7 @@
                 "text-halo-color": "hsl(0, 0%, 100%)",
                 "text-halo-width": 2
             },
-            "source-layer": "districts"
+            "source-layer": "original"
         }
     ],
     "created": "2016-03-19T19:59:45.930Z",

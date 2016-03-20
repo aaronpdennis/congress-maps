@@ -61,11 +61,10 @@ for (var s in stateBboxes) {
   stateBboxes[s] = turf.extent(stateBboxes[s]);
 }
 
-var data = turf.featurecollection(colored.features.concat(labels));
-
 console.log('data ready');
 
-fs.writeFileSync('./data/map.geojson', JSON.stringify(data));
+fs.writeFileSync('./data/map.geojson', JSON.stringify(colored));
+fs.writeFileSync('./data/map_labels.geojson', JSON.stringify(turf.featurecollection(labels)));
 
 fs.writeFileSync('./website/states.js', 'var states = ' + JSON.stringify(stateCodes));
 
