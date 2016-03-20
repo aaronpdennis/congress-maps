@@ -58,8 +58,8 @@ tippecanoe -o data/congress12.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US 
 node upload.js data/congress.mbtiles data/map_labels.geojson style.json $MAPBOX_USERNAME $MAPBOX_WRITE_SCOPE_ACCESS_TOKEN
 
 # modify website/index.html to use your Mapbox account
-sed -i -e "s/USER/$MAPBOX_USERNAME/g" website.index.html
-sed -i -e "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website.index.html
+sed -i -e "s/USER/$MAPBOX_USERNAME/g" website/index.html
+sed -i -e "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website/index.html
 ```
 
 Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing our upload
