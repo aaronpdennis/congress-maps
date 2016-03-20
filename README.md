@@ -34,7 +34,7 @@ Next steps:
 8. modify the Mapbox style source to reference your account
 9. modify `index.html` to reference your account and use your access tokens
 
-To execute these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
+To complete these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
 
 ```
 # setup Mapbox account name and access tokens
@@ -47,34 +47,37 @@ mkdir data
 
 # dowload census boundaries data, unzip the data, and convert it to GeoJSON
 wget -P data ftp://ftp2.census.gov/geo/tiger/TIGER2015/CD/tl_2015_us_cd114.zip
-unzip data/tl_2015_us_cd114.zip
+unzip data/tl_2015_us_cd114.zip -d ./data/
 ogr2ogr -f GeoJSON -t_srs crs:84 data/map_data.geojson data/tl_2015_us_cd114.shp
 
 # run processing on data
 node process.js data/map_data.geojson
 
 # create Mapbox vector tiles from data
-tippecanoe -o data/congress12.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
+tippecanoe -o data/congress.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
 
 # upload map data to Mapbox.com
 node upload.js data/congress.mbtiles data/map_labels.geojson style.json $MAPBOX_USERNAME $MAPBOX_WRITE_SCOPE_ACCESS_TOKEN
 
 # modify congressional-districts-style-v8.json to use your Mapbox account
-sed -i -e "s/USER/$MAPBOX_USERNAME/g" congressional-districts-style-v8.json
+sed -i "s/USER/$MAPBOX_USERNAME/g" congressional-districts-style-v8.json
 
 # modify website/index.html to use your Mapbox account
-sed -i -e "s/USER/$MAPBOX_USERNAME/g" website/index.html
-sed -i -e "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website/index.html
-
+sed -i "s/USER/$MAPBOX_USERNAME/g" website/index.html
+sed -i "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website/index.html
 ```
 
-Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing our upload
+Finally, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
+
+Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing your upload, you will be able to use the files in the `website` directory for a US Congressional web map.
 
 #### Usage:
 
-After setup, `index.html` will be a full page web map of US Congressional districts.
+After setup, `index.html` will be a full page web map of US Congressional districts. Host this file and the two supporting scripts on your website.
 
-Show specific congressional districts using the url hash.
+You can show specific congressional districts using the url hash. Set the location hash to `state={state abbreviation}` to show a specific state and add `&district={district number}` to specify a district within the state. The hash expects US Census two letter state abbreviations and district number conventions. AT LARGE districts are numbered `00` and all other districts are two character numbers: `district=01`, `district=02`, ..., `district=15`, etc.
+
+#### Examples:
 
 To show districts in the state of Virginia: `http://localhost:8000/#state=VA`
 
