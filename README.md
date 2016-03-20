@@ -12,7 +12,7 @@ Install required dependencies with Homebrew:
 brew install tippecanoe gdal node
 ```
 
-#### Setup
+#### Setup:
 
 Download this repository and then use `npm` to install a few more dependencies:
 
@@ -35,6 +35,11 @@ Next steps:
 To execute these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
 
 ```
+# setup Mapbox account name and access tokens
+export MAPBOX_USERNAME=<your mapbox username>
+export MAPBOX_DEFAULT_ACCESS_TOKEN=<your mapbox default access token>
+export MAPBOX_WRITE_SCOPE_ACCESS_TOKEN=<your mapbox write scope access token>
+
 # create director to store data
 mkdir data
 
@@ -50,12 +55,16 @@ node process.js data/map_data.geojson
 tippecanoe -o data/congress12.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
 
 # upload map data to Mapbox.com
-node upload.js data/congress.mbtiles MAPBOX_USERNAME MAPBOX_ACESS_TOKEN
+node upload.js data/congress.mbtiles data/map_labels.geojson style.json $MAPBOX_USERNAME $MAPBOX_WRITE_SCOPE_ACCESS_TOKEN
+
+# modify website/index.html to use your Mapbox account
+sed -i -e 's/USER/$MAPBOX_USERNAME/g' website.index.html
+sed -i -e 's/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g' website.index.html
 ```
 
 Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing our upload
 
-#### Usage
+#### Usage:
 
 After setup, `index.html` will be a full page web map of US Congressional districts.
 
