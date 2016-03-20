@@ -64,7 +64,7 @@ sed s/'USER'/"$MAPBOX_USERNAME"/ templates/congressional-districts-style-v8_dev.
 
 # modify website/index.html to use your Mapbox account
 sed s/'USER'/"$MAPBOX_USERNAME"/ templates/index_dev.html > templates/index_dev2.html
-sed s/'USER'/"$MAPBOX_DEFAULT_ACCESS_TOKEN"/ templates/index_dev2.html > website/index.html
+sed s/'ACCESS_TOKEN'/"$MAPBOX_DEFAULT_ACCESS_TOKEN"/ templates/index_dev2.html > website/index.html
 ```
 
 Finally, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
