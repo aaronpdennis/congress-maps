@@ -65,16 +65,19 @@ sed -i -e "s/USER/$MAPBOX_USERNAME/g" congressional-districts-style-v8.json
 # modify website/index.html to use your Mapbox account
 sed -i -e "s/USER/$MAPBOX_USERNAME/g" website/index.html
 sed -i -e "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website/index.html
-
 ```
 
-Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing our upload
+Finally, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
+
+Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing your upload, you will be able to use the files in the `website` directory for a US Congressional web map.
 
 #### Usage:
 
-After setup, `index.html` will be a full page web map of US Congressional districts.
+After setup, `index.html` will be a full page web map of US Congressional districts. Host this file and the two supporting scripts on your website.
 
-Show specific congressional districts using the url hash.
+You can show specific congressional districts using the url hash. Set the location hash to `state={state abbreviation}` to show a specific state and add `&district={district number}` to specify a district within the state. The hash expects US Census two letter state abbreviations and district number conventions. AT LARGE districts are numbered `00` and all other districts are two character numbers: `district=01`, `district=02`, ..., `district=15`, etc.
+
+#### Examples:
 
 To show districts in the state of Virginia: `http://localhost:8000/#state=VA`
 
