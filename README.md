@@ -53,7 +53,7 @@ tippecanoe -o data/congress12.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US 
 node upload.js data/congress.mbtiles MAPBOX_USERNAME MAPBOX_ACESS_TOKEN
 ```
 
-Check out [mapbox.com/studio](www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing our upload
+Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing our upload
 
 #### Usage
 
@@ -61,6 +61,6 @@ After setup, `index.html` will be a full page web map of US Congressional distri
 
 Show specific congressional districts using the url hash.
 
-To show districts in the state of Virginia: `http://localhost:8888/#state=VA`
+To show districts in the state of Virginia: `http://localhost:8000/#state=VA`
 
-To show the 5th district of Illinois: `http://localhost:8888/#state=IL&district=05`
+To show the 5th district of Illinois: `http://localhost:8000/#state=IL&district=05`
