@@ -81,6 +81,6 @@ You can show specific congressional districts using the url hash. Set the locati
 
 #### Examples:
 
-To show districts in the state of Virginia: `http://localhost:8000/#state=VA`
+To show districts in the state of Virginia: `http://aarondennis.org/congress-maps/example/#state=VA`
 
-To show the 5th district of Illinois: `http://localhost:8000/#state=IL&district=05`
+To show the 5th district of Illinois: `http://aarondennis.org/congress-maps/example/#state=IL&district=05`
