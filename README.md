@@ -24,13 +24,15 @@ npm install
 
 Next steps: 
 
-1. make a directory to store the data files we'll be creating
+1. make a directory to store the data files you'll be creating
 2. use `wget` to download district boundaries from the US Census
 3. `unzip` that file
 4. convert the districts shapefile to GeoJSON
 5. process the districts GeoJSON data with a `node` script
 6. use tippecanoe to create a vector `mbtiles` file
-7. upload our data to Mapbox
+7. upload your data to Mapbox
+8. modify the Mapbox style source to reference your account
+9. modify `index.html` to reference your account and use your access tokens
 
 To execute these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
 
@@ -57,9 +59,13 @@ tippecanoe -o data/congress12.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US 
 # upload map data to Mapbox.com
 node upload.js data/congress.mbtiles data/map_labels.geojson style.json $MAPBOX_USERNAME $MAPBOX_WRITE_SCOPE_ACCESS_TOKEN
 
+# modify congressional-districts-style-v8.json to use your Mapbox account
+sed -i -e "s/USER/$MAPBOX_USERNAME/g" congressional-districts-style-v8.json
+
 # modify website/index.html to use your Mapbox account
 sed -i -e "s/USER/$MAPBOX_USERNAME/g" website/index.html
 sed -i -e "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website/index.html
+
 ```
 
 Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing our upload
