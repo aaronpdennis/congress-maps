@@ -34,7 +34,7 @@ Next steps:
 8. modify the Mapbox style source to reference your account
 9. modify `index.html` to reference your account and use your access tokens
 
-To execute these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
+To complete these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
 
 ```
 # setup Mapbox account name and access tokens
@@ -47,7 +47,7 @@ mkdir data
 
 # dowload census boundaries data, unzip the data, and convert it to GeoJSON
 wget -P data ftp://ftp2.census.gov/geo/tiger/TIGER2015/CD/tl_2015_us_cd114.zip
-unzip data/tl_2015_us_cd114.zip
+unzip data/tl_2015_us_cd114.zip -d ./data/
 ogr2ogr -f GeoJSON -t_srs crs:84 data/map_data.geojson data/tl_2015_us_cd114.shp
 
 # run processing on data
@@ -60,11 +60,11 @@ tippecanoe -o data/congress12.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US 
 node upload.js data/congress.mbtiles data/map_labels.geojson style.json $MAPBOX_USERNAME $MAPBOX_WRITE_SCOPE_ACCESS_TOKEN
 
 # modify congressional-districts-style-v8.json to use your Mapbox account
-sed -i -e "s/USER/$MAPBOX_USERNAME/g" congressional-districts-style-v8.json
+sed -i "s/USER/$MAPBOX_USERNAME/g" congressional-districts-style-v8.json
 
 # modify website/index.html to use your Mapbox account
-sed -i -e "s/USER/$MAPBOX_USERNAME/g" website/index.html
-sed -i -e "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website/index.html
+sed -i "s/USER/$MAPBOX_USERNAME/g" website/index.html
+sed -i "s/ACCESS_TOKEN/$MAPBOX_DEFAULT_ACCESS_TOKEN/g" website/index.html
 ```
 
 Finally, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
