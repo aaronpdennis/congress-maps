@@ -2,9 +2,7 @@
 
 Follow the steps below to create a web map of United States congressional districts from Census Bureau data.
 
-## Mac OS X
-
-First, you'll need to setup an account on Mapbox.com. Then, run the following steps from the Mac OS X Terminal command line:
+First, you'll need to setup an account on Mapbox.com. Then, run the following commands from the Mac OS X Terminal command line:
 
 #### Dependencies:
 
@@ -34,19 +32,28 @@ Next steps:
 6. use tippecanoe to create a vector `mbtiles` file
 7. upload our data to Mapbox
 
-Run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
+To execute these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
 
 ```
+# create director to store data
 mkdir data
+
+# dowload census boundaries data, unzip the data, and convert it to GeoJSON
 wget -P data ftp://ftp2.census.gov/geo/tiger/TIGER2015/CD/tl_2015_us_cd114.zip
 unzip data/tl_2015_us_cd114.zip
 ogr2ogr -f GeoJSON -t_srs crs:84 data/map_data.geojson data/tl_2015_us_cd114.shp
+
+# run processing on data
 node process.js data/map_data.geojson
+
+# create Mapbox vector tiles from data
 tippecanoe -o data/congress12.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
+
+# upload map data to Mapbox.com
 node upload.js data/congress.mbtiles MAPBOX_USERNAME MAPBOX_ACESS_TOKEN
 ```
 
-Check out mapbox.com/studio to see updates on data processing. Once Mapbox is finished processing our upload
+Check out [mapbox.com/studio](www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing our upload
 
 #### Usage
 
