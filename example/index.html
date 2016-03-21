@@ -23,15 +23,19 @@
           top:10px;
           left:10px;
           background-color: white;
+          margin-right: 10px;
           padding: 8px;
           border-radius: 4px;
           border: rgb(221, 221, 221);
           box-shadow: 0px 0px 0px 2px rgb(221, 221, 221);
-
           color: #222;
           font-family: 'Open Sans', Arial, sans-serif;
         }
-        select {
+        .selector {
+
+          display: inline-block;
+          float: left;
+          margin: 4px;
         }
     </style>
 </head>
@@ -39,14 +43,18 @@
 
 <div id='map'></div>
 <div id='menu'>
-  State:
-  <select id='state'>
-    <option value=""></option>
-  </select>
-  District:
-  <select id='district'>
-    <option value=''></option>
-  </select>
+  <div class="selector">
+    State:
+    <select id='state'>
+      <option value=""></option>
+    </select>
+  </div>
+  <div class="selector">
+    District:
+    <select id='district'>
+      <option value=''></option>
+    </select>
+  </div>
 </div>
 
 <script src='./states.js'></script>
@@ -116,7 +124,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
     var baseStyle = map.getStyle()
 
     // Add zoom and rotation controls to the map.
-    map.addControl(new mapboxgl.Navigation());
+    map.addControl(new mapboxgl.Navigation({ position: 'bottom-left' }));
 
     // disable map rotation using touch rotation gesture
     map.touchZoomRotate.disableRotation();
