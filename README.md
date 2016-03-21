@@ -22,9 +22,10 @@ cd congress-maps
 npm install
 ```
 
-Next steps:
+Next steps are to:
 
-1. make a directory to store the data files you'll be creating
+1. setup Mapbox account environment variables
+2. make a directory to store the data files you'll be creating
 2. use `wget` to download district boundaries from the US Census
 3. `unzip` that file
 4. convert the districts shapefile to GeoJSON
@@ -32,9 +33,9 @@ Next steps:
 6. use tippecanoe to create a vector `mbtiles` file
 7. upload your data to Mapbox
 8. modify the Mapbox style source to reference your account
-9. modify `index.html` to reference your account and use your access tokens
+9. modify `index.html` to reference your account and access token
 
-To complete these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username and replace `MAPBOX_ACESS_TOKEN` with a `scope:write` access token from your Mapbox account.
+To complete these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username, `MAPBOX_DEFAULT_ACCESS_TOKEN` with your mapbox default access token, and `MAPBOX_ACESS_TOKEN` with a `uploads:write` scope access token from your [Mapbox account](https://www.mapbox.com/studio/account/tokens).
 
 ```
 # setup Mapbox account name and access tokens
@@ -77,10 +78,10 @@ Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on d
 
 After setup, `index.html` will be a full page web map of US Congressional districts. Host this file and the two supporting scripts on your website.
 
-You can show specific congressional districts using the url hash. Set the location hash to `state={state abbreviation}` to show a specific state and add `&district={district number}` to specify a district within the state. The hash expects US Census two letter state abbreviations and district number conventions. AT LARGE districts are numbered `00` and all other districts are two character numbers: `district=01`, `district=02`, ..., `district=15`, etc.
+You can show specific congressional districts using the URL hash. Set the location hash to `state={state abbreviation}` to show a specific state and add `&district={district number}` to specify a district within the state. The hash expects US Census two letter state abbreviations and district number conventions. AT LARGE districts are numbered `00` and all other districts are two character numbers: `district=01`, `district=02`, ..., `district=15`, etc.
 
 #### Examples:
 
-To show districts in the state of Virginia: http://aarondennis.org/congress-maps/example/#state=VA
+To show districts in the state of Virginia: http://www.aarondennis.org/congress-maps/example/#state=VA
 
-To show the 5th district of Illinois: http://aarondennis.org/congress-maps/example/#state=CA&district=05
+To show the 5th district of California: http://www.aarondennis.org/congress-maps/example/#state=CA&district=05
