@@ -5,6 +5,8 @@
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
+    <script   src="http://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
+
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.css' rel='stylesheet' />
 
@@ -16,16 +18,84 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+        #menu {
+          position:absolute;
+          top:10px;
+          left:10px;
+          background-color: white;
+          padding: 8px;
+          border-radius: 4px;
+          border: rgb(221, 221, 221);
+          box-shadow: 0px 0px 0px 2px rgb(221, 221, 221);
+
+          color: #222;
+          font-family: 'Open Sans', Arial, sans-serif;
+        }
+        select {
+        }
     </style>
 </head>
 <body>
 
 <div id='map'></div>
+<div id='menu'>
+  State:
+  <select id='state'>
+    <option value=""></option>
+  </select>
+  District:
+  <select id='district'>
+    <option value=''></option>
+  </select>
+</div>
 
 <script src='./states.js'></script>
 <script src='./bboxes.js'></script>
 
 <script>
+var continentalView = function(w,h) { return geoViewport.viewport([-128.8, 23.6, -65.4, 50.2], [w, h]); }
+
+var continental = continentalView(window.innerWidth/2, window.innerHeight/2);
+
+var stateList = states.map(function(d) { return { name: d.State, abbr: d.Abbr }; });
+var possibleDistricts = {};
+stateList.map(function(d) { possibleDistricts[d.abbr] = [] });
+
+for (d in bboxes) {
+  possibleDistricts[d.slice(0,2)].push(d.slice(2,d.length));
+}
+
+for (d in possibleDistricts) {
+  possibleDistricts[d].sort(function(a,b) {
+    if (b === "") { return 1 } else { return parseInt(a) - parseInt(b); }
+  });
+  if (possibleDistricts[d].length === 2) possibleDistricts[d] = ['AT LARGE'];
+}
+
+stateList.map(function(d) {
+  $('#state')
+    .append($("<option></option>")
+      .attr('value', d.abbr).text(d.name));
+})
+
+$('#state').change(function() {
+  if (this.value === '') { window.location.hash = '#' }
+  else {
+    var hash = window.location.hash;
+    var newHash = 'state=' + this.value;
+    window.location.hash = newHash;
+  }
+});
+
+$('#district').change(function() {
+  var hash = window.location.hash;
+  var currentDistrictIndex = hash.indexOf('&district=');
+  var newHash = currentDistrictIndex >= 0 ?
+    hash.slice(0,currentDistrictIndex) + '&district=' + this.value :
+    hash + '&district=' + this.value ;
+  window.location.hash = newHash;
+});
+
 var accessToken = 'pk.eyJ1IjoiYWFyb25kZW5uaXMiLCJhIjoiem5LLURoYyJ9.T3tswGTI5ve8_wE-a02cMw';
 
 // replace MAPBOX_STYLE_URL with your uploaded style URL
@@ -37,11 +107,13 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
   var map = new mapboxgl.Map({
       container: 'map', // container id
       style: styleURL, //stylesheet location
-      center: [-95.3, 39.5], // starting position
-      zoom: 3.5 // starting zoom
+      center: continental.center, // starting position
+      zoom: continental.zoom // starting zoom
   });
 
   map.on('load', function() {
+
+    var baseStyle = map.getStyle()
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.Navigation());
@@ -57,19 +129,29 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
           stateCode = d['Code'].toString();
           if (stateCode.length === 1) stateCode = '0' + stateCode;
         }
-      })
+      });
 
-      var filter = [ 'all', ['==', 'STATEFP', stateCode]];
+      $('#state').val(stateAbbr);
+      $('#district').empty();
+      possibleDistricts[stateAbbr].map(function(d) {
+        $('#district')
+          .append($("<option></option>")
+            .attr('value', d).text(d));
+      });
+      if (districtCode) $('#district').val(districtCode);
+
+      var filter = ['all'];
+      if (stateCode) filter.push(['==', 'STATEFP', stateCode]);
       if (districtCode) filter.push(['==', 'CD114FP', districtCode]);
 
       for (var i = 1; i <= 5; i++) {
-
-        map.setFilter('districts_boundary_line', filter);
 
         var exisitingFilter = map.getFilter('districts_' + i)
         if (exisitingFilter[0] === 'all') {
           exisitingFilter = exisitingFilter[exisitingFilter.length - 1];
         }
+
+        map.setFilter('districts_boundary_line', filter.concat([exisitingFilter]));
 
         var layerFilter = filter.concat([exisitingFilter]);
         map.setFilter('districts_' + i, layerFilter);
@@ -77,7 +159,6 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         map.setFilter('districts_' + i + '_label', layerFilter);
 
       }
-
 
       var height = window.innerHeight,
           width = window.innerWidth,
@@ -91,6 +172,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
     function checkHash() {
       if(window.location.hash) {
         var hash = window.location.hash;
+
         var hashData = hash.substring(1).split('&').map(function(d) { return d.split('=') });
 
         var state, district;
@@ -100,16 +182,25 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         })
 
         if (state || (state && district)) focusMap(state, district);
+      } else {
+        if (!initial) {
+          map.setStyle(baseStyle);
+          map.jumpTo(continentalView(window.innerWidth/2, window.innerHeight/2));
+          $('#district').empty();
+        }
       }
     }
 
     window.onhashchange = checkHash;
+
+    var initial = true;
     checkHash();
+    initial = false;
 
   });
 
 } else {
-  console.log('not supported');
+  console.log('Mapbox GL not supported');
   L.mapbox.accessToken = accessToken;
   var map = L.mapbox.map('map').setView([39.5, -95.3], 4);
   L.mapbox.styleLayer(styleURL).addTo(map);
