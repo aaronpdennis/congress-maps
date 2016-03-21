@@ -43,6 +43,15 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
   map.on('load', function() {
 
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.Navigation());
+
+    // disable map rotation using right click + drag
+    map.dragRotate.disable();
+
+    // disable map rotation using touch rotation gesture
+    map.touchZoomRotate.disableRotation();
+
     function focusMap(stateAbbr, districtCode) {
 
       var stateCode;
