@@ -68,7 +68,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         var layerFilter = filter.concat([exisitingFilter]);
         map.setFilter('districts_' + i, layerFilter);
         map.setFilter('districts_' + i + '_boundary', layerFilter);
-        map.setFilter('districts_' + i + '_labels', layerFilter);
+        map.setFilter('districts_' + i + '_label', layerFilter);
 
       }
 
