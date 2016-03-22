@@ -148,18 +148,16 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
       });
       if (districtCode) $('#district').val(districtCode);
 
-      var filter = ['all'];
-      if (stateCode) filter.push(['==', 'STATEFP', stateCode]);
-      if (districtCode) filter.push(['==', 'CD114FP', districtCode]);
-
       for (var i = 1; i <= 5; i++) {
 
-        var exisitingFilter = map.getFilter('districts_' + i)
+        var exisitingFilter = map.getFilter('districts_' + i);
         if (exisitingFilter[0] === 'all') {
           exisitingFilter = exisitingFilter[exisitingFilter.length - 1];
         }
 
-        map.setFilter('districts_boundary_line', filter.concat([exisitingFilter]));
+        var filter = ['all'];
+        if (stateCode) filter.push(['==', 'STATEFP', stateCode]);
+        if (districtCode) filter.push(['==', 'CD114FP', districtCode]);
 
         var layerFilter = filter.concat([exisitingFilter]);
         map.setFilter('districts_' + i, layerFilter);
@@ -167,6 +165,12 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         map.setFilter('districts_' + i + '_label', layerFilter);
 
       }
+
+      var boundaryFilter = ['all'];
+      if (stateCode) boundaryFilter.push(['==', 'STATEFP', stateCode]);
+      if (districtCode) boundaryFilter.push(['==', 'CD114FP', districtCode]);
+
+      map.setFilter('districts_boundary_line', boundaryFilter);
 
       var height = window.innerHeight,
           width = window.innerWidth,
