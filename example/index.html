@@ -3,21 +3,29 @@
 <head>
     <meta charset='utf-8' />
     <title>Congressional Districts</title>
+
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
+    <!-- jQuery -->
     <script   src="http://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
 
+    <!-- Mabpox GL -->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.css' rel='stylesheet' />
 
+    <!-- Mapbox.js (fallback) -->
     <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
 
+    <!-- GeoViewport -->
     <script src='//api.tiles.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script>
 
     <style>
+
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+
+        /* INTERACTIVE MENU */
         #menu {
           position:absolute;
           top:10px;
@@ -31,12 +39,8 @@
           color: #222;
           font-family: 'Open Sans', Arial, sans-serif;
         }
-        .selector {
+        .selector { display: inline-block; float: left; margin: 4px; }
 
-          display: inline-block;
-          float: left;
-          margin: 4px;
-        }
     </style>
 </head>
 <body>
@@ -44,7 +48,7 @@
 <!-- Map Container -->
 <div id='map'></div>
 
-<!-- Interactive Menu -->
+<!-- INTERACTIVE MENU -->
 <div id='menu'>
   <div class="selector">
     State:
