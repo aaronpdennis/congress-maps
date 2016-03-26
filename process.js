@@ -2,15 +2,6 @@ var fs = require('fs'),
     fiveColorMap = require('five-color-map'),
     turf = require('turf');
 
-// $ mkdir data
-// $ wget -P data ftp://ftp2.census.gov/geo/tiger/TIGER2015/CD/tl_2015_us_cd114.zip
-// $ unzip data/tl_2015_us_cd114.zip
-// $ ogr2ogr -f GeoJSON -t_srs crs:84 data/map_data.geojson data/tl_2015_us_cd114.shp
-// $ node process.js data/map_data.geojson
-// $ tippecanoe -o data/congress12.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
-// $ node upload.js data/congress.mbtiles MAPBOX_USERNAME MAPBOX_ACESS_TOKEN
-// $ sed -i -- 's/pk.eyJ1IjoiYWFyb25kZW5uaXMiLCJhIjoiem5LLURoYyJ9.T3tswGTI5ve8_wE-a02cMw/<your Mapbox default access token>/g' website/index.html
-
 var file = process.argv[2],
     accessToken = process.argv[3];
 
