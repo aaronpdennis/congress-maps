@@ -37,7 +37,7 @@ Next steps are to:
 
 To complete these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username, `MAPBOX_DEFAULT_ACCESS_TOKEN` with your mapbox default access token, and `MAPBOX_ACESS_TOKEN` with a `uploads:write` scope access token from your [Mapbox account](https://www.mapbox.com/studio/account/tokens).
 
-I use [Tippecanoe](https://github.com/mapbox/tippecanoe) because it provides more control over how the geometries are tiled into a map. For example, using the Mapbox Studio default upload will not show a zoomed-out full country view of the data because the boundaries are so detailed; the default upload thinks I'm only interested in looking closer at the data. Tippecanoe allows me to stop oversimplification of the geometry and also specify a min/max zoom level.
+Using [Tippecanoe](https://github.com/mapbox/tippecanoe) provides more control over how the geometries are tiled into a map. For example, using the Mapbox Studio default upload will not show a zoomed-out full country view of the data because the boundaries are so detailed; the default upload thinks you are only interested in looking closer at the data. Tippecanoe stops  oversimplification of the geometry and also specifies a min/max zoom level.
 
 ```
 # setup Mapbox account name and access tokens
