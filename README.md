@@ -37,7 +37,7 @@ Next steps are to:
 
 To complete these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username, `MAPBOX_DEFAULT_ACCESS_TOKEN` with your mapbox default access token, and `MAPBOX_ACESS_TOKEN` with a `uploads:write` scope access token from your [Mapbox account](https://www.mapbox.com/studio/account/tokens).
 
-[Tippecanoe](https://github.com/mapbox/tippecanoe) provides more control over how the geometries are tiled into a map. For comparison, using the Mapbox Studio default upload will not show a zoomed-out full country view of the data because the boundaries are so detailed; the default upload thinks you are only interested in looking closer at the data. Tippecanoe stops  oversimplification of the geometry and also specifies a min/max zoom level.
+Why use [Tippecanoe](https://github.com/mapbox/tippecanoe)? Using Tippecanoe provides more control over how the geometries are tiled into a map. For comparison, using the Mapbox Studio default upload will not show a zoomed-out full country view of the data because the boundaries are so detailed; the default upload thinks you are only interested in looking closer at the data. Tippecanoe stops  oversimplification of the geometry and also specifies a min/max zoom level.
 
 ```
 # setup Mapbox account name and access tokens
@@ -45,7 +45,7 @@ export MAPBOX_USERNAME=<your mapbox username>
 export MAPBOX_DEFAULT_ACCESS_TOKEN=<your mapbox default access token>
 export MAPBOX_WRITE_SCOPE_ACCESS_TOKEN=<your mapbox write scope access token>
 
-# create director to store data
+# create directory to store data
 mkdir data
 
 # dowload census boundaries data, unzip the data, and convert it to GeoJSON
@@ -67,8 +67,6 @@ sed s/'USER'/"$MAPBOX_USERNAME"/ templates/congressional-districts-style-v8_dev.
 ```
 
 Next, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
-
-Once the style is uploaded, copy the style URL and paste it into `website/index.html` on line 32;
 
 Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing your upload, you can use the files in the `example` directory for a US Congressional web map with functionality to focus on specific states or districts. To use this example web map, you'll need to change out my map style and default access token for your own. In the `index.html` file, replace my Mapbox default access token on line 75 and my map style URL on line 79 with your own.
 
