@@ -30,14 +30,14 @@ Next steps are to:
 3. `unzip` that file
 4. convert the districts shapefile to GeoJSON
 5. process the districts GeoJSON data with a `node` script
-6. use tippecanoe to create a vector `mbtiles` file
+6. use Tippecanoe to create a vector `mbtiles` file
 7. upload your data to Mapbox
 8. modify the Mapbox style source to reference your account
 9. modify `index.html` to reference your account and access token
 
 To complete these steps, run the commands below. Replace `MAPBOX_USERNAME` with your Mapbox username, `MAPBOX_DEFAULT_ACCESS_TOKEN` with your mapbox default access token, and `MAPBOX_ACESS_TOKEN` with a `uploads:write` scope access token from your [Mapbox account](https://www.mapbox.com/studio/account/tokens).
 
-Using [Tippecanoe](https://github.com/mapbox/tippecanoe) provides more control over how the geometries are tiled into a map. For example, using the Mapbox Studio default upload will not show a zoomed-out full country view of the data because the boundaries are so detailed; the default upload thinks you are only interested in looking closer at the data. Tippecanoe stops  oversimplification of the geometry and also specifies a min/max zoom level.
+[Tippecanoe](https://github.com/mapbox/tippecanoe) provides more control over how the geometries are tiled into a map. For comparison, using the Mapbox Studio default upload will not show a zoomed-out full country view of the data because the boundaries are so detailed; the default upload thinks you are only interested in looking closer at the data. Tippecanoe stops  oversimplification of the geometry and also specifies a min/max zoom level.
 
 ```
 # setup Mapbox account name and access tokens
@@ -64,23 +64,19 @@ node upload.js data/congress.mbtiles data/map_labels.geojson style.json $MAPBOX_
 
 # modify congressional-districts-style-v8.json to use your Mapbox account
 sed s/'USER'/"$MAPBOX_USERNAME"/ templates/congressional-districts-style-v8_dev.json > congressional-districts-style-v8.json
-
-# modify website/index.html to use your Mapbox account
-sed s/'USER'/"$MAPBOX_USERNAME"/ templates/index_dev.html > templates/index_dev2.html
-sed s/'ACCESS_TOKEN'/"$MAPBOX_DEFAULT_ACCESS_TOKEN"/ templates/index_dev2.html > website/index.html
 ```
 
 Next, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `congressional-districts-style-v8.json` file onto the screen. This should upload the map style to Mapbox.
 
 Once the style is uploaded, copy the style URL and paste it into `website/index.html` on line 32;
 
-Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing your upload, you will be able to use the files in the `website` directory for a US Congressional web map.
+Check out [mapbox.com/studio](https://www.mapbox.com/studio) to see updates on data processing. Once Mapbox is finished processing your upload, you can use the files in the `example` directory for a US Congressional web map with functionality to focus on specific states or districts. To use this example web map, you'll need to change out my map style and default access token for your own. In the `index.html` file, replace my Mapbox default access token on line 75 and my map style URL on line 79 with your own.
 
 #### Usage:
 
-After setup, `index.html` will be a full page web map of US Congressional districts. Host this file and the two supporting scripts on your website.
+After following the steps above, `index.html` will be a full page web map of US Congressional districts. Host this file and the two supporting scripts on your website. If you don't want the interactive menu on your map, search through `index.html` and remove all sections of code that immediately follow the `INTERACTIVE MENU` line comment labels.
 
-You can show specific congressional districts using the URL hash. Set the location hash to `state={state abbreviation}` to show a specific state and add `&district={district number}` to specify a district within the state. The hash expects US Census two letter state abbreviations and district number conventions. AT LARGE districts are numbered `00` and all other districts are two character numbers: `district=01`, `district=02`, ..., `district=15`, etc.
+With this web map, you can show specific congressional districts using the URL hash. Set the location hash to `state={state abbreviation}` to show a specific state and add `&district={district number}` to specify a district within the state. The hash expects US Census two letter state abbreviations and district number conventions. AT LARGE districts are numbered `00` and all other districts are two character numbers: `district=01`, `district=02`, ..., `district=15`, etc.
 
 #### Examples:
 
