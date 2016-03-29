@@ -1,6 +1,6 @@
 {
     "version": 8,
-    "name": "US Congress",
+    "name": "congressional-districts-style-v8",
     "metadata": {
         "mapbox:groups": {
             "1444858470265.9292": {
@@ -81,30 +81,23 @@
             "1458461767759.1262": {
                 "name": "District Labels"
             }
-        }
+        },
+        "mapbox:autocomposite": true
     },
     "center": [
-        -108.24900059779876,
-        45.86995360593187
+        -89.99964535501753,
+        32.225195821887525
     ],
-    "zoom": 5.128543841738312,
+    "zoom": 5.235192643830645,
     "bearing": 0,
     "pitch": 0,
     "sources": {
-        "mapbox": {
-            "url": "mapbox://mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7",
-            "type": "vector"
-        },
-        "mapbox://USER.congress": {
-            "url": "mapbox://USER.congress",
-            "type": "vector"
-        },
-        "mapbox://USER.congress-labels": {
-            "url": "mapbox://USER.congress-labels",
+        "composite": {
+            "url": "mapbox://mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7,USER.congress,USER.congress-labels",
             "type": "vector"
         }
     },
-    "sprite": "mapbox://sprites/USER/congressional-districts",
+    "sprite": "mapbox://sprites/USER/cim0xiz9k00489jkpj6eo94np",
     "glyphs": "mapbox://fonts/USER/{fontstack}/{range}.pbf",
     "layers": [
         {
@@ -131,7 +124,7 @@
                 "grass"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "landcover_scrub_grass",
             "paint": {
                 "fill-color": "hsla(0, 0%, 95%, 0.26)",
@@ -166,7 +159,7 @@
                 "wood"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "landcover_crop_wood",
             "paint": {
                 "fill-color": "hsla(0, 0%, 95%, 0.26)",
@@ -200,7 +193,7 @@
                 "snow"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "landcover_snow",
             "paint": {
                 "fill-color": "hsla(0, 0%, 95%, 0.26)",
@@ -223,7 +216,7 @@
                 "grass"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "greenery",
             "paint": {
                 "fill-color": "hsl(0, 0%, 92%)",
@@ -245,7 +238,7 @@
                 "national_park"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "national_park",
             "paint": {
                 "fill-color": "hsl(0, 0%, 92%)",
@@ -268,7 +261,7 @@
                 "school"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "school",
             "paint": {
                 "fill-color": "hsl(0, 0%, 93%)",
@@ -292,7 +285,7 @@
                 "hospital"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "hospital",
             "paint": {
                 "fill-color": "hsl(0, 0%, 97%)",
@@ -315,7 +308,7 @@
                 "industrial"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "airport",
             "paint": {
                 "fill-color": "rgba(213,217,213,1)",
@@ -337,7 +330,7 @@
                 "sand"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "sand",
             "paint": {
                 "fill-color": "hsl(0, 0%, 95%)",
@@ -359,7 +352,7 @@
                 "wood"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "wood",
             "paint": {
                 "fill-color": "hsl(0, 0%, 67%)",
@@ -394,7 +387,7 @@
                 "national_park"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "park",
             "paint": {
                 "fill-color": "hsl(0, 6%, 93%)",
@@ -438,7 +431,7 @@
                 ]
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "pitch",
             "paint": {
                 "fill-color": "hsl(0, 0%, 87%)",
@@ -464,7 +457,7 @@
                 "park"
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "grass_noise",
             "paint": {
                 "fill-opacity": {
@@ -498,7 +491,7 @@
                 "#fed9a6"
             ],
             "type": "fill",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_5",
             "paint": {
                 "fill-color": "#fed9a6",
@@ -520,7 +513,7 @@
                 "#fbb4ae"
             ],
             "type": "fill",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_4",
             "paint": {
                 "fill-color": "#fbb4ae",
@@ -542,7 +535,7 @@
                 "#decbe4"
             ],
             "type": "fill",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_3",
             "paint": {
                 "fill-color": "#decbe4",
@@ -564,7 +557,7 @@
                 "#ccebc5"
             ],
             "type": "fill",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_2",
             "paint": {
                 "fill-color": "#ccebc5",
@@ -586,7 +579,7 @@
                 "#b3cde3"
             ],
             "type": "fill",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_1",
             "paint": {
                 "fill-color": "#b3cde3",
@@ -597,7 +590,7 @@
         {
             "id": "water_edge",
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "source-layer": "water",
             "minzoom": 2,
             "paint": {
@@ -626,7 +619,7 @@
         {
             "id": "water",
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "source-layer": "water",
             "paint": {
                 "fill-color": "hsl(192, 100%, 95%)",
@@ -641,7 +634,7 @@
         {
             "id": "waterway",
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "source-layer": "waterway",
             "layout": {
                 "line-cap": "round"
@@ -679,7 +672,7 @@
                 "#fed9a6"
             ],
             "type": "line",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_5_boundary",
             "paint": {
                 "line-width": {
@@ -725,7 +718,7 @@
                 "#fbb4ae"
             ],
             "type": "line",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_4_boundary",
             "paint": {
                 "line-width": {
@@ -771,7 +764,7 @@
                 "#decbe4"
             ],
             "type": "line",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_3_boundary",
             "paint": {
                 "line-width": {
@@ -817,7 +810,7 @@
                 "#ccebc5"
             ],
             "type": "line",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_2_boundary",
             "paint": {
                 "line-width": {
@@ -865,7 +858,7 @@
                 "#b3cde3"
             ],
             "type": "line",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_1_boundary",
             "paint": {
                 "line-width": {
@@ -911,7 +904,7 @@
                 56
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "shadow_uber",
             "paint": {
                 "fill-opacity": {
@@ -943,7 +936,7 @@
                 67
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "shadow_strong",
             "paint": {
                 "fill-opacity": 0.1,
@@ -963,7 +956,7 @@
                 78
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "shadow_medium",
             "paint": {
                 "fill-opacity": {
@@ -995,7 +988,7 @@
                 89
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "shadow_weak",
             "paint": {
                 "fill-opacity": {
@@ -1027,7 +1020,7 @@
                 90
             ],
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "id": "highlight_weak",
             "paint": {
                 "fill-opacity": {
@@ -1050,7 +1043,7 @@
         {
             "id": "highlight_medium",
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "source-layer": "hillshade",
             "filter": [
                 "==",
@@ -1088,7 +1081,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "airport_runway",
             "paint": {
                 "line-width": {
@@ -1131,7 +1124,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "airport_taxiway",
             "paint": {
                 "line-width": {
@@ -1155,7 +1148,7 @@
         {
             "id": "barrier_land",
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "source-layer": "barrier_line",
             "filter": [
                 "all",
@@ -1210,13 +1203,13 @@
             },
             "interactive": true,
             "type": "fill",
-            "source": "mapbox",
+            "source": "composite",
             "source-layer": "building"
         },
         {
             "id": "building_roof_edges",
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "source-layer": "building",
             "paint": {
                 "line-color": "hsl(0, 0%, 45%)",
@@ -1286,7 +1279,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "country_border",
             "paint": {
                 "line-color": "#293804",
@@ -1334,7 +1327,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "country_border_disputed",
             "paint": {
                 "line-color": "#293804",
@@ -1382,7 +1375,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "state_border",
             "paint": {
                 "line-color": "hsl(0, 0%, 53%)",
@@ -1442,7 +1435,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_path",
             "paint": {
                 "line-color": "hsla(24, 1%, 38%, 0.52)",
@@ -1502,7 +1495,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_service_case",
             "paint": {
                 "line-color": {
@@ -1580,7 +1573,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_street_case",
             "paint": {
                 "line-color": {
@@ -1644,7 +1637,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_tertiary_case",
             "paint": {
                 "line-color": {
@@ -1707,7 +1700,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_secondary_case",
             "paint": {
                 "line-color": {
@@ -1772,7 +1765,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_trunk_case",
             "paint": {
                 "line-color": "rgba(212,194,146,1)",
@@ -1815,7 +1808,7 @@
                 "construction"
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "construction_tunnel",
             "paint": {
                 "line-width": {
@@ -1868,7 +1861,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_service",
             "paint": {
                 "line-color": "#fff",
@@ -1924,7 +1917,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_street",
             "paint": {
                 "line-color": {
@@ -2000,7 +1993,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_tertiary",
             "paint": {
                 "line-color": {
@@ -2084,7 +2077,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_secondary",
             "paint": {
                 "line-color": {
@@ -2153,7 +2146,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_trunk",
             "paint": {
                 "line-color": {
@@ -2226,7 +2219,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_motorway_link_case",
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
@@ -2290,7 +2283,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_motorway_case",
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
@@ -2354,7 +2347,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_motorway_link",
             "paint": {
                 "line-color": {
@@ -2426,7 +2419,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tunnel_motorway",
             "paint": {
                 "line-color": {
@@ -2495,7 +2488,7 @@
                 "minor_rail"
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "railroad",
             "paint": {
                 "line-color": "hsl(0, 0%, 67%)",
@@ -2544,7 +2537,7 @@
                 "minor_rail"
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "railroad_hashes",
             "paint": {
                 "line-color": "hsl(0, 0%, 67%)",
@@ -2605,7 +2598,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "path",
             "paint": {
                 "line-color": "hsla(24, 1%, 38%, 0.53)",
@@ -2666,7 +2659,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "service_case",
             "paint": {
                 "line-color": {
@@ -2741,7 +2734,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "street_case",
             "paint": {
                 "line-color": {
@@ -2801,7 +2794,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tertiary_case",
             "paint": {
                 "line-color": {
@@ -2874,7 +2867,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "secondary_case",
             "paint": {
                 "line-color": {
@@ -2969,7 +2962,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "trunk_case",
             "paint": {
                 "line-color": "rgba(212,194,146,1)",
@@ -3029,7 +3022,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "service",
             "paint": {
                 "line-color": "#fff",
@@ -3122,7 +3115,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "tertiary",
             "paint": {
                 "line-color": {
@@ -3207,7 +3200,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "secondary",
             "paint": {
                 "line-color": "#fff",
@@ -3265,7 +3258,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "trunk",
             "paint": {
                 "line-color": {
@@ -3338,7 +3331,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "motorway_link_case",
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
@@ -3399,7 +3392,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "motorway_case",
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
@@ -3590,7 +3583,7 @@
                 "mapbox:group": "1444858262202.7446"
             },
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "state-label",
             "paint": {
                 "text-opacity": {
@@ -3617,7 +3610,7 @@
                 "line-join": "miter"
             },
             "type": "line",
-            "source": "mapbox://USER.congress",
+            "source": "composite",
             "id": "districts_boundary_line",
             "paint": {
                 "line-width": {
@@ -3664,7 +3657,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_railroad",
             "paint": {
                 "line-color": "hsl(0, 0%, 67%)",
@@ -3721,7 +3714,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_railroad_hashes",
             "paint": {
                 "line-color": "hsl(0, 0%, 67%)",
@@ -3781,7 +3774,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_service_case",
             "paint": {
                 "line-color": {
@@ -3854,7 +3847,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_street_case",
             "paint": {
                 "line-color": {
@@ -3914,7 +3907,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_tertiary_case",
             "paint": {
                 "line-color": {
@@ -3986,7 +3979,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_secondary_case",
             "paint": {
                 "line-color": {
@@ -4059,7 +4052,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_trunk_case",
             "paint": {
                 "line-color": "rgba(212,194,146,1)",
@@ -4119,7 +4112,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "construction_bridge",
             "paint": {
                 "line-width": {
@@ -4171,7 +4164,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_service",
             "paint": {
                 "line-color": "#fff",
@@ -4227,7 +4220,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_street",
             "paint": {
                 "line-color": {
@@ -4291,7 +4284,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_tertiary",
             "paint": {
                 "line-color": {
@@ -4376,7 +4369,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_secondary",
             "paint": {
                 "line-color": {
@@ -4446,7 +4439,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_trunk",
             "paint": {
                 "line-color": {
@@ -4518,7 +4511,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_motorway_link_case",
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
@@ -4578,7 +4571,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_motorway_case",
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
@@ -4638,7 +4631,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_path",
             "paint": {
                 "line-color": "hsla(24, 1%, 38%, 0.52)",
@@ -4698,7 +4691,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_motorway_link",
             "paint": {
                 "line-color": {
@@ -4770,7 +4763,7 @@
                 ]
             ],
             "type": "line",
-            "source": "mapbox",
+            "source": "composite",
             "id": "bridge_motorway",
             "paint": {
                 "line-color": {
@@ -4874,7 +4867,7 @@
                 "river"
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "river_label",
             "paint": {
                 "text-color": "hsl(204, 22%, 55%)",
@@ -4932,7 +4925,7 @@
                 1
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "marine_label_big",
             "paint": {
                 "text-color": "hsl(204, 22%, 55%)",
@@ -5000,7 +4993,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "marine_label_medium_linear",
             "paint": {
                 "text-color": "hsl(204, 22%, 55%)",
@@ -5067,7 +5060,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "marine_label_medium_point",
             "paint": {
                 "text-color": "hsl(204, 22%, 55%)",
@@ -5111,7 +5104,7 @@
                 2
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "country_label_small",
             "paint": {
                 "text-halo-color": "#f8f6f0",
@@ -5155,7 +5148,7 @@
                 2
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "country_label_big",
             "paint": {
                 "text-halo-color": "#f8f6f0",
@@ -5218,7 +5211,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "oneway_arrows_motorway",
             "paint": {
                 "text-color": "#504a4c",
@@ -5276,7 +5269,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "oneway_arrows_small",
             "paint": {
                 "text-color": "#aaa",
@@ -5354,7 +5347,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "oneway_arrows_large",
             "paint": {
                 "text-color": "#aaa",
@@ -5409,7 +5402,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "road-label-small",
             "paint": {
                 "text-color": "rgba(140,128,117,1)",
@@ -5470,7 +5463,7 @@
                 "secondary"
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "road-label-medium",
             "paint": {
                 "text-color": "rgba(133,117,60,1)",
@@ -5541,7 +5534,7 @@
                 "trunk"
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "road-label-large",
             "paint": {
                 "text-color": "rgba(133,117,60,1)",
@@ -5624,7 +5617,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "generic_motorway_label",
             "paint": {
                 "text-color": "#fff",
@@ -5702,7 +5695,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "us_stateroad_label",
             "paint": {
                 "text-color": "hsl(7, 4%, 60%)",
@@ -5773,7 +5766,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "us_highway_label",
             "paint": {
                 "text-color": "hsl(7, 4%, 60%)",
@@ -5856,7 +5849,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "us_interstate_label",
             "paint": {
                 "text-color": "white",
@@ -5936,7 +5929,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "generic_small_labels",
             "paint": {
                 "text-color": "hsl(34, 18%, 49%)",
@@ -6032,7 +6025,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "small_maki_label",
             "paint": {
                 "text-color": "rgba(116,100,85,1)",
@@ -6112,7 +6105,7 @@
                 "cemetery"
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "park_label",
             "paint": {
                 "text-color": "hsl(107, 20%, 34%)",
@@ -6185,7 +6178,7 @@
                 "mapbox:group": "1444858346799.9988"
             },
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "airport_label",
             "paint": {
                 "text-color": "#666",
@@ -6283,7 +6276,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "generic_big_label",
             "paint": {
                 "text-color": "#504a4c",
@@ -6391,7 +6384,7 @@
                 "rail"
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "generic_metro_and_rail_label",
             "paint": {
                 "text-color": "rgba(114,94,85,1)",
@@ -6570,7 +6563,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "networked_rail_label",
             "paint": {
                 "text-color": "rgba(114,94,85,1)",
@@ -6652,7 +6645,7 @@
                 "island"
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "neighborhood_small_label",
             "paint": {
                 "text-color": "rgba(162,99,67,1)",
@@ -6743,7 +6736,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "neighborhood_large_label",
             "paint": {
                 "text-color": "rgba(162,99,67,1)",
@@ -6821,7 +6814,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "hamlet_village_label",
             "paint": {
                 "text-color": "rgba(117,87,79,1)",
@@ -6897,7 +6890,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "town_label",
             "paint": {
                 "text-color": "rgba(115,80,80,1)",
@@ -6979,7 +6972,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "city_label_small",
             "paint": {
                 "text-color": "hsl(357, 14%, 37%)",
@@ -7117,7 +7110,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "city_label_medium",
             "paint": {
                 "text-color": "hsl(357, 14%, 37%)",
@@ -7240,7 +7233,7 @@
                 ]
             ],
             "type": "symbol",
-            "source": "mapbox",
+            "source": "composite",
             "id": "city_label_big",
             "paint": {
                 "text-color": "hsl(357, 14%, 37%)",
@@ -7304,7 +7297,7 @@
                 "#fed9a6"
             ],
             "type": "symbol",
-            "source": "mapbox://USER.congress-labels",
+            "source": "composite",
             "id": "districts_5_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
@@ -7368,7 +7361,7 @@
                 "#fbb4ae"
             ],
             "type": "symbol",
-            "source": "mapbox://USER.congress-labels",
+            "source": "composite",
             "id": "districts_4_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
@@ -7432,7 +7425,7 @@
                 "#decbe4"
             ],
             "type": "symbol",
-            "source": "mapbox://USER.congress-labels",
+            "source": "composite",
             "id": "districts_3_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
@@ -7496,7 +7489,7 @@
                 "#ccebc5"
             ],
             "type": "symbol",
-            "source": "mapbox://USER.congress-labels",
+            "source": "composite",
             "id": "districts_2_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
@@ -7560,7 +7553,7 @@
                 "#b3cde3"
             ],
             "type": "symbol",
-            "source": "mapbox://USER.congress-labels",
+            "source": "composite",
             "id": "districts_1_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
@@ -7582,5 +7575,9 @@
             "source-layer": "US_Congressional_Districts_Labels"
         }
     ],
+    "created": "2016-03-20T19:01:18.058Z",
+    "id": "cim0xiz9k00489jkpj6eo94np",
+    "modified": "2016-03-29T04:50:28.150Z",
+    "owner": "USER",
     "draft": false
 }

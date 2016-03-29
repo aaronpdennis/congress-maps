@@ -78,6 +78,8 @@ var accessToken = 'pk.eyJ1IjoiYWFyb25kZW5uaXMiLCJhIjoiem5LLURoYyJ9.T3tswGTI5ve8_
 // Specify YOUR uploaded Mapbox Studio style URL
 var styleURL = 'mapbox://styles/aarondennis/cim0xiz9k00489jkpj6eo94np';
 
+
+
 // Use GeoViewport and the window size to determine and appropriate center and zoom for the continental US
 var continentalView = function(w,h) { return geoViewport.viewport([-128.8, 23.6, -65.4, 50.2], [w, h]); }
 var continental = continentalView(window.innerWidth/2, window.innerHeight/2);
@@ -291,6 +293,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
   // Redefine the focusMap function from above
   function focusMap(stateAbbr, districtCode) {
 
+    //** CLIENT SIDE USE OF FIPS CODES
     var stateCode;
     states.map(function(d) {
       if (stateAbbr === d['Abbr']) {

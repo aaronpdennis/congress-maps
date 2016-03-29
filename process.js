@@ -2,8 +2,7 @@ var fs = require('fs'),
     fiveColorMap = require('five-color-map'),
     turf = require('turf');
 
-var file = process.argv[2],
-    accessToken = process.argv[3];
+var file = process.argv[2];
 
 var stateCodes = JSON.parse(fs.readFileSync('states.json', 'utf8'));
 
