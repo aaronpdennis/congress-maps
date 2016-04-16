@@ -2,16 +2,33 @@
 
 Follow the steps below to create a web map of United States congressional districts from Census Bureau data using Mapbox.
 
-You will need an account on Mapbox.com. Then follow the commands below from the Mac OS X Terminal.
+You will need an account on Mapbox.com. Then follow the commands below from the Mac OS X or Ubuntu terminal.
 
 Why use [Tippecanoe](https://github.com/mapbox/tippecanoe)? Using Tippecanoe provides more control over how the geometries are tiled into a map. For comparison, using the Mapbox Studio default upload will not show a zoomed-out full country view of the data because the boundaries are so detailed; the default upload thinks you are only interested in looking closer at the data. Tippecanoe stops  oversimplification of the geometry and also specifies a min/max zoom level.
 
 #### Dependencies:
 
-Install required dependencies with Homebrew:
+On OS X, install required dependencies with Homebrew:
 
 ```
 brew install tippecanoe gdal node
+```
+
+On Ubuntu, you'll need node:
+
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+nvm install 5.0
+```
+
+and gdal and Tippecanoe, which must be built from sources:
+
+```
+sudo apt-get install gdal-bin libprotobuf-dev protobuf-compiler libsqlite3-dev
+git clone https://github.com/mapbox/tippecanoe
+cd tippecanoe
+make
+make install
 ```
 
 #### Setup:
