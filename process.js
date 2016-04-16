@@ -14,6 +14,14 @@ var geojson = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 
 var colored = fiveColorMap(geojson);
 
+// turns 1 into '1st', etc.
+function ordinal(number) {
+  var suffixes = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
+  if (((number % 100) == 11) || ((number % 100) == 12) || ((number % 100) == 13)) 
+    return number + suffixes[0];
+  return number + suffixes[number % 10];
+}
+
 // add additional metadata to the GeoJSON for rendering later and
 // compute bounding boxes for each congressional district and each
 // state so that we know how to center and zoom maps
@@ -34,8 +42,13 @@ colored.features.map(function(d) {
   // Create a turf.point to hold information for rending labels.
   var pt = turf.point([parseFloat(d.properties['INTPTLON']), parseFloat(d.properties['INTPTLAT'])]);
 
-  // get the district number
-  var number = d.properties['CD114FP'] === '00' ? 'At Large' : d.properties['CD114FP'];
+  // Get the district number in two-digit form ("00" (for at-large
+  // districts), "01", "02", ...). The Census data's CD114FP field
+  // holds it in this format. Except for the island territories
+  // which have "98", but are just at-large and should be "00".
+  var number = d.properties['CD114FP'];
+  if (number == "98")
+    number = "00";
 
   // map the state FIPS code in the STATEFP attribute to the index of the state
   // in our states.json file
@@ -46,8 +59,8 @@ colored.features.map(function(d) {
 
   // add metadata to the label
   pt.properties = d.properties;
-  pt.properties.title_short = stateCodes[state]['Abbr'] + ' ' + number;
-  pt.properties.title_long = stateCodes[state]['State'] + ' ' + d.properties['NAMELSAD'];
+  pt.properties.title_short = stateCodes[state]['Abbr'] + ' ' + (number == "00" ? "At Large" : parseInt(number));
+  pt.properties.title_long = stateCodes[state]['State'] + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
   labels.push(pt);
 
   // collect bounding boxes for the districts
