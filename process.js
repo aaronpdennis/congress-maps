@@ -75,9 +75,9 @@ console.log('data ready');
 fs.writeFileSync('./data/map.geojson', JSON.stringify(colored));
 fs.writeFileSync('./data/map_labels.geojson', JSON.stringify(turf.featurecollection(labels)));
 
-fs.writeFileSync('./example/states.js', 'var states = ' + JSON.stringify(stateCodes));
+fs.writeFileSync('./example/states.js', 'var states = ' + JSON.stringify(stateCodes, null, 2));
 
 var bboxes = {};
 for (var b in districtBboxes) { bboxes[b] = districtBboxes[b] };
 for (var b in stateBboxes) { bboxes[b] = stateBboxes[b] };
-fs.writeFileSync('./example/bboxes.js', 'var bboxes = ' + JSON.stringify(bboxes));
+fs.writeFileSync('./example/bboxes.js', 'var bboxes = ' + JSON.stringify(bboxes, null, 2));
