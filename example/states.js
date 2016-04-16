@@ -1,282 +1,282 @@
 var states = [
   {
-    "State": "Alabama",
-    "Code": 1,
-    "Abbr": "AL"
+    "Name": "Alabama",
+    "FIPS": 1,
+    "USPS": "AL"
   },
   {
-    "State": "Alaska",
-    "Code": 2,
-    "Abbr": "AK"
+    "Name": "Alaska",
+    "FIPS": 2,
+    "USPS": "AK"
   },
   {
-    "State": "Arizona",
-    "Code": 4,
-    "Abbr": "AZ"
+    "Name": "Arizona",
+    "FIPS": 4,
+    "USPS": "AZ"
   },
   {
-    "State": "Arkansas",
-    "Code": 5,
-    "Abbr": "AR"
+    "Name": "Arkansas",
+    "FIPS": 5,
+    "USPS": "AR"
   },
   {
-    "State": "California",
-    "Code": 6,
-    "Abbr": "CA"
+    "Name": "California",
+    "FIPS": 6,
+    "USPS": "CA"
   },
   {
-    "State": "Colorado",
-    "Code": 8,
-    "Abbr": "CO"
+    "Name": "Colorado",
+    "FIPS": 8,
+    "USPS": "CO"
   },
   {
-    "State": "Connecticut",
-    "Code": 9,
-    "Abbr": "CT"
+    "Name": "Connecticut",
+    "FIPS": 9,
+    "USPS": "CT"
   },
   {
-    "State": "Delaware",
-    "Code": 10,
-    "Abbr": "DE"
+    "Name": "Delaware",
+    "FIPS": 10,
+    "USPS": "DE"
   },
   {
-    "State": "District of Columbia",
-    "Code": 11,
-    "Abbr": "DC"
+    "Name": "District of Columbia",
+    "FIPS": 11,
+    "USPS": "DC"
   },
   {
-    "State": "Florida",
-    "Code": 12,
-    "Abbr": "FL"
+    "Name": "Florida",
+    "FIPS": 12,
+    "USPS": "FL"
   },
   {
-    "State": "Georgia",
-    "Code": 13,
-    "Abbr": "GA"
+    "Name": "Georgia",
+    "FIPS": 13,
+    "USPS": "GA"
   },
   {
-    "State": "Hawaii",
-    "Code": 15,
-    "Abbr": "HI"
+    "Name": "Hawaii",
+    "FIPS": 15,
+    "USPS": "HI"
   },
   {
-    "State": "Idaho",
-    "Code": 16,
-    "Abbr": "ID"
+    "Name": "Idaho",
+    "FIPS": 16,
+    "USPS": "ID"
   },
   {
-    "State": "Illinois",
-    "Code": 17,
-    "Abbr": "IL"
+    "Name": "Illinois",
+    "FIPS": 17,
+    "USPS": "IL"
   },
   {
-    "State": "Indiana",
-    "Code": 18,
-    "Abbr": "IN"
+    "Name": "Indiana",
+    "FIPS": 18,
+    "USPS": "IN"
   },
   {
-    "State": "Iowa",
-    "Code": 19,
-    "Abbr": "IA"
+    "Name": "Iowa",
+    "FIPS": 19,
+    "USPS": "IA"
   },
   {
-    "State": "Kansas",
-    "Code": 20,
-    "Abbr": "KS"
+    "Name": "Kansas",
+    "FIPS": 20,
+    "USPS": "KS"
   },
   {
-    "State": "Kentucky",
-    "Code": 21,
-    "Abbr": "KY"
+    "Name": "Kentucky",
+    "FIPS": 21,
+    "USPS": "KY"
   },
   {
-    "State": "Louisiana",
-    "Code": 22,
-    "Abbr": "LA"
+    "Name": "Louisiana",
+    "FIPS": 22,
+    "USPS": "LA"
   },
   {
-    "State": "Maine",
-    "Code": 23,
-    "Abbr": "ME"
+    "Name": "Maine",
+    "FIPS": 23,
+    "USPS": "ME"
   },
   {
-    "State": "Maryland",
-    "Code": 24,
-    "Abbr": "MD"
+    "Name": "Maryland",
+    "FIPS": 24,
+    "USPS": "MD"
   },
   {
-    "State": "Massachusetts",
-    "Code": 25,
-    "Abbr": "MA"
+    "Name": "Massachusetts",
+    "FIPS": 25,
+    "USPS": "MA"
   },
   {
-    "State": "Michigan",
-    "Code": 26,
-    "Abbr": "MI"
+    "Name": "Michigan",
+    "FIPS": 26,
+    "USPS": "MI"
   },
   {
-    "State": "Minnesota",
-    "Code": 27,
-    "Abbr": "MN"
+    "Name": "Minnesota",
+    "FIPS": 27,
+    "USPS": "MN"
   },
   {
-    "State": "Mississippi",
-    "Code": 28,
-    "Abbr": "MS"
+    "Name": "Mississippi",
+    "FIPS": 28,
+    "USPS": "MS"
   },
   {
-    "State": "Missouri",
-    "Code": 29,
-    "Abbr": "MO"
+    "Name": "Missouri",
+    "FIPS": 29,
+    "USPS": "MO"
   },
   {
-    "State": "Montana",
-    "Code": 30,
-    "Abbr": "MT"
+    "Name": "Montana",
+    "FIPS": 30,
+    "USPS": "MT"
   },
   {
-    "State": "Nebraska",
-    "Code": 31,
-    "Abbr": "NE"
+    "Name": "Nebraska",
+    "FIPS": 31,
+    "USPS": "NE"
   },
   {
-    "State": "Nevada",
-    "Code": 32,
-    "Abbr": "NV"
+    "Name": "Nevada",
+    "FIPS": 32,
+    "USPS": "NV"
   },
   {
-    "State": "New Hampshire",
-    "Code": 33,
-    "Abbr": "NH"
+    "Name": "New Hampshire",
+    "FIPS": 33,
+    "USPS": "NH"
   },
   {
-    "State": "New Jersey",
-    "Code": 34,
-    "Abbr": "NJ"
+    "Name": "New Jersey",
+    "FIPS": 34,
+    "USPS": "NJ"
   },
   {
-    "State": "New Mexico",
-    "Code": 35,
-    "Abbr": "NM"
+    "Name": "New Mexico",
+    "FIPS": 35,
+    "USPS": "NM"
   },
   {
-    "State": "New York",
-    "Code": 36,
-    "Abbr": "NY"
+    "Name": "New York",
+    "FIPS": 36,
+    "USPS": "NY"
   },
   {
-    "State": "North Carolina",
-    "Code": 37,
-    "Abbr": "NC"
+    "Name": "North Carolina",
+    "FIPS": 37,
+    "USPS": "NC"
   },
   {
-    "State": "North Dakota",
-    "Code": 38,
-    "Abbr": "ND"
+    "Name": "North Dakota",
+    "FIPS": 38,
+    "USPS": "ND"
   },
   {
-    "State": "Ohio",
-    "Code": 39,
-    "Abbr": "OH"
+    "Name": "Ohio",
+    "FIPS": 39,
+    "USPS": "OH"
   },
   {
-    "State": "Oklahoma",
-    "Code": 40,
-    "Abbr": "OK"
+    "Name": "Oklahoma",
+    "FIPS": 40,
+    "USPS": "OK"
   },
   {
-    "State": "Oregon",
-    "Code": 41,
-    "Abbr": "OR"
+    "Name": "Oregon",
+    "FIPS": 41,
+    "USPS": "OR"
   },
   {
-    "State": "Pennsylvania",
-    "Code": 42,
-    "Abbr": "PA"
+    "Name": "Pennsylvania",
+    "FIPS": 42,
+    "USPS": "PA"
   },
   {
-    "State": "Rhode Island",
-    "Code": 44,
-    "Abbr": "RI"
+    "Name": "Rhode Island",
+    "FIPS": 44,
+    "USPS": "RI"
   },
   {
-    "State": "South Carolina",
-    "Code": 45,
-    "Abbr": "SC"
+    "Name": "South Carolina",
+    "FIPS": 45,
+    "USPS": "SC"
   },
   {
-    "State": "South Dakota",
-    "Code": 46,
-    "Abbr": "SD"
+    "Name": "South Dakota",
+    "FIPS": 46,
+    "USPS": "SD"
   },
   {
-    "State": "Tennessee",
-    "Code": 47,
-    "Abbr": "TN"
+    "Name": "Tennessee",
+    "FIPS": 47,
+    "USPS": "TN"
   },
   {
-    "State": "Texas",
-    "Code": 48,
-    "Abbr": "TX"
+    "Name": "Texas",
+    "FIPS": 48,
+    "USPS": "TX"
   },
   {
-    "State": "Utah",
-    "Code": 49,
-    "Abbr": "UT"
+    "Name": "Utah",
+    "FIPS": 49,
+    "USPS": "UT"
   },
   {
-    "State": "Vermont",
-    "Code": 50,
-    "Abbr": "VT"
+    "Name": "Vermont",
+    "FIPS": 50,
+    "USPS": "VT"
   },
   {
-    "State": "Virginia",
-    "Code": 51,
-    "Abbr": "VA"
+    "Name": "Virginia",
+    "FIPS": 51,
+    "USPS": "VA"
   },
   {
-    "State": "Washington",
-    "Code": 53,
-    "Abbr": "WA"
+    "Name": "Washington",
+    "FIPS": 53,
+    "USPS": "WA"
   },
   {
-    "State": "West Virginia",
-    "Code": 54,
-    "Abbr": "WV"
+    "Name": "West Virginia",
+    "FIPS": 54,
+    "USPS": "WV"
   },
   {
-    "State": "Wisconsin",
-    "Code": 55,
-    "Abbr": "WI"
+    "Name": "Wisconsin",
+    "FIPS": 55,
+    "USPS": "WI"
   },
   {
-    "State": "Wyoming",
-    "Code": 56,
-    "Abbr": "WY"
+    "Name": "Wyoming",
+    "FIPS": 56,
+    "USPS": "WY"
   },
   {
-    "State": "Guam",
-    "Code": 66,
-    "Abbr": "GU"
+    "Name": "Guam",
+    "FIPS": 66,
+    "USPS": "GU"
   },
   {
-    "State": "Northern Mariana Islands",
-    "Code": 69,
-    "Abbr": "MP"
+    "Name": "Northern Mariana Islands",
+    "FIPS": 69,
+    "USPS": "MP"
   },
   {
-    "State": "American Samoa",
-    "Code": 60,
-    "Abbr": "AS"
+    "Name": "American Samoa",
+    "FIPS": 60,
+    "USPS": "AS"
   },
   {
-    "State": "Puerto Rico",
-    "Code": 72,
-    "Abbr": "PR"
+    "Name": "Puerto Rico",
+    "FIPS": 72,
+    "USPS": "PR"
   },
   {
-    "State": "Virgin Islands",
-    "Code": 78,
-    "Abbr": "VI"
+    "Name": "Virgin Islands",
+    "FIPS": 78,
+    "USPS": "VI"
   }
 ]

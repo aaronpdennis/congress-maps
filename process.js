@@ -50,29 +50,37 @@ colored.features.map(function(d) {
   if (number == "98")
     number = "00";
 
-  // map the state FIPS code in the STATEFP attribute to the index of the state
-  // in our states.json file
+  // map the state FIPS code in the STATEFP attribute to the USPS
+  // state abbreviation and the state's name
   var state;
+  var state_name;
   stateCodes.map(function(n,i) {
-    if (parseInt(d.properties['STATEFP']) === parseInt(n['Code'])) state = i;
+    if (parseInt(d.properties['STATEFP']) === parseInt(n['FIPS'])) {
+      state = n['USPS'];
+      state_name = n['Name'];
+    }
   });
+
+  // add the district number and USPS state code to the metadata
+  d.properties.number = number;
+  d.properties.state = state;
 
   // add metadata to the label
   pt.properties = d.properties;
-  pt.properties.title_short = stateCodes[state]['Abbr'] + ' ' + (number == "00" ? "At Large" : parseInt(number));
-  pt.properties.title_long = stateCodes[state]['State'] + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
+  pt.properties.title_short = state + ' ' + (number == "00" ? "At Large" : parseInt(number));
+  pt.properties.title_long = state_name + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
   labels.push(pt);
 
   // collect bounding boxes for the districts
   var bounds = turf.extent(d);
-  districtBboxes[stateCodes[state]['Abbr'] + number] = bounds;
+  districtBboxes[state + number] = bounds;
 
   // and for the states
-  if (stateBboxes[stateCodes[state]['Abbr']]) {
-    stateBboxes[stateCodes[state]['Abbr']].features.push(turf.bboxPolygon(bounds));
+  if (stateBboxes[state]) {
+    stateBboxes[state].features.push(turf.bboxPolygon(bounds));
   } else {
-    stateBboxes[stateCodes[state]['Abbr']] = { type: 'FeatureCollection', features: [] };
-    stateBboxes[stateCodes[state]['Abbr']].features.push(turf.bboxPolygon(bounds));
+    stateBboxes[state] = { type: 'FeatureCollection', features: [] };
+    stateBboxes[state].features.push(turf.bboxPolygon(bounds));
   }
 });
 
