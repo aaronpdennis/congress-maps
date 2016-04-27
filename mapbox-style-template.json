@@ -93,7 +93,7 @@
     "pitch": 0,
     "sources": {
         "composite": {
-            "url": "mapbox://mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7,USER.congress,USER.congress-labels",
+            "url": "mapbox://mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7,USER.cd-114-2015,USER.cd-114-2015-labels",
             "type": "vector"
         }
     },
@@ -7316,7 +7316,7 @@
                     ]
                 }
             },
-            "source-layer": "US_Congressional_Districts_Labels"
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
         },
         {
             "interactive": true,
@@ -7380,7 +7380,7 @@
                     ]
                 }
             },
-            "source-layer": "US_Congressional_Districts_Labels"
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
         },
         {
             "interactive": true,
@@ -7444,7 +7444,7 @@
                     ]
                 }
             },
-            "source-layer": "US_Congressional_Districts_Labels"
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
         },
         {
             "interactive": true,
@@ -7508,7 +7508,7 @@
                     ]
                 }
             },
-            "source-layer": "US_Congressional_Districts_Labels"
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
         },
         {
             "interactive": true,
@@ -7572,7 +7572,7 @@
                     ]
                 }
             },
-            "source-layer": "US_Congressional_Districts_Labels"
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
         }
     ],
     "created": "2016-03-20T19:01:18.058Z",

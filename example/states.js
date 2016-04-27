@@ -1,1 +1,282 @@
-var states = [{"State":"Alabama","Code":1,"Abbr":"AL"},{"State":"Alaska","Code":2,"Abbr":"AK"},{"State":"Arizona","Code":4,"Abbr":"AZ"},{"State":"Arkansas","Code":5,"Abbr":"AR"},{"State":"California","Code":6,"Abbr":"CA"},{"State":"Colorado","Code":8,"Abbr":"CO"},{"State":"Connecticut","Code":9,"Abbr":"CT"},{"State":"Delaware","Code":10,"Abbr":"DE"},{"State":"District of Columbia","Code":11,"Abbr":"DC"},{"State":"Florida","Code":12,"Abbr":"FL"},{"State":"Georgia","Code":13,"Abbr":"GA"},{"State":"Hawaii","Code":15,"Abbr":"HI"},{"State":"Idaho","Code":16,"Abbr":"ID"},{"State":"Illinois","Code":17,"Abbr":"IL"},{"State":"Indiana","Code":18,"Abbr":"IN"},{"State":"Iowa","Code":19,"Abbr":"IA"},{"State":"Kansas","Code":20,"Abbr":"KS"},{"State":"Kentucky","Code":21,"Abbr":"KY"},{"State":"Louisiana","Code":22,"Abbr":"LA"},{"State":"Maine","Code":23,"Abbr":"ME"},{"State":"Maryland","Code":24,"Abbr":"MD"},{"State":"Massachusetts","Code":25,"Abbr":"MA"},{"State":"Michigan","Code":26,"Abbr":"MI"},{"State":"Minnesota","Code":27,"Abbr":"MN"},{"State":"Mississippi","Code":28,"Abbr":"MS"},{"State":"Missouri","Code":29,"Abbr":"MO"},{"State":"Montana","Code":30,"Abbr":"MT"},{"State":"Nebraska","Code":31,"Abbr":"NE"},{"State":"Nevada","Code":32,"Abbr":"NV"},{"State":"New Hampshire","Code":33,"Abbr":"NH"},{"State":"New Jersey","Code":34,"Abbr":"NJ"},{"State":"New Mexico","Code":35,"Abbr":"NM"},{"State":"New York","Code":36,"Abbr":"NY"},{"State":"North Carolina","Code":37,"Abbr":"NC"},{"State":"North Dakota","Code":38,"Abbr":"ND"},{"State":"Ohio","Code":39,"Abbr":"OH"},{"State":"Oklahoma","Code":40,"Abbr":"OK"},{"State":"Oregon","Code":41,"Abbr":"OR"},{"State":"Pennsylvania","Code":42,"Abbr":"PA"},{"State":"Rhode Island","Code":44,"Abbr":"RI"},{"State":"South Carolina","Code":45,"Abbr":"SC"},{"State":"South Dakota","Code":46,"Abbr":"SD"},{"State":"Tennessee","Code":47,"Abbr":"TN"},{"State":"Texas","Code":48,"Abbr":"TX"},{"State":"Utah","Code":49,"Abbr":"UT"},{"State":"Vermont","Code":50,"Abbr":"VT"},{"State":"Virginia","Code":51,"Abbr":"VA"},{"State":"Washington","Code":53,"Abbr":"WA"},{"State":"West Virginia","Code":54,"Abbr":"WV"},{"State":"Wisconsin","Code":55,"Abbr":"WI"},{"State":"Wyoming","Code":56,"Abbr":"WY"},{"State":"Guam","Code":66,"Abbr":"GU"},{"State":"Northern Mariana Islands","Code":69,"Abbr":"MP"},{"State":"American Samoa","Code":60,"Abbr":"AS"},{"State":"Puerto Rico","Code":72,"Abbr":"PR"},{"State":"Virgin Islands","Code":78,"Abbr":"VI"}]
+var states = [
+  {
+    "Name": "Alabama",
+    "FIPS": 1,
+    "USPS": "AL"
+  },
+  {
+    "Name": "Alaska",
+    "FIPS": 2,
+    "USPS": "AK"
+  },
+  {
+    "Name": "Arizona",
+    "FIPS": 4,
+    "USPS": "AZ"
+  },
+  {
+    "Name": "Arkansas",
+    "FIPS": 5,
+    "USPS": "AR"
+  },
+  {
+    "Name": "California",
+    "FIPS": 6,
+    "USPS": "CA"
+  },
+  {
+    "Name": "Colorado",
+    "FIPS": 8,
+    "USPS": "CO"
+  },
+  {
+    "Name": "Connecticut",
+    "FIPS": 9,
+    "USPS": "CT"
+  },
+  {
+    "Name": "Delaware",
+    "FIPS": 10,
+    "USPS": "DE"
+  },
+  {
+    "Name": "District of Columbia",
+    "FIPS": 11,
+    "USPS": "DC"
+  },
+  {
+    "Name": "Florida",
+    "FIPS": 12,
+    "USPS": "FL"
+  },
+  {
+    "Name": "Georgia",
+    "FIPS": 13,
+    "USPS": "GA"
+  },
+  {
+    "Name": "Hawaii",
+    "FIPS": 15,
+    "USPS": "HI"
+  },
+  {
+    "Name": "Idaho",
+    "FIPS": 16,
+    "USPS": "ID"
+  },
+  {
+    "Name": "Illinois",
+    "FIPS": 17,
+    "USPS": "IL"
+  },
+  {
+    "Name": "Indiana",
+    "FIPS": 18,
+    "USPS": "IN"
+  },
+  {
+    "Name": "Iowa",
+    "FIPS": 19,
+    "USPS": "IA"
+  },
+  {
+    "Name": "Kansas",
+    "FIPS": 20,
+    "USPS": "KS"
+  },
+  {
+    "Name": "Kentucky",
+    "FIPS": 21,
+    "USPS": "KY"
+  },
+  {
+    "Name": "Louisiana",
+    "FIPS": 22,
+    "USPS": "LA"
+  },
+  {
+    "Name": "Maine",
+    "FIPS": 23,
+    "USPS": "ME"
+  },
+  {
+    "Name": "Maryland",
+    "FIPS": 24,
+    "USPS": "MD"
+  },
+  {
+    "Name": "Massachusetts",
+    "FIPS": 25,
+    "USPS": "MA"
+  },
+  {
+    "Name": "Michigan",
+    "FIPS": 26,
+    "USPS": "MI"
+  },
+  {
+    "Name": "Minnesota",
+    "FIPS": 27,
+    "USPS": "MN"
+  },
+  {
+    "Name": "Mississippi",
+    "FIPS": 28,
+    "USPS": "MS"
+  },
+  {
+    "Name": "Missouri",
+    "FIPS": 29,
+    "USPS": "MO"
+  },
+  {
+    "Name": "Montana",
+    "FIPS": 30,
+    "USPS": "MT"
+  },
+  {
+    "Name": "Nebraska",
+    "FIPS": 31,
+    "USPS": "NE"
+  },
+  {
+    "Name": "Nevada",
+    "FIPS": 32,
+    "USPS": "NV"
+  },
+  {
+    "Name": "New Hampshire",
+    "FIPS": 33,
+    "USPS": "NH"
+  },
+  {
+    "Name": "New Jersey",
+    "FIPS": 34,
+    "USPS": "NJ"
+  },
+  {
+    "Name": "New Mexico",
+    "FIPS": 35,
+    "USPS": "NM"
+  },
+  {
+    "Name": "New York",
+    "FIPS": 36,
+    "USPS": "NY"
+  },
+  {
+    "Name": "North Carolina",
+    "FIPS": 37,
+    "USPS": "NC"
+  },
+  {
+    "Name": "North Dakota",
+    "FIPS": 38,
+    "USPS": "ND"
+  },
+  {
+    "Name": "Ohio",
+    "FIPS": 39,
+    "USPS": "OH"
+  },
+  {
+    "Name": "Oklahoma",
+    "FIPS": 40,
+    "USPS": "OK"
+  },
+  {
+    "Name": "Oregon",
+    "FIPS": 41,
+    "USPS": "OR"
+  },
+  {
+    "Name": "Pennsylvania",
+    "FIPS": 42,
+    "USPS": "PA"
+  },
+  {
+    "Name": "Rhode Island",
+    "FIPS": 44,
+    "USPS": "RI"
+  },
+  {
+    "Name": "South Carolina",
+    "FIPS": 45,
+    "USPS": "SC"
+  },
+  {
+    "Name": "South Dakota",
+    "FIPS": 46,
+    "USPS": "SD"
+  },
+  {
+    "Name": "Tennessee",
+    "FIPS": 47,
+    "USPS": "TN"
+  },
+  {
+    "Name": "Texas",
+    "FIPS": 48,
+    "USPS": "TX"
+  },
+  {
+    "Name": "Utah",
+    "FIPS": 49,
+    "USPS": "UT"
+  },
+  {
+    "Name": "Vermont",
+    "FIPS": 50,
+    "USPS": "VT"
+  },
+  {
+    "Name": "Virginia",
+    "FIPS": 51,
+    "USPS": "VA"
+  },
+  {
+    "Name": "Washington",
+    "FIPS": 53,
+    "USPS": "WA"
+  },
+  {
+    "Name": "West Virginia",
+    "FIPS": 54,
+    "USPS": "WV"
+  },
+  {
+    "Name": "Wisconsin",
+    "FIPS": 55,
+    "USPS": "WI"
+  },
+  {
+    "Name": "Wyoming",
+    "FIPS": 56,
+    "USPS": "WY"
+  },
+  {
+    "Name": "Guam",
+    "FIPS": 66,
+    "USPS": "GU"
+  },
+  {
+    "Name": "Northern Mariana Islands",
+    "FIPS": 69,
+    "USPS": "MP"
+  },
+  {
+    "Name": "American Samoa",
+    "FIPS": 60,
+    "USPS": "AS"
+  },
+  {
+    "Name": "Puerto Rico",
+    "FIPS": 72,
+    "USPS": "PR"
+  },
+  {
+    "Name": "Virgin Islands",
+    "FIPS": 78,
+    "USPS": "VI"
+  }
+]
