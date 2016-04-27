@@ -1,6 +1,6 @@
 # Mapping US Congressional Districts
 
-Follow the steps below to create a web map of United States congressional districts from Census Bureau data using Mapbox.
+Follow the steps below to create a web map of United States congressional districts from Census Bureau data using Mapbox. You can also use this to create a lat/lng-to-congressional district API.
 
 You will need an account on Mapbox.com. Then follow the commands below from the Mac OS X or Ubuntu terminal.
 
@@ -83,6 +83,8 @@ Use the files in the `example` directory as the basis for making a web map with 
 After following the steps above, `index.html` will be a full page web map of U.S. Congressional districts. Host this file and the two supporting scripts (`states.js`, `bboxes.js`) on your website. If you don't want the interactive menu on your map, search through `index.html` and remove all sections of code that immediately follow the `INTERACTIVE MENU` line comment labels.
 
 With this web map, you can show specific congressional districts using the URL hash. Set the location hash to `state={state abbreviation}` to show a specific state and add `&district={district number}` to specify a district within the state. The hash expects US Census two letter state abbreviations and district number conventions. At Large districts are numbered `00` and all other districts are two character numbers: `district=01`, `district=02`, ..., `district=15`, etc.
+
+See the click handler for an example of how to use the Mapbox API to get the congressional district at a particular lat/lng coordinate.
 
 #### Examples:
 

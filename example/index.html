@@ -10,8 +10,8 @@
     <script   src="http://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
 
     <!-- Mabpox GL -->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.17.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.17.0/mapbox-gl.css' rel='stylesheet'>
 
     <!-- Mapbox.js (fallback) -->
     <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
@@ -77,7 +77,7 @@ var accessToken = 'pk.eyJ1IjoiYWFyb25kZW5uaXMiLCJhIjoiem5LLURoYyJ9.T3tswGTI5ve8_
 //** MODIFY THIS SECTION
 // Specify YOUR uploaded Mapbox Studio style URL
 var styleURL = 'mapbox://styles/aarondennis/cim0xiz9k00489jkpj6eo94np';
-
+var mapId = 'aarondennis.cd-114-2015'; // used by the click handler only
 
 
 // Use GeoViewport and the window size to determine and appropriate center and zoom for the continental US
@@ -265,6 +265,66 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
     // Record that it is no longer the initial page load
     initial = false;
+
+    // A click handler that shows what was under the cursor where
+    // the user clicked.
+    map.on("click", function(e) {
+      var district = null;
+
+      if (1) {
+        // The map control provides a client-side-only way to determine what
+        // is under the cursor. We restrict the query to only the layers that
+        // provide congressional district polygons. Note that this only scans
+        // features that are currently shown on the map. So if you've filtered
+        // the districts so only a state or a single district is showing, this
+        // will restrict the query to those districts.
+        var features = map.queryRenderedFeatures(
+          e.point,
+          {
+            layers: ["districts_1", "districts_2", "districts_3", "districts_4", "districts_5"]
+          });
+        if (features.length > 0)
+          // The feature properties come from the original GeoJSON uploaded to Mapbox.
+          district = features[0].properties;
+
+      } else {
+        // Use the Mapbox tilequery API instead.
+        //
+        // This is an example of how you would use the API in a server-side
+        // environment where you don't have the map control, or as a part
+        // of geocoding where you have lat/lng coordinates.
+        //
+        // Note that, from the Mapbox API docs:
+        // "Use of this endpoint is rate limited to 600 requests per minute."
+        $.ajax({
+          url: 'https://api.mapbox.com/v4/' + mapId + '/tilequery/' + e.lngLat.lng + ',' + e.lngLat.lat + '.json?radius=0&access_token=' + accessToken,
+          method: 'GET',
+          success: function(resp) {
+            if (resp.type == "FeatureCollection" && resp.features.length > 0)
+              // resp is always a FeatureCollection, just sanity checking, but it might
+              // be empty. If it's not empty, it will contain a single Feature
+              // (whose geometry is a Polygon) represending the boundaries of a
+              // congressional district. Its properties come from the original
+              // GeoJSON uploaded to Mapbox.
+              district = resp.features[0].properties;
+          }
+        });
+      }
+
+      // Ok now we have the district either from the client-side query or the
+      // API.
+      if (district) {
+        // district.state now holds the two-letter USPS state abbreviation,
+        // and district.number now holds a zero-padded two-digit district
+        // number (00 for at-large districts). title_long and title_short
+        // have strings useful for display (e.g. "VA 8" and "Virginia’s 8th
+        // Congressional District", respectively).
+        alert("That's " + district.state + "-" + district.number + ", i.e." + district.title_long + ".");
+
+      } else {
+        alert("You clicked on a location that is not within a U.S. congressional district.")
+      }
+    })
 
   });
 
