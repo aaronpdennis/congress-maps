@@ -66,7 +66,7 @@ node process.js data/congressional_districts.geojson
 tippecanoe -o data/cd-114-2015.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
 
 # upload map data to Mapbox.com
-node upload.js data/cd-114-2015.mbtiles data/map_labels.geojson style.json
+node upload.js data/cd-114-2015.mbtiles data/map_labels.geojson
 
 # modify mapbox-style-template.json to use your Mapbox account and save as mapbox-style.json
 sed s/'USER'/"$MAPBOX_USERNAME"/ mapbox-style-template.json > data/mapbox-style.json
