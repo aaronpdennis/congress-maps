@@ -68,8 +68,8 @@ tippecanoe -o data/cd-114-2015.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US
 # upload map data to Mapbox.com
 node upload.js data/cd-114-2015.mbtiles data/map_labels.geojson
 
-# modify mapbox-style-template.json to use your Mapbox account and save as mapbox-style.json
-sed s/'USER'/"$MAPBOX_USERNAME"/ mapbox-style-template.json > data/mapbox-style.json
+# modify mapbox-style-template.json to use your Mapbox account and save as data/mapbox-style.json
+sed s/'USER'/"$MAPBOX_USERNAME"/g mapbox-style-template.json > data/mapbox-style.json
 ```
 
 Next, go to [mapbox.com/studio/styles](https://www.mapbox.com/styles), then drag-and-drop the `data/mapbox-style.json` file onto the screen. This should upload the map style to Mapbox.
