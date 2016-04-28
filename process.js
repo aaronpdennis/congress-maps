@@ -8,16 +8,25 @@ var stateCodes = JSON.parse(fs.readFileSync('states.json', 'utf8'));
 
 var geojson = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 
+// some states have district 'ZZ' which represents the area of
+// a state, usually over water, that is not included in any
+// congressional district --- filter these out
+
+var filtered = geojson.features.filter(function(d) {
+  return d.properties['CD114FP'] !== 'ZZ' ? true : false;
+});
+var districts = { 'type': 'FeatureCollection', 'features': filtered };
+
 // use the five-color-map package to assign color numbers to each
 // congressional district so that no two touching districts are
 // assigned the same color number
 
-var colored = fiveColorMap(geojson);
+var colored = fiveColorMap(districts);
 
 // turns 1 into '1st', etc.
 function ordinal(number) {
   var suffixes = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
-  if (((number % 100) == 11) || ((number % 100) == 12) || ((number % 100) == 13)) 
+  if (((number % 100) == 11) || ((number % 100) == 12) || ((number % 100) == 13))
     return number + suffixes[0];
   return number + suffixes[number % 10];
 }
@@ -31,11 +40,6 @@ var labels = [],
     stateBboxes = {};
 
 colored.features.map(function(d) {
-  // some states have district 'ZZ' which represents the area of
-  // a state, usually over water, that is not included in any
-  // congressional district --- skip these
-  if (d.properties['CD114FP'] === 'ZZ')
-    return;
 
   // Census TIGER files have INTPTLON/INTPTLAT which conveniently
   // provides a point where a label for the polygon can be placed.
