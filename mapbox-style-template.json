@@ -1,6 +1,6 @@
 {
     "version": 8,
-    "name": "congressional-districts-style-v8",
+    "name": "congressional-districts-style-v8-copy",
     "metadata": {
         "mapbox:groups": {
             "1444858470265.9292": {
@@ -85,10 +85,10 @@
         "mapbox:autocomposite": true
     },
     "center": [
-        -89.99964535501753,
-        32.225195821887525
+        -76.6407433857464,
+        39.26490432392163
     ],
-    "zoom": 5.235192643830645,
+    "zoom": 10.973269295232008,
     "bearing": 0,
     "pitch": 0,
     "sources": {
@@ -97,35 +97,36 @@
             "type": "vector"
         }
     },
-    "sprite": "mapbox://sprites/USER/cim0xiz9k00489jkpj6eo94np",
+    "sprite": "mapbox://sprites/USER/cinjppgm9002paem5x0w9ajeb",
     "glyphs": "mapbox://fonts/USER/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
             "type": "background",
+            "interactive": true,
             "paint": {
                 "background-color": "hsl(0, 0%, 89%)",
                 "background-opacity": 1
-            },
-            "interactive": true
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "landcover_scrub_grass",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858171723.1826"
             },
+            "source": "composite",
+            "source-layer": "landcover",
+            "interactive": true,
             "filter": [
                 "in",
                 "class",
                 "scrub",
                 "grass"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "landcover_scrub_grass",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-color": "hsla(0, 0%, 95%, 0.26)",
                 "fill-opacity": {
@@ -141,26 +142,26 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "landcover"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "landcover_crop_wood",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858171723.1826"
             },
+            "source": "composite",
+            "source-layer": "landcover",
+            "interactive": true,
             "filter": [
                 "in",
                 "class",
                 "crop",
                 "wood"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "landcover_crop_wood",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-color": "hsla(0, 0%, 95%, 0.26)",
                 "fill-opacity": {
@@ -176,184 +177,184 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "landcover"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "landcover_snow",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858171723.1826"
             },
+            "source": "composite",
+            "source-layer": "landcover",
+            "interactive": true,
             "filter": [
                 "==",
                 "class",
                 "snow"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "landcover_snow",
-            "paint": {
-                "fill-color": "hsla(0, 0%, 95%, 0.26)",
-                "fill-opacity": 0.75
-            },
-            "source-layer": "landcover"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "hsla(0, 0%, 95%, 0.26)",
+                "fill-opacity": 0.75
+            }
+        },
+        {
+            "id": "greenery",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
+            "interactive": true,
             "filter": [
                 "in",
                 "class",
                 "cemetery",
                 "grass"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "greenery",
-            "paint": {
-                "fill-color": "hsl(0, 0%, 92%)",
-                "fill-opacity": 0.65
-            },
-            "source-layer": "landuse"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "hsl(0, 0%, 92%)",
+                "fill-opacity": 0.65
+            }
+        },
+        {
+            "id": "national_park",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse_overlay",
+            "interactive": true,
             "filter": [
                 "==",
                 "class",
                 "national_park"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "national_park",
-            "paint": {
-                "fill-color": "hsl(0, 0%, 92%)",
-                "fill-opacity": 0.8
-            },
-            "source-layer": "landuse_overlay"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "hsl(0, 0%, 92%)",
+                "fill-opacity": 0.8
+            }
+        },
+        {
+            "id": "school",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
             "maxzoom": 20,
+            "interactive": true,
             "filter": [
                 "==",
                 "class",
                 "school"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "school",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-color": "hsl(0, 0%, 93%)",
                 "fill-outline-color": "hsl(271, 1%, 67%)",
                 "fill-opacity": 1
-            },
-            "source-layer": "landuse"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "hospital",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
             "maxzoom": 20,
+            "interactive": true,
             "filter": [
                 "==",
                 "class",
                 "hospital"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "hospital",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-color": "hsl(0, 0%, 97%)",
                 "fill-outline-color": "hsl(358, 1%, 72%)",
                 "fill-opacity": 1
-            },
-            "source-layer": "landuse"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "airport",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
+            "interactive": true,
             "filter": [
                 "==",
                 "class",
                 "industrial"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "airport",
-            "paint": {
-                "fill-color": "rgba(213,217,213,1)",
-                "fill-opacity": 0.25
-            },
-            "source-layer": "landuse"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "rgba(213,217,213,1)",
+                "fill-opacity": 0.25
+            }
+        },
+        {
+            "id": "sand",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
+            "interactive": true,
             "filter": [
                 "==",
                 "class",
                 "sand"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "sand",
-            "paint": {
-                "fill-color": "hsl(0, 0%, 95%)",
-                "fill-opacity": 1
-            },
-            "source-layer": "landuse"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "hsl(0, 0%, 95%)",
+                "fill-opacity": 1
+            }
+        },
+        {
+            "id": "wood",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
+            "interactive": true,
             "filter": [
                 "==",
                 "class",
                 "wood"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "wood",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-color": "hsl(0, 0%, 67%)",
                 "fill-opacity": {
@@ -369,26 +370,26 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "landuse"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "park",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
+            "interactive": true,
             "filter": [
                 "in",
                 "class",
                 "park",
                 "national_park"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "park",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-color": "hsl(0, 6%, 93%)",
                 "fill-opacity": {
@@ -405,17 +406,17 @@
                     ]
                 },
                 "fill-outline-color": "hsl(0, 0%, 80%)"
-            },
-            "source-layer": "landuse"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "pitch",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
+            "interactive": true,
             "filter": [
                 "any",
                 [
@@ -430,24 +431,24 @@
                     "golf_course"
                 ]
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "pitch",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-color": "hsl(0, 0%, 87%)",
                 "fill-opacity": 1,
                 "fill-outline-color": "hsl(0, 0%, 80%)"
-            },
-            "source-layer": "landuse"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "grass_noise",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858163779.7869"
             },
+            "source": "composite",
+            "source-layer": "landuse",
+            "interactive": true,
             "filter": [
                 "in",
                 "class",
@@ -456,9 +457,9 @@
                 "wood",
                 "park"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "grass_noise",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-opacity": {
                     "base": 1,
@@ -474,125 +475,128 @@
                     ]
                 },
                 "fill-pattern": "grass-noise"
-            },
-            "source-layer": "landuse"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "visibility": "visible"
-            },
+            "id": "districts_5",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1458418542199.6687"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#fed9a6"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "districts_5",
-            "paint": {
-                "fill-color": "#fed9a6",
-                "fill-opacity": 0.45
-            },
-            "source-layer": "districts"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "#fed9a6",
+                "fill-opacity": 0.45
+            }
+        },
+        {
+            "id": "districts_4",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1458418542199.6687"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#fbb4ae"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "districts_4",
-            "paint": {
-                "fill-color": "#fbb4ae",
-                "fill-opacity": 0.45
-            },
-            "source-layer": "districts"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "#fbb4ae",
+                "fill-opacity": 0.45
+            }
+        },
+        {
+            "id": "districts_3",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1458418542199.6687"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#decbe4"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "districts_3",
-            "paint": {
-                "fill-color": "#decbe4",
-                "fill-opacity": 0.45
-            },
-            "source-layer": "districts"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "#decbe4",
+                "fill-opacity": 0.45
+            }
+        },
+        {
+            "id": "districts_2",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1458418542199.6687"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#ccebc5"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "districts_2",
-            "paint": {
-                "fill-color": "#ccebc5",
-                "fill-opacity": 0.45
-            },
-            "source-layer": "districts"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "visibility": "visible"
             },
+            "paint": {
+                "fill-color": "#ccebc5",
+                "fill-opacity": 0.45
+            }
+        },
+        {
+            "id": "districts_1",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1458418542199.6687"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#b3cde3"
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "districts_1",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "fill-color": "#b3cde3",
                 "fill-opacity": 0.45
-            },
-            "source-layer": "districts"
+            }
         },
         {
             "id": "water_edge",
             "type": "line",
+            "metadata": {
+                "mapbox:group": "1444858200762.7805"
+            },
             "source": "composite",
             "source-layer": "water",
             "minzoom": 2,
+            "interactive": true,
             "paint": {
                 "line-color": "rgba(42,99,119,1.000)",
                 "line-opacity": 1,
@@ -610,32 +614,32 @@
                     ]
                 },
                 "line-blur": 1
-            },
-            "metadata": {
-                "mapbox:group": "1444858200762.7805"
-            },
-            "interactive": true
+            }
         },
         {
             "id": "water",
             "type": "fill",
+            "metadata": {
+                "mapbox:group": "1444858200762.7805"
+            },
             "source": "composite",
             "source-layer": "water",
+            "interactive": true,
             "paint": {
                 "fill-color": "hsl(192, 100%, 95%)",
                 "fill-outline-color": "#cadcea",
                 "fill-opacity": 0.7
-            },
-            "metadata": {
-                "mapbox:group": "1444858200762.7805"
-            },
-            "interactive": true
+            }
         },
         {
             "id": "waterway",
             "type": "line",
+            "metadata": {
+                "mapbox:group": "1444858200762.7805"
+            },
             "source": "composite",
             "source-layer": "waterway",
+            "interactive": true,
             "layout": {
                 "line-cap": "round"
             },
@@ -654,26 +658,23 @@
                         ]
                     ]
                 }
-            },
-            "metadata": {
-                "mapbox:group": "1444858200762.7805"
-            },
-            "interactive": true
+            }
         },
         {
-            "interactive": true,
-            "layout": {},
+            "id": "districts_5_boundary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1458486127563.5833"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#fed9a6"
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "districts_5_boundary",
+            "layout": {},
             "paint": {
                 "line-width": {
                     "base": 1.1,
@@ -703,23 +704,23 @@
                 },
                 "line-color": "#fed9a6",
                 "line-opacity": 0.9
-            },
-            "source-layer": "districts"
+            }
         },
         {
-            "interactive": true,
-            "layout": {},
+            "id": "districts_4_boundary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1458486127563.5833"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#fbb4ae"
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "districts_4_boundary",
+            "layout": {},
             "paint": {
                 "line-width": {
                     "base": 1.1,
@@ -749,23 +750,23 @@
                 },
                 "line-color": "#fbb4ae",
                 "line-opacity": 0.9
-            },
-            "source-layer": "districts"
+            }
         },
         {
-            "interactive": true,
-            "layout": {},
+            "id": "districts_3_boundary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1458486127563.5833"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#decbe4"
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "districts_3_boundary",
+            "layout": {},
             "paint": {
                 "line-width": {
                     "base": 1.1,
@@ -795,23 +796,23 @@
                 },
                 "line-color": "#decbe4",
                 "line-opacity": 0.9
-            },
-            "source-layer": "districts"
+            }
         },
         {
-            "interactive": true,
-            "layout": {},
+            "id": "districts_2_boundary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1458486127563.5833"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#ccebc5"
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "districts_2_boundary",
+            "layout": {},
             "paint": {
                 "line-width": {
                     "base": 1.1,
@@ -841,25 +842,25 @@
                 },
                 "line-color": "#ccebc5",
                 "line-opacity": 0.9
-            },
-            "source-layer": "districts"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-join": "miter"
-            },
+            "id": "districts_1_boundary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1458486127563.5833"
             },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
             "filter": [
                 "==",
                 "fill",
                 "#b3cde3"
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "districts_1_boundary",
+            "layout": {
+                "line-join": "miter"
+            },
             "paint": {
                 "line-width": {
                     "base": 1.1,
@@ -889,23 +890,23 @@
                 },
                 "line-color": "#b3cde3",
                 "line-opacity": 0.9
-            },
-            "source-layer": "districts"
+            }
         },
         {
-            "interactive": true,
+            "id": "shadow_uber",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858181796.6055"
             },
+            "source": "composite",
+            "source-layer": "hillshade",
             "maxzoom": 15,
+            "interactive": true,
             "filter": [
                 "==",
                 "level",
                 56
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "shadow_uber",
             "paint": {
                 "fill-opacity": {
                     "base": 1,
@@ -921,43 +922,43 @@
                     ]
                 },
                 "fill-color": "hsl(357, 2%, 76%)"
-            },
-            "source-layer": "hillshade"
+            }
         },
         {
-            "interactive": true,
+            "id": "shadow_strong",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858181796.6055"
             },
+            "source": "composite",
+            "source-layer": "hillshade",
             "maxzoom": 15,
+            "interactive": true,
             "filter": [
                 "==",
                 "level",
                 67
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "shadow_strong",
             "paint": {
                 "fill-opacity": 0.1,
                 "fill-color": "hsl(357, 2%, 76%)"
-            },
-            "source-layer": "hillshade"
+            }
         },
         {
-            "interactive": true,
+            "id": "shadow_medium",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858181796.6055"
             },
+            "source": "composite",
+            "source-layer": "hillshade",
             "maxzoom": 15,
+            "interactive": true,
             "filter": [
                 "==",
                 "level",
                 78
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "shadow_medium",
             "paint": {
                 "fill-opacity": {
                     "base": 1,
@@ -973,23 +974,23 @@
                     ]
                 },
                 "fill-color": "hsl(357, 2%, 76%)"
-            },
-            "source-layer": "hillshade"
+            }
         },
         {
-            "interactive": true,
+            "id": "shadow_weak",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858181796.6055"
             },
+            "source": "composite",
+            "source-layer": "hillshade",
             "maxzoom": 15,
+            "interactive": true,
             "filter": [
                 "==",
                 "level",
                 89
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "shadow_weak",
             "paint": {
                 "fill-opacity": {
                     "base": 1,
@@ -1005,23 +1006,23 @@
                     ]
                 },
                 "fill-color": "hsl(357, 2%, 76%)"
-            },
-            "source-layer": "hillshade"
+            }
         },
         {
-            "interactive": true,
+            "id": "highlight_weak",
+            "type": "fill",
             "metadata": {
                 "mapbox:group": "1444858181796.6055"
             },
+            "source": "composite",
+            "source-layer": "hillshade",
             "maxzoom": 15,
+            "interactive": true,
             "filter": [
                 "==",
                 "level",
                 90
             ],
-            "type": "fill",
-            "source": "composite",
-            "id": "highlight_weak",
             "paint": {
                 "fill-opacity": {
                     "base": 1,
@@ -1037,14 +1038,17 @@
                     ]
                 },
                 "fill-color": "#fff"
-            },
-            "source-layer": "hillshade"
+            }
         },
         {
             "id": "highlight_medium",
             "type": "fill",
+            "metadata": {
+                "mapbox:group": "1444858181796.6055"
+            },
             "source": "composite",
             "source-layer": "hillshade",
+            "interactive": true,
             "filter": [
                 "==",
                 "level",
@@ -1053,20 +1057,17 @@
             "paint": {
                 "fill-color": "#fff",
                 "fill-opacity": 0.2
-            },
-            "metadata": {
-                "mapbox:group": "1444858181796.6055"
-            },
-            "interactive": true
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt"
-            },
+            "id": "airport_runway",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858189651.4805"
             },
+            "source": "composite",
+            "source-layer": "aeroway",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1080,9 +1081,9 @@
                     "runway"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "airport_runway",
+            "layout": {
+                "line-cap": "butt"
+            },
             "paint": {
                 "line-width": {
                     "base": 1.5,
@@ -1099,17 +1100,17 @@
                 },
                 "line-opacity": 0.8,
                 "line-color": "#d0d1cf"
-            },
-            "source-layer": "aeroway"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt"
-            },
+            "id": "airport_taxiway",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858189651.4805"
             },
+            "source": "composite",
+            "source-layer": "aeroway",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1123,9 +1124,9 @@
                     "taxiway"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "airport_taxiway",
+            "layout": {
+                "line-cap": "butt"
+            },
             "paint": {
                 "line-width": {
                     "base": 1.25,
@@ -1142,14 +1143,17 @@
                 },
                 "line-opacity": 0.8,
                 "line-color": "hsl(82, 2%, 82%)"
-            },
-            "source-layer": "aeroway"
+            }
         },
         {
             "id": "barrier_land",
             "type": "fill",
+            "metadata": {
+                "mapbox:group": "1444858470265.9292"
+            },
             "source": "composite",
             "source-layer": "barrier_line",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1167,14 +1171,17 @@
             "paint": {
                 "fill-color": "#F8F4F0",
                 "fill-opacity": 1
-            },
-            "metadata": {
-                "mapbox:group": "1444858470265.9292"
-            },
-            "interactive": true
+            }
         },
         {
             "id": "building_roofs",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1444858216876.1328"
+            },
+            "source": "composite",
+            "source-layer": "building",
+            "interactive": true,
             "paint": {
                 "fill-color": "hsl(0, 0%, 99%)",
                 "fill-translate": {
@@ -1197,20 +1204,17 @@
                     ]
                 },
                 "fill-opacity": 0.65
-            },
-            "metadata": {
-                "mapbox:group": "1444858216876.1328"
-            },
-            "interactive": true,
-            "type": "fill",
-            "source": "composite",
-            "source-layer": "building"
+            }
         },
         {
             "id": "building_roof_edges",
             "type": "line",
+            "metadata": {
+                "mapbox:group": "1444858216876.1328"
+            },
             "source": "composite",
             "source-layer": "building",
+            "interactive": true,
             "paint": {
                 "line-color": "hsl(0, 0%, 45%)",
                 "line-width": 0.75,
@@ -1246,20 +1250,17 @@
                         ]
                     ]
                 }
-            },
-            "metadata": {
-                "mapbox:group": "1444858216876.1328"
-            },
-            "interactive": true
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt"
-            },
+            "id": "country_border",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858269512.7246"
             },
+            "source": "composite",
+            "source-layer": "admin",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1278,9 +1279,9 @@
                     0
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "country_border",
+            "layout": {
+                "line-cap": "butt"
+            },
             "paint": {
                 "line-color": "#293804",
                 "line-opacity": 0.5,
@@ -1297,17 +1298,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "admin"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt"
-            },
+            "id": "country_border_disputed",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858269512.7246"
             },
+            "source": "composite",
+            "source-layer": "admin",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1326,9 +1327,9 @@
                     1
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "country_border_disputed",
+            "layout": {
+                "line-cap": "butt"
+            },
             "paint": {
                 "line-color": "#293804",
                 "line-opacity": 0.5,
@@ -1350,17 +1351,17 @@
                     2,
                     2
                 ]
-            },
-            "source-layer": "admin"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt"
-            },
+            "id": "state_border",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858269512.7246"
             },
+            "source": "composite",
+            "source-layer": "admin",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1374,9 +1375,9 @@
                     0
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "state_border",
+            "layout": {
+                "line-cap": "butt"
+            },
             "paint": {
                 "line-color": "hsl(0, 0%, 53%)",
                 "line-opacity": {
@@ -1409,18 +1410,17 @@
                     3,
                     1
                 ]
-            },
-            "source-layer": "admin"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "tunnel_path",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1434,9 +1434,10 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_path",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "hsla(24, 1%, 38%, 0.52)",
                 "line-width": {
@@ -1469,18 +1470,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "square",
-                "line-join": "round"
-            },
+            "id": "tunnel_service_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1494,9 +1494,10 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_service_case",
+            "layout": {
+                "line-cap": "square",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -1537,19 +1538,17 @@
                     0.5
                 ],
                 "line-opacity": 1
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "square",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "tunnel_street_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1572,9 +1571,11 @@
                     ]
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_street_case",
+            "layout": {
+                "line-cap": "square",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -1611,18 +1612,17 @@
                     0.5
                 ],
                 "line-opacity": 1
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "square",
-                "line-join": "round"
-            },
+            "id": "tunnel_tertiary_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1636,9 +1636,10 @@
                     "tertiary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_tertiary_case",
+            "layout": {
+                "line-cap": "square",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -1674,18 +1675,17 @@
                     0.5,
                     0.5
                 ]
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "square",
-                "line-join": "round"
-            },
+            "id": "tunnel_secondary_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1699,9 +1699,10 @@
                     "secondary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_secondary_case",
+            "layout": {
+                "line-cap": "square",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -1738,18 +1739,17 @@
                     0.5,
                     0.5
                 ]
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "square",
-                "line-join": "round"
-            },
+            "id": "tunnel_trunk_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1764,9 +1764,10 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_trunk_case",
+            "layout": {
+                "line-cap": "square",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "rgba(212,194,146,1)",
                 "line-width": {
@@ -1790,26 +1791,26 @@
                     0.5,
                     0.5
                 ]
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "construction_tunnel",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "==",
                 "type",
                 "construction"
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "construction_tunnel",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-width": {
                     "base": 1,
@@ -1834,19 +1835,17 @@
                     1,
                     0
                 ]
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-miter-limit": 2,
-                "line-join": "round"
-            },
+            "id": "tunnel_service",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1860,9 +1859,11 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_service",
+            "layout": {
+                "line-cap": "butt",
+                "line-miter-limit": 2,
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "#fff",
                 "line-width": {
@@ -1882,18 +1883,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "tunnel_street",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1916,9 +1916,10 @@
                     ]
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_street",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -1967,18 +1968,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "tunnel_tertiary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -1992,9 +1992,10 @@
                     "tertiary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_tertiary",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2051,18 +2052,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "tunnel_secondary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2076,9 +2076,10 @@
                     "secondary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_secondary",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2119,18 +2120,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "tunnel_trunk",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2145,9 +2145,10 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_trunk",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2193,18 +2194,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "square",
-                "line-join": "round"
-            },
+            "id": "tunnel_motorway_link_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2218,9 +2218,10 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_motorway_link_case",
+            "layout": {
+                "line-cap": "square",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
                 "line-width": {
@@ -2257,18 +2258,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "square",
-                "line-join": "round"
-            },
+            "id": "tunnel_motorway_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2282,9 +2282,10 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_motorway_case",
+            "layout": {
+                "line-cap": "square",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
                 "line-width": {
@@ -2321,18 +2322,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "tunnel_motorway_link",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2346,9 +2346,10 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_motorway_link",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2393,18 +2394,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "tunnel_motorway",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858143444.556"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2418,9 +2418,10 @@
                     "tunnel"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tunnel_motorway",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2469,27 +2470,27 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "railroad",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "in",
                 "class",
                 "major_rail",
                 "minor_rail"
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "railroad",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "hsl(0, 0%, 67%)",
                 "line-width": {
@@ -2518,27 +2519,27 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "railroad_hashes",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "in",
                 "class",
                 "major_rail",
                 "minor_rail"
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "railroad_hashes",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "hsl(0, 0%, 67%)",
                 "line-width": {
@@ -2571,18 +2572,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "path",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2597,9 +2597,10 @@
                     "pedestrian"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "path",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "hsla(24, 1%, 38%, 0.53)",
                 "line-width": {
@@ -2632,19 +2633,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "service_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2658,9 +2657,11 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "service_case",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2697,19 +2698,17 @@
                     ]
                 },
                 "line-opacity": 1
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "street_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2733,9 +2732,11 @@
                     ]
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "street_case",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2768,18 +2769,17 @@
                     ]
                 },
                 "line-opacity": 1
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "tertiary_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2793,9 +2793,10 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tertiary_case",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2840,19 +2841,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "secondary_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2866,9 +2865,11 @@
                     "secondary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "secondary_case",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -2901,15 +2902,15 @@
                     ]
                 },
                 "line-opacity": 1
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
+            "id": "construction_road",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
-            "id": "construction_road",
+            "ref": "construction_tunnel",
+            "interactive": true,
             "paint": {
                 "line-width": {
                     "base": 1,
@@ -2934,19 +2935,17 @@
                     1,
                     0
                 ]
-            },
-            "ref": "construction_tunnel"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "trunk_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -2961,9 +2960,11 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "trunk_case",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": "rgba(212,194,146,1)",
                 "line-width": {
@@ -2996,18 +2997,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "service",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3021,9 +3021,10 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "service",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "#fff",
                 "line-width": {
@@ -3043,15 +3044,15 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
+            "id": "street",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
-            "id": "street",
+            "ref": "street_case",
+            "interactive": true,
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -3088,19 +3089,17 @@
                     ]
                 },
                 "line-opacity": 1
-            },
-            "ref": "street_case"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "tertiary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3114,9 +3113,11 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "tertiary",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -3173,19 +3174,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "secondary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3199,9 +3198,11 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "secondary",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": "#fff",
                 "line-width": {
@@ -3230,19 +3231,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "trunk",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3257,9 +3256,11 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "trunk",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -3305,18 +3306,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "motorway_link_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3330,9 +3330,10 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "motorway_link_case",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
                 "line-width": {
@@ -3365,19 +3366,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "motorway_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3391,9 +3390,11 @@
                     "none"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "motorway_case",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
                 "line-width": {
@@ -3426,15 +3427,15 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
+            "id": "motorway_link",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
-            "id": "motorway_link",
+            "ref": "motorway_link_case",
+            "interactive": true,
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -3479,15 +3480,15 @@
                         ]
                     ]
                 }
-            },
-            "ref": "motorway_link_case"
+            }
         },
         {
-            "interactive": true,
+            "id": "motorway",
             "metadata": {
                 "mapbox:group": "1444858128913.9963"
             },
-            "id": "motorway",
+            "ref": "motorway_case",
+            "interactive": true,
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -3536,12 +3537,18 @@
                         ]
                     ]
                 }
-            },
-            "ref": "motorway_case"
+            }
         },
         {
-            "interactive": true,
+            "id": "state-label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858262202.7446"
+            },
+            "source": "composite",
+            "source-layer": "state_label",
             "minzoom": 3,
+            "interactive": true,
             "layout": {
                 "text-size": {
                     "base": 1,
@@ -3579,12 +3586,6 @@
                 "text-letter-spacing": 0.15,
                 "text-max-width": 4
             },
-            "metadata": {
-                "mapbox:group": "1444858262202.7446"
-            },
-            "type": "symbol",
-            "source": "composite",
-            "id": "state-label",
             "paint": {
                 "text-opacity": {
                     "base": 1,
@@ -3600,18 +3601,18 @@
                     ]
                 },
                 "text-color": "hsl(0, 0%, 0%)"
-            },
-            "source-layer": "state_label"
+            }
         },
         {
-            "interactive": true,
+            "id": "districts_boundary_line",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "districts",
             "minzoom": 4,
+            "interactive": true,
             "layout": {
                 "line-join": "miter"
             },
-            "type": "line",
-            "source": "composite",
-            "id": "districts_boundary_line",
             "paint": {
                 "line-width": {
                     "base": 1.2,
@@ -3622,26 +3623,25 @@
                         ],
                         [
                             22,
-                            8
+                            12
                         ]
                     ]
                 },
-                "line-color": "hsl(0, 0%, 19%)",
+                "line-color": "hsl(0, 0%, 11%)",
                 "line-offset": 0,
                 "line-opacity": 1,
                 "line-blur": 5
-            },
-            "source-layer": "districts"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "bridge_railroad",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3656,9 +3656,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_railroad",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "hsl(0, 0%, 67%)",
                 "line-width": {
@@ -3687,18 +3688,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "bridge_railroad_hashes",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3713,9 +3713,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_railroad_hashes",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "hsl(0, 0%, 67%)",
                 "line-width": {
@@ -3748,18 +3749,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "bridge_service_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3773,9 +3773,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_service_case",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -3811,19 +3812,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "bridge_street_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3846,9 +3845,11 @@
                     ]
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_street_case",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -3881,18 +3882,17 @@
                     ]
                 },
                 "line-opacity": 1
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "bridge_tertiary_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3906,9 +3906,10 @@
                     "tertiary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_tertiary_case",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -3953,18 +3954,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "bridge_secondary_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -3978,9 +3978,10 @@
                     "secondary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_secondary_case",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -4025,18 +4026,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "bridge_trunk_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4051,9 +4051,10 @@
                     "primary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_trunk_case",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "rgba(212,194,146,1)",
                 "line-width": {
@@ -4086,18 +4087,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "construction_bridge",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4111,9 +4111,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "construction_bridge",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-width": {
                     "base": 1,
@@ -4138,18 +4139,17 @@
                     1,
                     0
                 ]
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "bridge_service",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4163,9 +4163,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_service",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "#fff",
                 "line-width": {
@@ -4185,18 +4186,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "bridge_street",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4219,9 +4219,10 @@
                     ]
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_street",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -4258,18 +4259,17 @@
                     ]
                 },
                 "line-opacity": 1
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "bridge_tertiary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4283,9 +4283,10 @@
                     "tertiary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_tertiary",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -4342,19 +4343,18 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "minzoom": 11,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "bridge_secondary",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "minzoom": 11,
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4368,9 +4368,10 @@
                     "secondary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_secondary",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -4411,19 +4412,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round",
-                "visibility": "visible"
-            },
+            "id": "bridge_trunk",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4438,9 +4437,11 @@
                     "primary"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_trunk",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -4485,18 +4486,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "bridge_motorway_link_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4510,9 +4510,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_motorway_link_case",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
                 "line-width": {
@@ -4545,18 +4546,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "butt",
-                "line-join": "round"
-            },
+            "id": "bridge_motorway_case",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4570,9 +4570,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_motorway_case",
+            "layout": {
+                "line-cap": "butt",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "rgba(225,162,102,1)",
                 "line-width": {
@@ -4605,18 +4606,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "bridge_path",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4630,9 +4630,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_path",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": "hsla(24, 1%, 38%, 0.52)",
                 "line-width": {
@@ -4665,18 +4666,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "bridge_motorway_link",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4690,9 +4690,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_motorway_link",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -4737,18 +4738,17 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
-            "layout": {
-                "line-cap": "round",
-                "line-join": "round"
-            },
+            "id": "bridge_motorway",
+            "type": "line",
             "metadata": {
                 "mapbox:group": "1444858082697.2502"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -4762,9 +4762,10 @@
                     "bridge"
                 ]
             ],
-            "type": "line",
-            "source": "composite",
-            "id": "bridge_motorway",
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round"
+            },
             "paint": {
                 "line-color": {
                     "base": 1,
@@ -4813,11 +4814,22 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road"
+            }
         },
         {
+            "id": "river_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858096986.3894"
+            },
+            "source": "composite",
+            "source-layer": "waterway_label",
             "interactive": true,
+            "filter": [
+                "==",
+                "type",
+                "river"
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -4858,26 +4870,26 @@
                 "text-letter-spacing": 0.3,
                 "text-max-width": 5
             },
-            "metadata": {
-                "mapbox:group": "1444858096986.3894"
-            },
-            "filter": [
-                "==",
-                "type",
-                "river"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "river_label",
             "paint": {
                 "text-color": "hsl(204, 22%, 55%)",
                 "text-halo-color": "#F8F4F0",
                 "text-halo-width": 0
-            },
-            "source-layer": "waterway_label"
+            }
         },
         {
+            "id": "marine_label_big",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858096986.3894"
+            },
+            "source": "composite",
+            "source-layer": "marine_label",
             "interactive": true,
+            "filter": [
+                "<=",
+                "labelrank",
+                1
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -4916,26 +4928,34 @@
                 "text-letter-spacing": 0.3,
                 "text-max-width": 5
             },
-            "metadata": {
-                "mapbox:group": "1444858096986.3894"
-            },
-            "filter": [
-                "<=",
-                "labelrank",
-                1
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "marine_label_big",
             "paint": {
                 "text-color": "hsl(204, 22%, 55%)",
                 "text-halo-color": "#f8f6f0",
                 "text-halo-width": 0
-            },
-            "source-layer": "marine_label"
+            }
         },
         {
+            "id": "marine_label_medium_linear",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858096986.3894"
+            },
+            "source": "composite",
+            "source-layer": "marine_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    ">",
+                    "labelrank",
+                    2
+                ]
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -4976,15 +4996,27 @@
                 "text-letter-spacing": 0.2,
                 "text-max-width": 7.5
             },
+            "paint": {
+                "text-color": "hsl(204, 22%, 55%)",
+                "text-halo-color": "#f8f6f0",
+                "text-halo-width": 0
+            }
+        },
+        {
+            "id": "marine_label_medium_point",
+            "type": "symbol",
             "metadata": {
                 "mapbox:group": "1444858096986.3894"
             },
+            "source": "composite",
+            "source-layer": "marine_label",
+            "interactive": true,
             "filter": [
                 "all",
                 [
                     "==",
                     "$type",
-                    "LineString"
+                    "Point"
                 ],
                 [
                     ">",
@@ -4992,18 +5024,6 @@
                     2
                 ]
             ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "marine_label_medium_linear",
-            "paint": {
-                "text-color": "hsl(204, 22%, 55%)",
-                "text-halo-color": "#f8f6f0",
-                "text-halo-width": 0
-            },
-            "source-layer": "marine_label"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -5043,34 +5063,26 @@
                 "text-letter-spacing": 0.2,
                 "text-max-width": 7.5
             },
-            "metadata": {
-                "mapbox:group": "1444858096986.3894"
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "$type",
-                    "Point"
-                ],
-                [
-                    ">",
-                    "labelrank",
-                    2
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "marine_label_medium_point",
             "paint": {
                 "text-color": "hsl(204, 22%, 55%)",
                 "text-halo-color": "#f8f6f0",
                 "text-halo-width": 0
-            },
-            "source-layer": "marine_label"
+            }
         },
         {
+            "id": "country_label_small",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858398532.1323"
+            },
+            "source": "composite",
+            "source-layer": "country_label",
             "interactive": true,
+            "filter": [
+                ">",
+                "scalerank",
+                2
+            ],
             "layout": {
                 "text-line-height": 1.1,
                 "text-size": {
@@ -5095,26 +5107,26 @@
                 "text-letter-spacing": 0.05,
                 "text-max-width": 4
             },
-            "metadata": {
-                "mapbox:group": "1444858398532.1323"
-            },
-            "filter": [
-                ">",
-                "scalerank",
-                2
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "country_label_small",
             "paint": {
                 "text-halo-color": "#f8f6f0",
                 "text-halo-width": 2,
                 "text-color": "#2d1617"
-            },
-            "source-layer": "country_label"
+            }
         },
         {
+            "id": "country_label_big",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858398532.1323"
+            },
+            "source": "composite",
+            "source-layer": "country_label",
             "interactive": true,
+            "filter": [
+                "<=",
+                "scalerank",
+                2
+            ],
             "layout": {
                 "text-line-height": 1.1,
                 "text-size": {
@@ -5139,27 +5151,35 @@
                 "text-letter-spacing": 0.05,
                 "text-max-width": 4
             },
-            "metadata": {
-                "mapbox:group": "1444858398532.1323"
-            },
-            "filter": [
-                "<=",
-                "scalerank",
-                2
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "country_label_big",
             "paint": {
                 "text-halo-color": "#f8f6f0",
                 "text-halo-width": 2,
                 "text-color": "#2d1617"
-            },
-            "source-layer": "country_label"
+            }
         },
         {
-            "interactive": true,
+            "id": "oneway_arrows_motorway",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858496690.794"
+            },
+            "source": "composite",
+            "source-layer": "road",
             "minzoom": 16,
+            "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "oneway",
+                    1
+                ],
+                [
+                    "==",
+                    "class",
+                    "motorway"
+                ]
+            ],
             "layout": {
                 "text-line-height": 0,
                 "text-size": {
@@ -5194,25 +5214,6 @@
                 "icon-padding": 0,
                 "icon-ignore-placement": true
             },
-            "metadata": {
-                "mapbox:group": "1444858496690.794"
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "oneway",
-                    1
-                ],
-                [
-                    "==",
-                    "class",
-                    "motorway"
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "oneway_arrows_motorway",
             "paint": {
                 "text-color": "#504a4c",
                 "text-halo-color": "#aaa",
@@ -5222,12 +5223,33 @@
                     -2
                 ],
                 "text-opacity": 1
-            },
-            "source-layer": "road"
+            }
         },
         {
-            "interactive": true,
+            "id": "oneway_arrows_small",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858496690.794"
+            },
+            "source": "composite",
+            "source-layer": "road",
             "minzoom": 18,
+            "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "oneway",
+                    "true"
+                ],
+                [
+                    "in",
+                    "class",
+                    "street",
+                    "street_limited",
+                    "secondary"
+                ]
+            ],
             "layout": {
                 "text-line-height": 1,
                 "text-size": 8,
@@ -5250,9 +5272,23 @@
                 "icon-padding": 0,
                 "icon-ignore-placement": true
             },
+            "paint": {
+                "text-color": "#aaa",
+                "text-halo-color": "#aaa",
+                "text-halo-width": 0,
+                "text-opacity": 1
+            }
+        },
+        {
+            "id": "oneway_arrows_large",
+            "type": "symbol",
             "metadata": {
                 "mapbox:group": "1444858496690.794"
             },
+            "source": "composite",
+            "source-layer": "road",
+            "minzoom": 15,
+            "interactive": true,
             "filter": [
                 "all",
                 [
@@ -5263,25 +5299,10 @@
                 [
                     "in",
                     "class",
-                    "street",
-                    "street_limited",
-                    "secondary"
+                    "trunk",
+                    "primary"
                 ]
             ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "oneway_arrows_small",
-            "paint": {
-                "text-color": "#aaa",
-                "text-halo-color": "#aaa",
-                "text-halo-width": 0,
-                "text-opacity": 1
-            },
-            "source-layer": "road"
-        },
-        {
-            "interactive": true,
-            "minzoom": 15,
             "layout": {
                 "text-line-height": 0,
                 "text-size": {
@@ -5329,36 +5350,37 @@
                 "icon-padding": 0,
                 "icon-ignore-placement": true
             },
-            "metadata": {
-                "mapbox:group": "1444858496690.794"
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "oneway",
-                    "true"
-                ],
-                [
-                    "in",
-                    "class",
-                    "trunk",
-                    "primary"
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "oneway_arrows_large",
             "paint": {
                 "text-color": "#aaa",
                 "text-halo-color": "#aaa",
                 "text-halo-width": 0,
                 "text-opacity": 0
-            },
-            "source-layer": "road"
+            }
         },
         {
+            "id": "road-label-small",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858496690.794"
+            },
+            "source": "composite",
+            "source-layer": "road_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    "in",
+                    "class",
+                    "path",
+                    "service",
+                    "street_limited"
+                ]
+            ],
             "layout": {
                 "text-size": {
                     "base": 1.2,
@@ -5383,27 +5405,6 @@
                 "text-field": "{name_en}",
                 "text-letter-spacing": 0.1
             },
-            "metadata": {
-                "mapbox:group": "1444858496690.794"
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "$type",
-                    "LineString"
-                ],
-                [
-                    "in",
-                    "class",
-                    "path",
-                    "service",
-                    "street_limited"
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "road-label-small",
             "paint": {
                 "text-color": "rgba(140,128,117,1)",
                 "text-halo-color": "#f8f6f0",
@@ -5420,11 +5421,24 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road_label"
+            }
         },
         {
+            "id": "road-label-medium",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858496690.794"
+            },
+            "source": "composite",
+            "source-layer": "road_label",
             "interactive": true,
+            "filter": [
+                "in",
+                "class",
+                "street",
+                "tertiary",
+                "secondary"
+            ],
             "layout": {
                 "text-size": {
                     "base": 1.2,
@@ -5452,19 +5466,6 @@
                 "text-field": "{name_en}",
                 "text-letter-spacing": 0.1
             },
-            "metadata": {
-                "mapbox:group": "1444858496690.794"
-            },
-            "filter": [
-                "in",
-                "class",
-                "street",
-                "tertiary",
-                "secondary"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "road-label-medium",
             "paint": {
                 "text-color": "rgba(133,117,60,1)",
                 "text-halo-color": {
@@ -5493,11 +5494,24 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road_label"
+            }
         },
         {
+            "id": "road-label-large",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858496690.794"
+            },
+            "source": "composite",
+            "source-layer": "road_label",
             "interactive": true,
+            "filter": [
+                "in",
+                "class",
+                "primary",
+                "motorway_link",
+                "trunk"
+            ],
             "layout": {
                 "text-size": {
                     "base": 1.2,
@@ -5523,19 +5537,6 @@
                 "text-field": "{name_en}",
                 "text-letter-spacing": 0.1
             },
-            "metadata": {
-                "mapbox:group": "1444858496690.794"
-            },
-            "filter": [
-                "in",
-                "class",
-                "primary",
-                "motorway_link",
-                "trunk"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "road-label-large",
             "paint": {
                 "text-color": "rgba(133,117,60,1)",
                 "text-halo-color": "#f8f6f0",
@@ -5552,11 +5553,36 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "road_label"
+            }
         },
         {
+            "id": "generic_motorway_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858496690.794"
+            },
+            "source": "composite",
+            "source-layer": "road_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "class",
+                    "motorway",
+                    "motorway_link"
+                ],
+                [
+                    "==",
+                    "shield",
+                    "default"
+                ],
+                [
+                    "<=",
+                    "reflen",
+                    6
+                ]
+            ],
             "layout": {
                 "text-size": {
                     "base": 1,
@@ -5594,41 +5620,44 @@
                 "text-field": "{ref}",
                 "text-letter-spacing": 0.05
             },
-            "metadata": {
-                "mapbox:group": "1444858496690.794"
-            },
-            "filter": [
-                "all",
-                [
-                    "in",
-                    "class",
-                    "motorway",
-                    "motorway_link"
-                ],
-                [
-                    "==",
-                    "shield",
-                    "default"
-                ],
-                [
-                    "<=",
-                    "reflen",
-                    6
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "generic_motorway_label",
             "paint": {
                 "text-color": "#fff",
                 "icon-color": "white",
                 "text-halo-color": "#fff",
                 "text-halo-width": 0
-            },
-            "source-layer": "road_label"
+            }
         },
         {
+            "id": "us_stateroad_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858496690.794"
+            },
+            "source": "composite",
+            "source-layer": "road_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "shield",
+                    "us-state",
+                    "us-state-loop",
+                    "us-state-business",
+                    "us-state-toll",
+                    "us-state-truck"
+                ],
+                [
+                    "==",
+                    "class",
+                    "motorway"
+                ],
+                [
+                    "<=",
+                    "reflen",
+                    3
+                ]
+            ],
             "layout": {
                 "text-size": {
                     "base": 1,
@@ -5669,24 +5698,31 @@
                 "text-field": "{ref}",
                 "icon-padding": 0
             },
+            "paint": {
+                "text-color": "hsl(7, 4%, 60%)",
+                "icon-color": "white",
+                "text-halo-color": "#fff",
+                "text-halo-width": 0
+            }
+        },
+        {
+            "id": "us_highway_label",
+            "type": "symbol",
             "metadata": {
                 "mapbox:group": "1444858496690.794"
             },
+            "source": "composite",
+            "source-layer": "road_label",
+            "interactive": true,
             "filter": [
                 "all",
                 [
                     "in",
                     "shield",
-                    "us-state",
-                    "us-state-loop",
-                    "us-state-business",
-                    "us-state-toll",
-                    "us-state-truck"
-                ],
-                [
-                    "==",
-                    "class",
-                    "motorway"
+                    "us-highway",
+                    "us-highway-alternate",
+                    "us-highway-business",
+                    "us-highway-duplex"
                 ],
                 [
                     "<=",
@@ -5694,19 +5730,6 @@
                     3
                 ]
             ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "us_stateroad_label",
-            "paint": {
-                "text-color": "hsl(7, 4%, 60%)",
-                "icon-color": "white",
-                "text-halo-color": "#fff",
-                "text-halo-width": 0
-            },
-            "source-layer": "road_label"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "text-size": {
                     "base": 1,
@@ -5746,18 +5769,32 @@
                 "text-field": "{ref}",
                 "text-letter-spacing": 0.02
             },
+            "paint": {
+                "text-color": "hsl(7, 4%, 60%)",
+                "icon-color": "white",
+                "text-halo-color": "#fff",
+                "text-halo-width": 0,
+                "icon-opacity": 1
+            }
+        },
+        {
+            "id": "us_interstate_label",
+            "type": "symbol",
             "metadata": {
                 "mapbox:group": "1444858496690.794"
             },
+            "source": "composite",
+            "source-layer": "road_label",
+            "interactive": true,
             "filter": [
                 "all",
                 [
                     "in",
                     "shield",
-                    "us-highway",
-                    "us-highway-alternate",
-                    "us-highway-business",
-                    "us-highway-duplex"
+                    "us-interstate",
+                    "us-interstate-alternate",
+                    "us-interstate-business",
+                    "us-interstate-duplex"
                 ],
                 [
                     "<=",
@@ -5765,20 +5802,6 @@
                     3
                 ]
             ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "us_highway_label",
-            "paint": {
-                "text-color": "hsl(7, 4%, 60%)",
-                "icon-color": "white",
-                "text-halo-color": "#fff",
-                "text-halo-width": 0,
-                "icon-opacity": 1
-            },
-            "source-layer": "road_label"
-        },
-        {
-            "interactive": true,
             "layout": {
                 "text-line-height": 1.4,
                 "text-size": {
@@ -5829,37 +5852,41 @@
                 "icon-padding": 0,
                 "text-max-width": 0
             },
-            "metadata": {
-                "mapbox:group": "1444858496690.794"
-            },
-            "filter": [
-                "all",
-                [
-                    "in",
-                    "shield",
-                    "us-interstate",
-                    "us-interstate-alternate",
-                    "us-interstate-business",
-                    "us-interstate-duplex"
-                ],
-                [
-                    "<=",
-                    "reflen",
-                    3
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "us_interstate_label",
             "paint": {
                 "text-color": "white",
                 "text-halo-color": "#fff",
                 "text-halo-width": 0
-            },
-            "source-layer": "road_label"
+            }
         },
         {
+            "id": "generic_small_labels",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858346799.9988"
+            },
+            "source": "composite",
+            "source-layer": "poi_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "!in",
+                    "maki",
+                    "rail-light",
+                    "rail-metro",
+                    "rail",
+                    "school",
+                    "park",
+                    "college",
+                    "golf",
+                    "station"
+                ],
+                [
+                    "==",
+                    "scalerank",
+                    4
+                ]
+            ],
             "layout": {
                 "text-line-height": 1.05,
                 "text-size": {
@@ -5905,32 +5932,6 @@
                 "text-letter-spacing": 0.05,
                 "text-max-width": 6
             },
-            "metadata": {
-                "mapbox:group": "1444858346799.9988"
-            },
-            "filter": [
-                "all",
-                [
-                    "!in",
-                    "maki",
-                    "rail-light",
-                    "rail-metro",
-                    "rail",
-                    "school",
-                    "park",
-                    "college",
-                    "golf",
-                    "station"
-                ],
-                [
-                    "==",
-                    "scalerank",
-                    4
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "generic_small_labels",
             "paint": {
                 "text-color": "hsl(34, 18%, 49%)",
                 "text-halo-color": "#f8f6f0",
@@ -5940,11 +5941,48 @@
                 ],
                 "icon-opacity": 0.6,
                 "text-halo-width": 2
-            },
-            "source-layer": "poi_label"
+            }
         },
         {
+            "id": "small_maki_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858346799.9988"
+            },
+            "source": "composite",
+            "source-layer": "poi_label",
             "interactive": true,
+            "filter": [
+                "any",
+                [
+                    "in",
+                    "maki",
+                    "school",
+                    "museum",
+                    "library",
+                    "monument",
+                    "hospital",
+                    "fire-station",
+                    "religious-christian",
+                    "religious-muslim",
+                    "religious-jewish",
+                    "post",
+                    "embassy",
+                    "police",
+                    "prison",
+                    "college",
+                    "harbor",
+                    "airport",
+                    "airfield",
+                    ""
+                ],
+                [
+                    "in",
+                    "type",
+                    "Military",
+                    "Government"
+                ]
+            ],
             "layout": {
                 "text-optional": false,
                 "text-line-height": 1,
@@ -5990,43 +6028,6 @@
                 "text-letter-spacing": 0.01,
                 "text-max-width": 10
             },
-            "metadata": {
-                "mapbox:group": "1444858346799.9988"
-            },
-            "filter": [
-                "any",
-                [
-                    "in",
-                    "maki",
-                    "school",
-                    "museum",
-                    "library",
-                    "monument",
-                    "hospital",
-                    "fire-station",
-                    "religious-christian",
-                    "religious-muslim",
-                    "religious-jewish",
-                    "post",
-                    "embassy",
-                    "police",
-                    "prison",
-                    "college",
-                    "harbor",
-                    "airport",
-                    "airfield",
-                    ""
-                ],
-                [
-                    "in",
-                    "type",
-                    "Military",
-                    "Government"
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "small_maki_label",
             "paint": {
                 "text-color": "rgba(116,100,85,1)",
                 "text-halo-color": "#f8f6f0",
@@ -6044,11 +6045,25 @@
                     ]
                 },
                 "icon-opacity": 1
-            },
-            "source-layer": "poi_label"
+            }
         },
         {
+            "id": "park_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858346799.9988"
+            },
+            "source": "composite",
+            "source-layer": "poi_label",
             "interactive": true,
+            "filter": [
+                "in",
+                "maki",
+                "park",
+                "golf",
+                "zoo",
+                "cemetery"
+            ],
             "layout": {
                 "text-optional": false,
                 "text-line-height": 1,
@@ -6093,29 +6108,21 @@
                 "text-field": "{name}",
                 "text-max-width": 8
             },
-            "metadata": {
-                "mapbox:group": "1444858346799.9988"
-            },
-            "filter": [
-                "in",
-                "maki",
-                "park",
-                "golf",
-                "zoo",
-                "cemetery"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "park_label",
             "paint": {
                 "text-color": "hsl(107, 20%, 34%)",
                 "text-halo-color": "#f8f6f0",
                 "text-halo-width": 2,
                 "text-halo-blur": 1
-            },
-            "source-layer": "poi_label"
+            }
         },
         {
+            "id": "airport_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858346799.9988"
+            },
+            "source": "composite",
+            "source-layer": "airport_label",
             "interactive": true,
             "layout": {
                 "text-optional": true,
@@ -6174,21 +6181,60 @@
                 "text-letter-spacing": 0.05,
                 "text-max-width": 12
             },
-            "metadata": {
-                "mapbox:group": "1444858346799.9988"
-            },
-            "type": "symbol",
-            "source": "composite",
-            "id": "airport_label",
             "paint": {
                 "text-color": "#666",
                 "text-halo-color": "#f8f6f0",
                 "text-halo-width": 1
-            },
-            "source-layer": "airport_label"
+            }
         },
         {
+            "id": "generic_big_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858346799.9988"
+            },
+            "source": "composite",
+            "source-layer": "poi_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "!in",
+                    "maki",
+                    "rail-light",
+                    "rail-metro",
+                    "rail",
+                    "school",
+                    "park",
+                    "cemetery",
+                    "college",
+                    "golf",
+                    "hospital",
+                    "zoo",
+                    "museum",
+                    "post",
+                    "harbor",
+                    "monument",
+                    "airport",
+                    "airfield",
+                    "prison"
+                ],
+                [
+                    "<=",
+                    "scalerank",
+                    2
+                ],
+                [
+                    "!in",
+                    "type",
+                    "Island",
+                    "Wetland",
+                    "Garden",
+                    "Military",
+                    "Government",
+                    "Residential"
+                ]
+            ],
             "layout": {
                 "text-line-height": 1,
                 "text-size": {
@@ -6233,60 +6279,28 @@
                 "text-letter-spacing": 0.02,
                 "text-max-width": 10
             },
-            "metadata": {
-                "mapbox:group": "1444858346799.9988"
-            },
-            "filter": [
-                "all",
-                [
-                    "!in",
-                    "maki",
-                    "rail-light",
-                    "rail-metro",
-                    "rail",
-                    "school",
-                    "park",
-                    "cemetery",
-                    "college",
-                    "golf",
-                    "hospital",
-                    "zoo",
-                    "museum",
-                    "post",
-                    "harbor",
-                    "monument",
-                    "airport",
-                    "airfield",
-                    "prison"
-                ],
-                [
-                    "<=",
-                    "scalerank",
-                    2
-                ],
-                [
-                    "!in",
-                    "type",
-                    "Island",
-                    "Wetland",
-                    "Garden",
-                    "Military",
-                    "Government",
-                    "Residential"
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "generic_big_label",
             "paint": {
                 "text-color": "#504a4c",
                 "text-halo-color": "#f8f6f0",
                 "text-halo-width": 1.5
-            },
-            "source-layer": "poi_label"
+            }
         },
         {
+            "id": "generic_metro_and_rail_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858346799.9988"
+            },
+            "source": "composite",
+            "source-layer": "rail_station_label",
             "interactive": true,
+            "filter": [
+                "in",
+                "maki",
+                "rail-light",
+                "rail-metro",
+                "rail"
+            ],
             "layout": {
                 "text-line-height": 1,
                 "text-size": {
@@ -6373,19 +6387,6 @@
                     ]
                 }
             },
-            "metadata": {
-                "mapbox:group": "1444858346799.9988"
-            },
-            "filter": [
-                "in",
-                "maki",
-                "rail-light",
-                "rail-metro",
-                "rail"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "generic_metro_and_rail_label",
             "paint": {
                 "text-color": "rgba(114,94,85,1)",
                 "text-halo-color": "#f8f6f0",
@@ -6403,11 +6404,82 @@
                     ]
                 },
                 "text-opacity": 1
-            },
-            "source-layer": "rail_station_label"
+            }
         },
         {
+            "id": "networked_rail_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444858346799.9988"
+            },
+            "source": "composite",
+            "source-layer": "rail_station_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "maki",
+                    "rail-light",
+                    "rail-metro",
+                    "rail"
+                ],
+                [
+                    "in",
+                    "network",
+                    "paris-rer",
+                    "moscow-metro",
+                    "london-overground",
+                    "london-underground",
+                    "london-dlr",
+                    "gb-national-rail",
+                    "de-s-bahn",
+                    "de-s-bahn.de-u-bahn",
+                    "de-u-bahn",
+                    "paris-transilien",
+                    "london-overground.london-underground",
+                    "gb-national-rail.london-dlr.london-overground.london-underground",
+                    "london-dlr.london-underground",
+                    "gb-national-rail.london-dlr.london-underground",
+                    "paris-metro",
+                    "london-overground.london-underground.national-rail",
+                    "london-overground.national-rail",
+                    "vienna-u-bahn",
+                    "washington-metro",
+                    "london-underground.national-rail",
+                    "san-francisco-bart",
+                    "hong-kong-mtr",
+                    "philadelphia-septa",
+                    "singapore-mrt",
+                    "boston-t",
+                    "barcelona-metro",
+                    "osaka-subway",
+                    "madrid-metro",
+                    "delhi-metro",
+                    "milan-metro",
+                    "mexico-city-metro",
+                    "tokyo-metro",
+                    "new-york-subway",
+                    "chongqing-rail-transit",
+                    "taipei-metro",
+                    "kiev-metro",
+                    "gb-national-rail.london-underground",
+                    "gb-national-rail.london-dlr.london-overground.london-tfl-rail.london-underground",
+                    "london-tfl-rail",
+                    "gb-national-rail.london-overground.london-underground",
+                    "gb-national-rail.london-overground",
+                    "oslo-metro",
+                    "stockholm-metro",
+                    "gb-national-rail.london-tfl-rail.london-overground",
+                    "gb-national-rail.london-tfl-rail.london-underground",
+                    "london-dlr.london-tfl-rail.london-underground",
+                    "london-dlr.london-tfl-rail",
+                    "london-overground.london-tfl-rail.london-underground",
+                    "london-overground.london-tfl-rail",
+                    "london-tfl-rail.london-underground",
+                    "paris-metro.paris-rer"
+                ]
+            ],
             "layout": {
                 "text-line-height": 1,
                 "text-size": {
@@ -6494,77 +6566,6 @@
                     ]
                 }
             },
-            "metadata": {
-                "mapbox:group": "1444858346799.9988"
-            },
-            "filter": [
-                "all",
-                [
-                    "in",
-                    "maki",
-                    "rail-light",
-                    "rail-metro",
-                    "rail"
-                ],
-                [
-                    "in",
-                    "network",
-                    "paris-rer",
-                    "moscow-metro",
-                    "london-overground",
-                    "london-underground",
-                    "london-dlr",
-                    "gb-national-rail",
-                    "de-s-bahn",
-                    "de-s-bahn.de-u-bahn",
-                    "de-u-bahn",
-                    "paris-transilien",
-                    "london-overground.london-underground",
-                    "gb-national-rail.london-dlr.london-overground.london-underground",
-                    "london-dlr.london-underground",
-                    "gb-national-rail.london-dlr.london-underground",
-                    "paris-metro",
-                    "london-overground.london-underground.national-rail",
-                    "london-overground.national-rail",
-                    "vienna-u-bahn",
-                    "washington-metro",
-                    "london-underground.national-rail",
-                    "san-francisco-bart",
-                    "hong-kong-mtr",
-                    "philadelphia-septa",
-                    "singapore-mrt",
-                    "boston-t",
-                    "barcelona-metro",
-                    "osaka-subway",
-                    "madrid-metro",
-                    "delhi-metro",
-                    "milan-metro",
-                    "mexico-city-metro",
-                    "tokyo-metro",
-                    "new-york-subway",
-                    "chongqing-rail-transit",
-                    "taipei-metro",
-                    "kiev-metro",
-                    "gb-national-rail.london-underground",
-                    "gb-national-rail.london-dlr.london-overground.london-tfl-rail.london-underground",
-                    "london-tfl-rail",
-                    "gb-national-rail.london-overground.london-underground",
-                    "gb-national-rail.london-overground",
-                    "oslo-metro",
-                    "stockholm-metro",
-                    "gb-national-rail.london-tfl-rail.london-overground",
-                    "gb-national-rail.london-tfl-rail.london-underground",
-                    "london-dlr.london-tfl-rail.london-underground",
-                    "london-dlr.london-tfl-rail",
-                    "london-overground.london-tfl-rail.london-underground",
-                    "london-overground.london-tfl-rail",
-                    "london-tfl-rail.london-underground",
-                    "paris-metro.paris-rer"
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "networked_rail_label",
             "paint": {
                 "text-color": "rgba(114,94,85,1)",
                 "text-halo-color": "#f8f6f0",
@@ -6581,11 +6582,24 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "rail_station_label"
+            }
         },
         {
+            "id": "neighborhood_small_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444857916000.3777"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
+            "maxzoom": 18,
             "interactive": true,
+            "filter": [
+                "in",
+                "type",
+                "suburb",
+                "island"
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -6634,19 +6648,6 @@
                 },
                 "text-max-width": 5
             },
-            "metadata": {
-                "mapbox:group": "1444857916000.3777"
-            },
-            "maxzoom": 18,
-            "filter": [
-                "in",
-                "type",
-                "suburb",
-                "island"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "neighborhood_small_label",
             "paint": {
                 "text-color": "rgba(162,99,67,1)",
                 "text-halo-color": "#f8f6f0",
@@ -6663,11 +6664,33 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "place_label"
+            }
         },
         {
+            "id": "neighborhood_large_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444857916000.3777"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
+            "maxzoom": 18,
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "type",
+                    "neighbourhood",
+                    "suburb",
+                    "island"
+                ],
+                [
+                    "<=",
+                    "localrank",
+                    5
+                ]
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -6716,28 +6739,6 @@
                 },
                 "text-max-width": 5
             },
-            "metadata": {
-                "mapbox:group": "1444857916000.3777"
-            },
-            "maxzoom": 18,
-            "filter": [
-                "all",
-                [
-                    "in",
-                    "type",
-                    "neighbourhood",
-                    "suburb",
-                    "island"
-                ],
-                [
-                    "<=",
-                    "localrank",
-                    5
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "neighborhood_large_label",
             "paint": {
                 "text-color": "rgba(162,99,67,1)",
                 "text-halo-color": "#f8f6f0",
@@ -6754,11 +6755,31 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "place_label"
+            }
         },
         {
+            "id": "hamlet_village_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444857916000.3777"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "type",
+                    "village",
+                    "hamlet"
+                ],
+                [
+                    "<=",
+                    "localrank",
+                    30
+                ]
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -6796,26 +6817,6 @@
                 "text-max-width": 5,
                 "text-letter-spacing": 0.05
             },
-            "metadata": {
-                "mapbox:group": "1444857916000.3777"
-            },
-            "filter": [
-                "all",
-                [
-                    "in",
-                    "type",
-                    "village",
-                    "hamlet"
-                ],
-                [
-                    "<=",
-                    "localrank",
-                    30
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "hamlet_village_label",
             "paint": {
                 "text-color": "rgba(117,87,79,1)",
                 "text-halo-color": "#f8f6f0",
@@ -6832,11 +6833,30 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "place_label"
+            }
         },
         {
+            "id": "town_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444857916000.3777"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "type",
+                    "town"
+                ],
+                [
+                    "<=",
+                    "localrank",
+                    40
+                ]
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -6873,25 +6893,6 @@
                 "text-max-width": 5,
                 "text-letter-spacing": 0.05
             },
-            "metadata": {
-                "mapbox:group": "1444857916000.3777"
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "type",
-                    "town"
-                ],
-                [
-                    "<=",
-                    "localrank",
-                    40
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "town_label",
             "paint": {
                 "text-color": "rgba(115,80,80,1)",
                 "text-halo-color": "#f8f6f0",
@@ -6908,11 +6909,34 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "place_label"
+            }
         },
         {
+            "id": "city_label_small",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444857916000.3777"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "type",
+                    "city"
+                ],
+                [
+                    "!in",
+                    "scalerank",
+                    1,
+                    2,
+                    3,
+                    4,
+                    0
+                ]
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -6951,29 +6975,6 @@
                 "text-letter-spacing": 0.02,
                 "text-max-width": 5
             },
-            "metadata": {
-                "mapbox:group": "1444857916000.3777"
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "type",
-                    "city"
-                ],
-                [
-                    "!in",
-                    "scalerank",
-                    1,
-                    2,
-                    3,
-                    4,
-                    0
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "city_label_small",
             "paint": {
                 "text-color": "hsl(357, 14%, 37%)",
                 "text-halo-color": "#f8f6f0",
@@ -6990,11 +6991,31 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "place_label"
+            }
         },
         {
+            "id": "city_label_medium",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444857916000.3777"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "type",
+                    "city"
+                ],
+                [
+                    "in",
+                    "scalerank",
+                    3,
+                    4
+                ]
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -7092,26 +7113,6 @@
                 "text-letter-spacing": 0.02,
                 "text-max-width": 5
             },
-            "metadata": {
-                "mapbox:group": "1444857916000.3777"
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "type",
-                    "city"
-                ],
-                [
-                    "in",
-                    "scalerank",
-                    3,
-                    4
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "city_label_medium",
             "paint": {
                 "text-color": "hsl(357, 14%, 37%)",
                 "text-halo-color": "#f8f6f0",
@@ -7128,11 +7129,30 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "place_label"
+            }
         },
         {
+            "id": "city_label_big",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444857916000.3777"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
             "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "type",
+                    "city"
+                ],
+                [
+                    "<=",
+                    "scalerank",
+                    2
+                ]
+            ],
             "layout": {
                 "text-line-height": {
                     "base": 1,
@@ -7216,25 +7236,6 @@
                 "icon-padding": 0,
                 "text-max-width": 5
             },
-            "metadata": {
-                "mapbox:group": "1444857916000.3777"
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "type",
-                    "city"
-                ],
-                [
-                    "<=",
-                    "scalerank",
-                    2
-                ]
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "city_label_big",
             "paint": {
                 "text-color": "hsl(357, 14%, 37%)",
                 "text-halo-color": "#f8f6f0",
@@ -7251,11 +7252,22 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "place_label"
+            }
         },
         {
+            "id": "districts_5_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1458461767759.1262"
+            },
+            "source": "composite",
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels",
             "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#fed9a6"
+            ],
             "layout": {
                 "text-field": {
                     "base": 1,
@@ -7288,17 +7300,6 @@
                     ]
                 }
             },
-            "metadata": {
-                "mapbox:group": "1458461767759.1262"
-            },
-            "filter": [
-                "==",
-                "fill",
-                "#fed9a6"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "districts_5_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
                 "text-halo-color": "#fed9a6",
@@ -7315,11 +7316,22 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
+            }
         },
         {
+            "id": "districts_4_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1458461767759.1262"
+            },
+            "source": "composite",
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels",
             "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#fbb4ae"
+            ],
             "layout": {
                 "text-field": {
                     "base": 1,
@@ -7352,17 +7364,6 @@
                     ]
                 }
             },
-            "metadata": {
-                "mapbox:group": "1458461767759.1262"
-            },
-            "filter": [
-                "==",
-                "fill",
-                "#fbb4ae"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "districts_4_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
                 "text-halo-color": "#fbb4ae",
@@ -7379,11 +7380,22 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
+            }
         },
         {
+            "id": "districts_3_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1458461767759.1262"
+            },
+            "source": "composite",
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels",
             "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#decbe4"
+            ],
             "layout": {
                 "text-field": {
                     "base": 1,
@@ -7416,17 +7428,6 @@
                     ]
                 }
             },
-            "metadata": {
-                "mapbox:group": "1458461767759.1262"
-            },
-            "filter": [
-                "==",
-                "fill",
-                "#decbe4"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "districts_3_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
                 "text-halo-color": "#decbe4",
@@ -7443,11 +7444,22 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
+            }
         },
         {
+            "id": "districts_2_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1458461767759.1262"
+            },
+            "source": "composite",
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels",
             "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#ccebc5"
+            ],
             "layout": {
                 "text-field": {
                     "base": 1,
@@ -7480,17 +7492,6 @@
                     ]
                 }
             },
-            "metadata": {
-                "mapbox:group": "1458461767759.1262"
-            },
-            "filter": [
-                "==",
-                "fill",
-                "#ccebc5"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "districts_2_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
                 "text-halo-color": "#ccebc5",
@@ -7507,11 +7508,22 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
+            }
         },
         {
+            "id": "districts_1_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1458461767759.1262"
+            },
+            "source": "composite",
+            "source-layer": "US_Congressional_Districts_114th_2015_Labels",
             "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#b3cde3"
+            ],
             "layout": {
                 "text-field": {
                     "base": 1,
@@ -7544,17 +7556,6 @@
                     ]
                 }
             },
-            "metadata": {
-                "mapbox:group": "1458461767759.1262"
-            },
-            "filter": [
-                "==",
-                "fill",
-                "#b3cde3"
-            ],
-            "type": "symbol",
-            "source": "composite",
-            "id": "districts_1_label",
             "paint": {
                 "text-color": "hsl(0, 0%, 27%)",
                 "text-halo-color": "hsl(207, 46%, 80%)",
@@ -7571,13 +7572,12 @@
                         ]
                     ]
                 }
-            },
-            "source-layer": "US_Congressional_Districts_114th_2015_Labels"
+            }
         }
     ],
-    "created": "2016-03-20T19:01:18.058Z",
-    "id": "cim0xiz9k00489jkpj6eo94np",
-    "modified": "2016-03-29T04:50:28.150Z",
+    "created": "2016-04-28T03:09:43.502Z",
+    "id": "cinjppgm9002paem5x0w9ajeb",
+    "modified": "2016-04-28T03:09:43.502Z",
     "owner": "USER",
     "draft": false
 }
