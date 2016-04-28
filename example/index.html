@@ -188,7 +188,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
         // Add filters for the focus state and district number
         if (stateAbbr) filter.push(['==', 'state', stateAbbr]);
-        if (districtCode) filter.push(['==', 'name', districtCode]);
+        if (districtCode) filter.push(['==', 'number', districtCode]);
 
         // Add the existing color filter
         var layerFilter = filter.concat([exisitingFilter]);
@@ -203,7 +203,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
       // Create a generic filter for the focus state and district number that does not include color filtering
       var boundaryFilter = ['all'];
       if (stateAbbr) boundaryFilter.push(['==', 'state', stateAbbr]);
-      if (districtCode) boundaryFilter.push(['==', 'name', districtCode]);
+      if (districtCode) boundaryFilter.push(['==', 'number', districtCode]);
 
       // Apply the generic filter to the boundary lines
       map.setFilter('districts_boundary_line', boundaryFilter);
