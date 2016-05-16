@@ -3,12 +3,11 @@ var fs = require('fs'),
     AWS = require('aws-sdk');
 
 var districtsFile = process.argv[2],
-    labelsFile = process.argv[3],
     user = process.env.MAPBOX_USERNAME,
     accessToken = process.env.MAPBOX_WRITE_SCOPE_ACCESS_TOKEN;
 
 var tileset_id = user + ".cd-114-2015"; // max 32 characters (including "-labels" added below), only one period
-var tielset_name = "US_Congressional_Districts_114th_2015"; // max 64 characters (including "_Labels" added below) no spaces
+var tileset_name = "US_Congressional_Districts_114th_2015"; // max 64 characters (including "_Labels" added below) no spaces
 
 var client = new MapboxClient(accessToken);
 
@@ -48,5 +47,4 @@ function upload_tileset(file, id, name) {
 
 // do the upload
 
-upload_tileset(labelsFile, tileset_id + '-labels', tielset_name + '_Labels')
-upload_tileset(districtsFile, tileset_id, tielset_name)
+upload_tileset(districtsFile, tileset_id, tileset_name)
