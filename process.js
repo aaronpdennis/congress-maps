@@ -93,13 +93,6 @@ colored.features.map(function(d) {
   }
 });
 
-// Use the Tippecanoe GeoJSON extension to specify that each label and district feature should be
-// included at all levels from min to max zoom. https://github.com/mapbox/tippecanoe#geojson-extension
-mapData.features.map(function(d) {
-  d.tippecanoe = { "maxzoom" : 12, "minzoom" : 0 };
-  return d;
-});
-
 // get the bounding boxes of all of the bounding boxes for each state
 for (var s in stateBboxes) {
   stateBboxes[s] = turf.extent(stateBboxes[s]);
