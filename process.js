@@ -76,6 +76,10 @@ colored.features.map(function(d) {
   pt.properties.title_short = state + ' ' + (number == "00" ? "At Large" : parseInt(number));
   pt.properties.title_long = state_name + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
 
+  // add a type property to distinguish between labels and boundaries
+  pt.group = 'label';
+  d.group = 'boundary';
+
   // add both the label point and congressional district to the mapData feature collection
   mapData.features.push(pt);
   mapData.features.push(d);
