@@ -23,7 +23,7 @@
             },
             "1444934295202.7542": {
                 "name": "Admin boundaries",
-                "collapsed": true
+                "collapsed": false
             },
             "1444856151690.9143": {
                 "name": "State labels",
@@ -40,6 +40,9 @@
             "1444933808272.805": {
                 "name": "Water labels",
                 "collapsed": true
+            },
+            "1463427334849.3604": {
+                "name": "Districts"
             },
             "1444933372896.5967": {
                 "name": "POI labels (scalerank 3)",
@@ -61,27 +64,38 @@
                 "name": "City labels",
                 "collapsed": true
             },
+            "1463427634286.75": {
+                "name": "District Boundaries"
+            },
             "1444855769305.6016": {
                 "name": "Tunnels",
                 "collapsed": true
             },
             "1456970288113.8113": {
                 "name": "Landcover",
-                "collapsed": true
+                "collapsed": false
             },
             "1444856144497.7825": {
                 "name": "Country labels",
                 "collapsed": true
             }
-        }
+        },
+        "mapbox:trackposition": false
     },
+    "center": [
+        -99.77018878497046,
+        38.30490800231652
+    ],
+    "zoom": 3.1138900684543085,
+    "bearing": 0,
+    "pitch": 0,
     "sources": {
         "composite": {
-            "url": "mapbox://mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7,USER.cd-114-2015",
+            "url": "mapbox://mapbox.mapbox-streets-v7,USER.cd-114-2015",
             "type": "vector"
         }
     },
-    "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+    "glyphs": "mapbox://fonts/USER/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
@@ -90,233 +104,6 @@
             "layout": {},
             "paint": {
                 "background-color": "hsl(55, 11%, 96%)"
-            }
-        },
-        {
-            "id": "landcover_wood",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456970288113.8113"
-            },
-            "source": "composite",
-            "source-layer": "landcover",
-            "maxzoom": 14,
-            "interactive": true,
-            "filter": [
-                "==",
-                "class",
-                "wood"
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(0, 0%, 89%)",
-                "fill-opacity": 0.1,
-                "fill-antialias": false
-            }
-        },
-        {
-            "id": "landcover_scrub",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456970288113.8113"
-            },
-            "source": "composite",
-            "source-layer": "landcover",
-            "maxzoom": 14,
-            "interactive": true,
-            "filter": [
-                "==",
-                "class",
-                "scrub"
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(0, 0%, 89%)",
-                "fill-opacity": 0.1,
-                "fill-antialias": false
-            }
-        },
-        {
-            "id": "landcover_grass",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456970288113.8113"
-            },
-            "source": "composite",
-            "source-layer": "landcover",
-            "maxzoom": 14,
-            "interactive": true,
-            "filter": [
-                "==",
-                "class",
-                "grass"
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(0, 0%, 89%)",
-                "fill-opacity": 0.1,
-                "fill-antialias": false
-            }
-        },
-	 {
-            "id": "districts_5",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1458418542199.6687"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#fed9a6"
-            ],
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-color": "#fed9a6",
-                "fill-opacity": 0.45
-            }
-        },
-        {
-            "id": "districts_4",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1458418542199.6687"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#fbb4ae"
-            ],
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-color": "#fbb4ae",
-                "fill-opacity": 0.45
-            }
-        },
-        {
-            "id": "districts_3",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1458418542199.6687"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#decbe4"
-            ],
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-color": "#decbe4",
-                "fill-opacity": 0.45
-            }
-        },
-        {
-            "id": "districts_2",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1458418542199.6687"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#ccebc5"
-            ],
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-color": "#ccebc5",
-                "fill-opacity": 0.45
-            }
-        },
-        {
-            "id": "districts_1",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1458418542199.6687"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#b3cde3"
-            ],
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-color": "#b3cde3",
-                "fill-opacity": 0.45
-            }
-        },
-        {
-            "id": "landcover_crop",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456970288113.8113"
-            },
-            "source": "composite",
-            "source-layer": "landcover",
-            "maxzoom": 14,
-            "interactive": true,
-            "filter": [
-                "==",
-                "class",
-                "crop"
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(0, 0%, 89%)",
-                "fill-opacity": 0.1,
-                "fill-antialias": false
-            }
-        },
-        {
-            "id": "national_park",
-            "type": "fill",
-            "source": "composite",
-            "source-layer": "landuse_overlay",
-            "interactive": true,
-            "filter": [
-                "==",
-                "class",
-                "national_park"
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(150, 6%, 93%)",
-                "fill-opacity": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            5,
-                            0
-                        ],
-                        [
-                            6,
-                            0.5
-                        ]
-                    ]
-                }
             }
         },
         {
@@ -394,204 +181,6 @@
             "layout": {},
             "paint": {
                 "fill-color": "hsl(150, 6%, 93%)"
-            }
-        },
-        {
-            "id": "hillshade_highlight_bright",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456969573402.7817"
-            },
-            "source": "composite",
-            "source-layer": "hillshade",
-            "maxzoom": 16,
-            "interactive": true,
-            "filter": [
-                "==",
-                "level",
-                94
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "#fff",
-                "fill-opacity": {
-                    "stops": [
-                        [
-                            14,
-                            0.08
-                        ],
-                        [
-                            16,
-                            0
-                        ]
-                    ]
-                },
-                "fill-antialias": false
-            }
-        },
-        {
-            "id": "hillshade_highlight_med",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456969573402.7817"
-            },
-            "source": "composite",
-            "source-layer": "hillshade",
-            "maxzoom": 16,
-            "interactive": true,
-            "filter": [
-                "==",
-                "level",
-                90
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "#fff",
-                "fill-opacity": {
-                    "stops": [
-                        [
-                            14,
-                            0.08
-                        ],
-                        [
-                            16,
-                            0
-                        ]
-                    ]
-                },
-                "fill-antialias": false
-            }
-        },
-        {
-            "id": "hillshade_shadow_faint",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456969573402.7817"
-            },
-            "source": "composite",
-            "source-layer": "hillshade",
-            "maxzoom": 16,
-            "interactive": true,
-            "filter": [
-                "==",
-                "level",
-                89
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(0, 0%, 35%)",
-                "fill-opacity": {
-                    "stops": [
-                        [
-                            14,
-                            0.033
-                        ],
-                        [
-                            16,
-                            0
-                        ]
-                    ]
-                },
-                "fill-antialias": false
-            }
-        },
-        {
-            "id": "hillshade_shadow_med",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456969573402.7817"
-            },
-            "source": "composite",
-            "source-layer": "hillshade",
-            "maxzoom": 16,
-            "interactive": true,
-            "filter": [
-                "==",
-                "level",
-                78
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(0, 0%, 35%)",
-                "fill-opacity": {
-                    "stops": [
-                        [
-                            14,
-                            0.033
-                        ],
-                        [
-                            16,
-                            0
-                        ]
-                    ]
-                },
-                "fill-antialias": false
-            }
-        },
-        {
-            "id": "hillshade_shadow_dark",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456969573402.7817"
-            },
-            "source": "composite",
-            "source-layer": "hillshade",
-            "maxzoom": 16,
-            "interactive": true,
-            "filter": [
-                "==",
-                "level",
-                67
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(0, 0%, 35%)",
-                "fill-opacity": {
-                    "stops": [
-                        [
-                            14,
-                            0.06
-                        ],
-                        [
-                            16,
-                            0
-                        ]
-                    ]
-                },
-                "fill-antialias": false
-            }
-        },
-        {
-            "id": "hillshade_shadow_extreme",
-            "type": "fill",
-            "metadata": {
-                "mapbox:group": "1456969573402.7817"
-            },
-            "source": "composite",
-            "source-layer": "hillshade",
-            "maxzoom": 16,
-            "interactive": true,
-            "filter": [
-                "==",
-                "level",
-                56
-            ],
-            "layout": {},
-            "paint": {
-                "fill-color": "hsl(0, 0%, 35%)",
-                "fill-opacity": {
-                    "stops": [
-                        [
-                            14,
-                            0.06
-                        ],
-                        [
-                            16,
-                            0
-                        ]
-                    ]
-                },
-                "fill-antialias": false
             }
         },
         {
@@ -5723,36 +5312,6 @@
             }
         },
         {
-            "id": "districts_boundary_line",
-            "type": "line",
-            "source": "composite",
-            "source-layer": "districts",
-            "minzoom": 4,
-            "interactive": true,
-            "layout": {
-                "line-join": "miter"
-            },
-            "paint": {
-                "line-width": {
-                    "base": 1.2,
-                    "stops": [
-                        [
-                            1,
-                            1
-                        ],
-                        [
-                            22,
-                            12
-                        ]
-                    ]
-                },
-                "line-color": "hsl(0, 0%, 11%)",
-                "line-offset": 0,
-                "line-opacity": 1,
-                "line-blur": 5
-            }
-        },
-        {
             "id": "bridge-rail",
             "type": "line",
             "metadata": {
@@ -6267,83 +5826,435 @@
             }
         },
         {
-            "id": "admin-3-4-boundaries-bg",
-            "type": "line",
+            "id": "districts_5",
+            "type": "fill",
             "metadata": {
-                "mapbox:group": "1444934295202.7542"
+                "mapbox:group": "1463427334849.3604"
             },
             "source": "composite",
-            "source-layer": "admin",
+            "source-layer": "districts",
             "interactive": true,
             "filter": [
-                "all",
-                [
-                    ">=",
-                    "admin_level",
-                    3
-                ],
-                [
-                    "==",
-                    "maritime",
-                    0
-                ]
+                "==",
+                "fill",
+                "#fed9a6"
             ],
             "layout": {
-                "line-join": "bevel"
+                "visibility": "visible"
             },
             "paint": {
-                "line-color": "hsl(0, 0%, 84%)",
-                "line-width": {
+                "fill-color": "#fed9a6",
+                "fill-opacity": {
                     "base": 1,
                     "stops": [
                         [
-                            3,
-                            3.5
+                            0,
+                            0.7
                         ],
                         [
                             10,
-                            8
-                        ]
-                    ]
-                },
-                "line-opacity": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            4,
-                            0
-                        ],
-                        [
-                            7,
-                            0.5
-                        ],
-                        [
-                            8,
-                            0.75
-                        ]
-                    ]
-                },
-                "line-dasharray": [
-                    1,
-                    0
-                ],
-                "line-translate": [
-                    0,
-                    0
-                ],
-                "line-blur": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            3,
-                            0
-                        ],
-                        [
-                            8,
-                            3
+                            0.1
                         ]
                     ]
                 }
+            }
+        },
+        {
+            "id": "districts_4",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1463427334849.3604"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#fbb4ae"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "#fbb4ae",
+                "fill-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            0,
+                            0.7
+                        ],
+                        [
+                            10,
+                            0.1
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "districts_3",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1463427334849.3604"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#decbe4"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "#decbe4",
+                "fill-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            0,
+                            0.7
+                        ],
+                        [
+                            10,
+                            0.1
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "districts_2",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1463427334849.3604"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#ccebc5"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "#ccebc5",
+                "fill-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            0,
+                            0.7
+                        ],
+                        [
+                            10,
+                            0.1
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "districts_1",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1463427334849.3604"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#b3cde3"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "#b3cde3",
+                "fill-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            0,
+                            0.7
+                        ],
+                        [
+                            10,
+                            0.1
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "districts_5_boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1463427634286.75"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#fed9a6"
+            ],
+            "layout": {},
+            "paint": {
+                "line-width": {
+                    "base": 1.1,
+                    "stops": [
+                        [
+                            0.5,
+                            0
+                        ],
+                        [
+                            22,
+                            24
+                        ]
+                    ]
+                },
+                "line-offset": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            1,
+                            1
+                        ],
+                        [
+                            22,
+                            12
+                        ]
+                    ]
+                },
+                "line-color": "#fed9a6",
+                "line-opacity": 0.9
+            }
+        },
+        {
+            "id": "districts_4_boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1463427634286.75"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#fbb4ae"
+            ],
+            "layout": {},
+            "paint": {
+                "line-width": {
+                    "base": 1.1,
+                    "stops": [
+                        [
+                            0.5,
+                            0
+                        ],
+                        [
+                            22,
+                            24
+                        ]
+                    ]
+                },
+                "line-offset": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            1,
+                            1
+                        ],
+                        [
+                            22,
+                            12
+                        ]
+                    ]
+                },
+                "line-color": "#fbb4ae",
+                "line-opacity": 0.9
+            }
+        },
+        {
+            "id": "districts_3_boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1463427634286.75"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#decbe4"
+            ],
+            "layout": {},
+            "paint": {
+                "line-width": {
+                    "base": 1.1,
+                    "stops": [
+                        [
+                            0.5,
+                            0
+                        ],
+                        [
+                            22,
+                            24
+                        ]
+                    ]
+                },
+                "line-offset": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            1,
+                            1
+                        ],
+                        [
+                            22,
+                            12
+                        ]
+                    ]
+                },
+                "line-color": "#decbe4",
+                "line-opacity": 0.9
+            }
+        },
+        {
+            "id": "districts_2_boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1463427634286.75"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#ccebc5"
+            ],
+            "layout": {},
+            "paint": {
+                "line-width": {
+                    "base": 1.1,
+                    "stops": [
+                        [
+                            0.5,
+                            0
+                        ],
+                        [
+                            22,
+                            24
+                        ]
+                    ]
+                },
+                "line-offset": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            1,
+                            1
+                        ],
+                        [
+                            22,
+                            12
+                        ]
+                    ]
+                },
+                "line-color": "#ccebc5",
+                "line-opacity": 0.9
+            }
+        },
+        {
+            "id": "districts_1_boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1463427634286.75"
+            },
+            "source": "composite",
+            "source-layer": "districts",
+            "interactive": true,
+            "filter": [
+                "==",
+                "fill",
+                "#b3cde3"
+            ],
+            "layout": {
+                "line-join": "miter"
+            },
+            "paint": {
+                "line-width": {
+                    "base": 1.1,
+                    "stops": [
+                        [
+                            0.5,
+                            0
+                        ],
+                        [
+                            22,
+                            24
+                        ]
+                    ]
+                },
+                "line-offset": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            1,
+                            1
+                        ],
+                        [
+                            22,
+                            12
+                        ]
+                    ]
+                },
+                "line-color": "#b3cde3",
+                "line-opacity": 0.9
+            }
+        },
+        {
+            "id": "districts_boundary_line",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "districts",
+            "minzoom": 4,
+            "interactive": true,
+            "layout": {
+                "line-join": "miter"
+            },
+            "paint": {
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            1,
+                            1
+                        ],
+                        [
+                            22,
+                            12
+                        ]
+                    ]
+                },
+                "line-color": "hsl(0, 0%, 11%)",
+                "line-offset": 0,
+                "line-opacity": 1,
+                "line-blur": 5
             }
         },
         {
@@ -6443,7 +6354,8 @@
             ],
             "layout": {
                 "line-join": "round",
-                "line-cap": "round"
+                "line-cap": "round",
+                "visibility": "visible"
             },
             "paint": {
                 "line-dasharray": {
@@ -6471,12 +6383,12 @@
                     "base": 1,
                     "stops": [
                         [
-                            7,
-                            0.75
+                            3,
+                            2
                         ],
                         [
                             12,
-                            1.5
+                            4
                         ]
                     ]
                 },
@@ -6502,7 +6414,7 @@
                         ],
                         [
                             5,
-                            "hsl(0, 0%, 70%)"
+                            "hsl(0, 2%, 57%)"
                         ]
                     ]
                 }
@@ -6559,11 +6471,11 @@
                     "stops": [
                         [
                             3,
-                            0.5
+                            1
                         ],
                         [
                             10,
-                            2
+                            4
                         ]
                     ]
                 }
@@ -6631,238 +6543,6 @@
                         ]
                     ]
                 }
-            }
-        },
-	 {
-            "id": "districts_5_boundary",
-            "type": "line",
-            "metadata": {
-                "mapbox:group": "1458486127563.5833"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#fed9a6"
-            ],
-            "layout": {},
-            "paint": {
-                "line-width": {
-                    "base": 1.1,
-                    "stops": [
-                        [
-                            0.5,
-                            0
-                        ],
-                        [
-                            22,
-                            24
-                        ]
-                    ]
-                },
-                "line-offset": {
-                    "base": 1.2,
-                    "stops": [
-                        [
-                            1,
-                            1
-                        ],
-                        [
-                            22,
-                            12
-                        ]
-                    ]
-                },
-                "line-color": "#fed9a6",
-                "line-opacity": 0.9
-            }
-        },
-        {
-            "id": "districts_4_boundary",
-            "type": "line",
-            "metadata": {
-                "mapbox:group": "1458486127563.5833"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#fbb4ae"
-            ],
-            "layout": {},
-            "paint": {
-                "line-width": {
-                    "base": 1.1,
-                    "stops": [
-                        [
-                            0.5,
-                            0
-                        ],
-                        [
-                            22,
-                            24
-                        ]
-                    ]
-                },
-                "line-offset": {
-                    "base": 1.2,
-                    "stops": [
-                        [
-                            1,
-                            1
-                        ],
-                        [
-                            22,
-                            12
-                        ]
-                    ]
-                },
-                "line-color": "#fbb4ae",
-                "line-opacity": 0.9
-            }
-        },
-        {
-            "id": "districts_3_boundary",
-            "type": "line",
-            "metadata": {
-                "mapbox:group": "1458486127563.5833"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#decbe4"
-            ],
-            "layout": {},
-            "paint": {
-                "line-width": {
-                    "base": 1.1,
-                    "stops": [
-                        [
-                            0.5,
-                            0
-                        ],
-                        [
-                            22,
-                            24
-                        ]
-                    ]
-                },
-                "line-offset": {
-                    "base": 1.2,
-                    "stops": [
-                        [
-                            1,
-                            1
-                        ],
-                        [
-                            22,
-                            12
-                        ]
-                    ]
-                },
-                "line-color": "#decbe4",
-                "line-opacity": 0.9
-            }
-        },
-        {
-            "id": "districts_2_boundary",
-            "type": "line",
-            "metadata": {
-                "mapbox:group": "1458486127563.5833"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#ccebc5"
-            ],
-            "layout": {},
-            "paint": {
-                "line-width": {
-                    "base": 1.1,
-                    "stops": [
-                        [
-                            0.5,
-                            0
-                        ],
-                        [
-                            22,
-                            24
-                        ]
-                    ]
-                },
-                "line-offset": {
-                    "base": 1.2,
-                    "stops": [
-                        [
-                            1,
-                            1
-                        ],
-                        [
-                            22,
-                            12
-                        ]
-                    ]
-                },
-                "line-color": "#ccebc5",
-                "line-opacity": 0.9
-            }
-        },
-        {
-            "id": "districts_1_boundary",
-            "type": "line",
-            "metadata": {
-                "mapbox:group": "1458486127563.5833"
-            },
-            "source": "composite",
-            "source-layer": "districts",
-            "interactive": true,
-            "filter": [
-                "==",
-                "fill",
-                "#b3cde3"
-            ],
-            "layout": {
-                "line-join": "miter"
-            },
-            "paint": {
-                "line-width": {
-                    "base": 1.1,
-                    "stops": [
-                        [
-                            0.5,
-                            0
-                        ],
-                        [
-                            22,
-                            24
-                        ]
-                    ]
-                },
-                "line-offset": {
-                    "base": 1.2,
-                    "stops": [
-                        [
-                            1,
-                            1
-                        ],
-                        [
-                            22,
-                            12
-                        ]
-                    ]
-                },
-                "line-color": "#b3cde3",
-                "line-opacity": 0.9
             }
         },
         {
@@ -7631,9 +7311,9 @@
             },
             "paint": {
                 "text-color": "#6B6B6B",
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1,
-                "text-halo-blur": 0
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1
             }
         },
         {
@@ -7675,9 +7355,9 @@
             },
             "paint": {
                 "text-halo-color": "hsl(0, 0%, 100%)",
-                "text-halo-width": 1,
+                "text-halo-blur": 0,
                 "text-color": "hsl(0, 0%, 62%)",
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -7719,9 +7399,9 @@
             },
             "paint": {
                 "text-halo-color": "hsl(0, 0%, 100%)",
-                "text-halo-width": 1,
+                "text-halo-blur": 0,
                 "text-color": "hsl(0, 0%, 62%)",
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -7758,10 +7438,10 @@
                 }
             },
             "paint": {
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1.25,
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
                 "text-color": "hsl(0, 0%, 62%)",
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -7803,8 +7483,8 @@
                 ]
             },
             "paint": {
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1.25,
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
                 "text-color": {
                     "base": 1,
                     "stops": [
@@ -7818,7 +7498,7 @@
                         ]
                     ]
                 },
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -7889,8 +7569,8 @@
                         ]
                     ]
                 },
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1.25,
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
                 "icon-opacity": {
                     "base": 1,
                     "stops": [
@@ -7904,7 +7584,7 @@
                         ]
                     ]
                 },
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -7951,9 +7631,9 @@
             },
             "paint": {
                 "text-color": "#6B6B6B",
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1,
-                "text-halo-blur": 0
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1
             }
         },
         {
@@ -8026,8 +7706,7 @@
             },
             "paint": {
                 "text-color": "hsl(0, 0%, 42%)",
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1.25,
+                "text-halo-color": "hsl(0, 0%, 100%)",
                 "icon-opacity": {
                     "base": 1,
                     "stops": [
@@ -8041,7 +7720,7 @@
                         ]
                     ]
                 },
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -8114,10 +7793,6 @@
                 }
             },
             "paint": {
-                "text-halo-width": 1,
-                "text-halo-color": "#ffffff",
-                "text-color": "hsl(0, 0%, 42%)",
-                "text-halo-blur": 0,
                 "icon-opacity": {
                     "base": 1,
                     "stops": [
@@ -8130,7 +7805,10 @@
                             0
                         ]
                     ]
-                }
+                },
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-color": "hsl(0, 0%, 42%)",
+                "text-halo-width": 1
             }
         },
         {
@@ -8205,8 +7883,7 @@
             },
             "paint": {
                 "text-color": "hsl(0, 0%, 42%)",
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1,
+                "text-halo-color": "hsl(0, 0%, 100%)",
                 "icon-opacity": {
                     "base": 1,
                     "stops": [
@@ -8220,7 +7897,7 @@
                         ]
                     ]
                 },
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -8295,8 +7972,7 @@
             },
             "paint": {
                 "text-color": "hsl(0, 0%, 42%)",
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1,
+                "text-halo-color": "hsl(0, 0%, 100%)",
                 "icon-opacity": {
                     "base": 1,
                     "stops": [
@@ -8310,7 +7986,7 @@
                         ]
                     ]
                 },
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -8386,8 +8062,7 @@
             "paint": {
                 "text-color": "hsl(0, 0%, 42%)",
                 "text-opacity": 1,
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 1,
+                "text-halo-color": "hsl(0, 0%, 100%)",
                 "icon-opacity": {
                     "base": 1,
                     "stops": [
@@ -8401,7 +8076,7 @@
                         ]
                     ]
                 },
-                "text-halo-blur": 0
+                "text-halo-width": 1
             }
         },
         {
@@ -9413,17 +9088,9 @@
             "source-layer": "districts",
             "interactive": true,
             "filter": [
-                "all",
-                [
-                    "==",
-                    "fill",
-                    "#b3cde3"
-                ],
-                [
-                    "==",
-                    "group",
-                    "label"
-                ]
+                "==",
+                "fill",
+                "#b3cde3"
             ],
             "layout": {
                 "text-field": {
@@ -9476,9 +9143,9 @@
             }
         }
     ],
-    "created": "2016-05-16T01:22:43.205Z",
-    "id": "cio9bt6oc002aadnmatvm5tpe",
-    "modified": "2016-05-16T01:22:43.205Z",
+    "created": "2016-05-16T19:57:15.074Z",
+    "id": "cioafmhk70047adnmt3gz2kd0",
+    "modified": "2016-05-16T19:57:57.935Z",
     "owner": "USER",
     "draft": false
 }
