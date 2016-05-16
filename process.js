@@ -72,13 +72,13 @@ colored.features.map(function(d) {
   d.properties.state = state;
 
   // add metadata to the label
-  pt.properties = d.properties;
+  pt.properties = JSON.parse(JSON.stringify(d.properties)); // copy hack to avoid mutability issues
   pt.properties.title_short = state + ' ' + (number == "00" ? "At Large" : parseInt(number));
   pt.properties.title_long = state_name + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
 
   // add a type property to distinguish between labels and boundaries
-  pt.group = 'label';
-  d.group = 'boundary';
+  pt.properties.group = 'label';
+  d.properties.group = 'boundary';
 
   // add both the label point and congressional district to the mapData feature collection
   mapData.features.push(pt);
