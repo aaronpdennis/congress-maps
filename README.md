@@ -63,10 +63,10 @@ ogr2ogr -f GeoJSON -t_srs crs:84 data/congressional_districts.geojson data/tl_20
 node process.js data/congressional_districts.geojson
 
 # create Mapbox vector tiles from data
-tippecanoe -o data/cd-114-2015.mbtiles -f -z 12 -Z 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
+tippecanoe -o data/cd-114-2015.mbtiles -f -z 12 -Z 0 -B 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
 
 # upload map data to Mapbox.com
-node upload.js data/cd-114-2015.mbtiles data/map_labels.geojson
+node upload.js data/cd-114-2015.mbtiles
 
 # modify mapbox-style-template.json to use your Mapbox account and save as data/mapbox-style.json
 sed s/'USER'/"$MAPBOX_USERNAME"/g mapbox-style-template.json > data/mapbox-style.json
