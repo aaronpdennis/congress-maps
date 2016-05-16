@@ -35,9 +35,11 @@ function ordinal(number) {
 // compute bounding boxes for each congressional district and each
 // state so that we know how to center and zoom maps
 
-var labels = [],
-    districtBboxes = {},
+var districtBboxes = {},
     stateBboxes = {};
+
+// empty FeatureCollection to contain final map data
+var mapData = { 'type': 'FeatureCollection', 'features', [] }
 
 colored.features.map(function(d) {
 
@@ -73,7 +75,10 @@ colored.features.map(function(d) {
   pt.properties = d.properties;
   pt.properties.title_short = state + ' ' + (number == "00" ? "At Large" : parseInt(number));
   pt.properties.title_long = state_name + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
-  labels.push(pt);
+
+  // add both the label point and congressional district to the mapData feature collection
+  mapData.features.push(pt);
+  mapData.features.push(d);
 
   // collect bounding boxes for the districts
   var bounds = turf.extent(d);
@@ -88,17 +93,22 @@ colored.features.map(function(d) {
   }
 });
 
+// Use the Tippecanoe GeoJSON extension to specify that each label and district feature should be
+// included at all levels from min to max zoom. https://github.com/mapbox/tippecanoe#geojson-extension
+mapData.features.map(function(d) {
+  d.tippecanoe = { "maxzoom" : 12, "minzoom" : 0 };
+  return d;
+});
+
 // get the bounding boxes of all of the bounding boxes for each state
 for (var s in stateBboxes) {
   stateBboxes[s] = turf.extent(stateBboxes[s]);
 }
 
 // write out data for the next steps
-
 console.log('data ready');
 
-fs.writeFileSync('./data/map.geojson', JSON.stringify(colored));
-fs.writeFileSync('./data/map_labels.geojson', JSON.stringify(turf.featurecollection(labels)));
+fs.writeFileSync('./data/map.geojson', JSON.stringify(mapData));
 
 fs.writeFileSync('./example/states.js', 'var states = ' + JSON.stringify(stateCodes, null, 2));
 
