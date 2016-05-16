@@ -35,9 +35,11 @@ function ordinal(number) {
 // compute bounding boxes for each congressional district and each
 // state so that we know how to center and zoom maps
 
-var labels = [],
-    districtBboxes = {},
+var districtBboxes = {},
     stateBboxes = {};
+
+// empty FeatureCollection to contain final map data
+var mapData = { 'type': 'FeatureCollection', 'features': [] }
 
 colored.features.map(function(d) {
 
@@ -70,10 +72,17 @@ colored.features.map(function(d) {
   d.properties.state = state;
 
   // add metadata to the label
-  pt.properties = d.properties;
+  pt.properties = JSON.parse(JSON.stringify(d.properties)); // copy hack to avoid mutability issues
   pt.properties.title_short = state + ' ' + (number == "00" ? "At Large" : parseInt(number));
   pt.properties.title_long = state_name + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
-  labels.push(pt);
+
+  // add a type property to distinguish between labels and boundaries
+  pt.properties.group = 'label';
+  d.properties.group = 'boundary';
+
+  // add both the label point and congressional district to the mapData feature collection
+  mapData.features.push(pt);
+  mapData.features.push(d);
 
   // collect bounding boxes for the districts
   var bounds = turf.extent(d);
@@ -94,11 +103,9 @@ for (var s in stateBboxes) {
 }
 
 // write out data for the next steps
+console.log('writing data...');
 
-console.log('data ready');
-
-fs.writeFileSync('./data/map.geojson', JSON.stringify(colored));
-fs.writeFileSync('./data/map_labels.geojson', JSON.stringify(turf.featurecollection(labels)));
+fs.writeFileSync('./data/map.geojson', JSON.stringify(mapData));
 
 fs.writeFileSync('./example/states.js', 'var states = ' + JSON.stringify(stateCodes, null, 2));
 
@@ -106,3 +113,5 @@ var bboxes = {};
 for (var b in districtBboxes) { bboxes[b] = districtBboxes[b] };
 for (var b in stateBboxes) { bboxes[b] = stateBboxes[b] };
 fs.writeFileSync('./example/bboxes.js', 'var bboxes = ' + JSON.stringify(bboxes, null, 2));
+
+console.log('finished processing, ready for tiling');
