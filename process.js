@@ -39,7 +39,7 @@ var districtBboxes = {},
     stateBboxes = {};
 
 // empty FeatureCollection to contain final map data
-var mapData = { 'type': 'FeatureCollection', 'features', [] }
+var mapData = { 'type': 'FeatureCollection', 'features': [] }
 
 colored.features.map(function(d) {
 
@@ -106,7 +106,7 @@ for (var s in stateBboxes) {
 }
 
 // write out data for the next steps
-console.log('data ready');
+console.log('writing data...');
 
 fs.writeFileSync('./data/map.geojson', JSON.stringify(mapData));
 
@@ -116,3 +116,5 @@ var bboxes = {};
 for (var b in districtBboxes) { bboxes[b] = districtBboxes[b] };
 for (var b in stateBboxes) { bboxes[b] = stateBboxes[b] };
 fs.writeFileSync('./example/bboxes.js', 'var bboxes = ' + JSON.stringify(bboxes, null, 2));
+
+console.log('finished processing, ready for tiling');
