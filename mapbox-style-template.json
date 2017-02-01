@@ -91,7 +91,7 @@
     "pitch": 0,
     "sources": {
         "composite": {
-            "url": "mapbox://mapbox.mapbox-streets-v7,USER.cd-114-2015",
+            "url": "mapbox://mapbox.mapbox-streets-v7,USER.cd-115-2016",
             "type": "vector"
         }
     },

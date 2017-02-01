@@ -55,18 +55,18 @@ export MAPBOX_WRITE_SCOPE_ACCESS_TOKEN=<your mapbox write scope access token>
 mkdir data
 
 # dowload Census boundaries data, unzip the data, and convert it to GeoJSON
-wget -P data ftp://ftp2.census.gov/geo/tiger/TIGER2015/CD/tl_2015_us_cd114.zip
-unzip data/tl_2015_us_cd114.zip -d ./data/
-ogr2ogr -f GeoJSON -t_srs crs:84 data/congressional_districts.geojson data/tl_2015_us_cd114.shp
+wget -P data ftp://ftp2.census.gov/geo/tiger/TIGER2016/CD/tl_2016_us_cd115.zip
+unzip data/tl_2016_us_cd115.zip -d ./data/
+ogr2ogr -f GeoJSON -t_srs crs:84 data/congressional_districts.geojson data/tl_2016_us_cd115.shp
 
 # run processing on data
 node process.js data/congressional_districts.geojson
 
 # create Mapbox vector tiles from data
-tippecanoe -o data/cd-114-2015.mbtiles -f -z 12 -Z 0 -B 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
+tippecanoe -o data/cd-115-2016.mbtiles -f -z 12 -Z 0 -B 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
 
 # upload map data to Mapbox.com
-node upload.js data/cd-114-2015.mbtiles
+node upload.js data/cd-115-2016.mbtiles
 
 # modify mapbox-style-template.json to use your Mapbox account and save as data/mapbox-style.json
 sed s/'USER'/"$MAPBOX_USERNAME"/g mapbox-style-template.json > data/mapbox-style.json
