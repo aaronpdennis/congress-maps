@@ -156,7 +156,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
     var baseStyle = map.getStyle()
 
     // Add zoom and rotation controls to the map
-    map.addControl(new mapboxgl.Navigation({ position: 'bottom-left' }));
+    map.addControl(new mapboxgl.NavigationControl());
 
     // Disable using touch gestures for map rotation
     map.touchZoomRotate.disableRotation();
