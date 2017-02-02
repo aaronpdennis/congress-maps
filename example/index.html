@@ -56,12 +56,13 @@
       <option value=""></option>
     </select>
   </div>
-  <div class="selector">
+<!--  <div class="selector">
     District:
     <select id='district'>
       <option value=''></option>
     </select>
   </div>
+-->
 </div>
 
 <!-- Load in some useful data about the states -->
@@ -72,12 +73,12 @@
 
 //** MODIFY THIS SECTION
 // Specify YOUR Mapbox default access token
-var accessToken = 'pk.eyJ1IjoiYWFyb25kZW5uaXMiLCJhIjoiem5LLURoYyJ9.T3tswGTI5ve8_wE-a02cMw';
+var accessToken = 'pk.eyJ1IjoibWlrZWxtYXJvbiIsImEiOiJjaWZlY25lZGQ2cTJjc2trbmdiZDdjYjllIn0.Wx1n0X7aeCQyDTnK6_mrGw';
 
 //** MODIFY THIS SECTION
 // Specify YOUR uploaded Mapbox Studio style URL
-var styleURL = 'mapbox://styles/aarondennis/cioafmhk70047adnmt3gz2kd0';
-var mapId = 'aarondennis.cd-114-2015'; // used by the click handler only
+var styleURL = 'mapbox://styles/mikelmaron/ciynm3esc008q2sp9f7jdawnw';
+var mapId = 'mikelmaron.cd-114-2015'; // used by the click handler only
 
 
 // Use GeoViewport and the window size to determine and appropriate center and zoom for the continental US
@@ -285,7 +286,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
           });
         if (features.length > 0)
           // The feature properties come from the original GeoJSON uploaded to Mapbox.
-          district = features[0].properties;
+          district = features[0];
 
       } else {
         // Use the Mapbox tilequery API instead.
@@ -306,7 +307,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
               // (whose geometry is a Polygon) represending the boundaries of a
               // congressional district. Its properties come from the original
               // GeoJSON uploaded to Mapbox.
-              district = resp.features[0].properties;
+              district = resp.features[0];
           }
         });
       }
@@ -319,10 +320,20 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         // number (00 for at-large districts). title_long and title_short
         // have strings useful for display (e.g. "VA 8" and "Virginia’s 8th
         // Congressional District", respectively).
-        alert("That's " + district.state + "-" + district.number + ", i.e." + district.title_long + ".");
+        var msg;
+        if (district.properties.location) {
+          msg = '<h3>' + district.properties.date + " " + district.properties.time + '</h3><p>' + district.properties.meeting_type + '<br/>' + district.properties.location + '<br/>' + district.properties.address + '</p>';
+        } else {
+          msg = '<h3>No upcoming events</h3>';
+        }
+        var popup = new mapboxgl.Popup({ offset: [0, -15] })
+         .setLngLat(e.lngLat)
+         .setHTML(msg)
+         .addTo(map);
+        //alert("That's " + district.state + "-" + district.number + ", i.e." + district.title_long + ".");
 
       } else {
-        alert("You clicked on a location that is not within a U.S. congressional district.")
+        //alert("You clicked on a location that is not within a U.S. congressional district.")
       }
     })
 

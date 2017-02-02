@@ -12,6 +12,7 @@
     "aws-sdk": "^2.2.45",
     "five-color-map": "^1.0.3",
     "mapbox": "^1.0.0-beta",
-    "turf": "^2.0.2"
+    "turf": "^2.0.2",
+    "csvtojson": "^1.1.1"
   }
 }
