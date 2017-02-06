@@ -137,6 +137,9 @@ $('#district').change(function() {
   window.location.hash = newHash;
 });
 
+var townhallproject = {};
+var states = {};
+
 // Checks for support of Mapbox GL. Works with most modern browsers.
 if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
@@ -160,6 +163,15 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
     // Disable using touch gestures for map rotation
     map.touchZoomRotate.disableRotation();
+
+    // load townhallproject.json
+    $.getJSON( "../data/townhallproject.json", function( data ) {
+      townhallproject = data;
+    });
+
+    $.getJSON( "../states.json", function( data ) {
+      states = data;
+    });
 
     // Given a state postal abbreviation and a US Census district number, focus the map on that area
     function focusMap(stateAbbr, districtCode) {
@@ -320,10 +332,43 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         // number (00 for at-large districts). title_long and title_short
         // have strings useful for display (e.g. "VA 8" and "Virginia’s 8th
         // Congressional District", respectively).
+
+        var state_name;
+        states.map(function(n,i) {
+          if (district.properties.state == n['USPS']) {
+            state_name = n['Name'];
+          }
+        });
+
+        //find the events and add to the metadata
+        var meeting_type;
+        var date;
+        var time;
+        var location;
+        var address;
+        var notes;
+        var member;
+        var district;
+        var msg = "";
+        townhallproject.map(function(n,i) {
+          //FIXME only gathers 1 event
+          if (((district.properties.state + '-' + parseInt(district.properties.number)) == n['District']) || (state_name == n['CState'])) {
+            member = n['Member'];
+            d = n['District'];
+            meeting_type = n['Meeting Type'];
+            date = n['Date'];
+            time = n['Time'];
+            location = n['Location'];
+            address = n['Street Address'] + ", " + n['City'] + ", " + n['State'] + ", " + n['Zip'];
+            notes = n['Notes'];
+
+            msg = msg +  '<h3>' + date + " " + time + '</h3><p><b>' + member + ' ' + d + '</b><br/>' + meeting_type + '<br/>' + location + '<br/>' + address + '</p>';
+
+          }
+        });
+
         var msg;
-        if (district.properties.location) {
-          msg = '<h3>' + district.properties.date + " " + district.properties.time + '</h3><p>' + district.properties.meeting_type + '<br/>' + district.properties.location + '<br/>' + district.properties.address + '</p>';
-        } else {
+        if (msg == "") {
           msg = '<h3>No upcoming events</h3>';
         }
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
