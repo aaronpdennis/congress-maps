@@ -352,7 +352,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         var msg = "";
         townhallproject.map(function(n,i) {
           //FIXME only gathers 1 event
-          if (((district.properties.state + '-' + parseInt(district.properties.number)) == n['District']) || (state_name == n['CState'])) {
+          if (((district.properties.state + '-' + parseInt(district.properties.number)) == n['District']) || (state_name == n['CState'] && n['District'] == 'Senate')) {
             member = n['Member'];
             d = n['District'];
             meeting_type = n['Meeting Type'];
