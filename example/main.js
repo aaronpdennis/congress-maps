@@ -7,16 +7,24 @@ var accessToken = 'pk.eyJ1IjoibWlrZWxtYXJvbiIsImEiOiJjaWZlY25lZGQ2cTJjc2trbmdiZD
 var styleURL = 'mapbox://styles/mikelmaron/ciynm3esc008q2sp9f7jdawnw';
 var mapId = 'mikelmaron.cd-114-2015'; // used by the click handler only
 
-// HTML Element Queries. Also used for click events on the map.
+//
+// HTML Element Queries. Also used for click events on the map
+//
 var exit = document.querySelector('.exit-select');
 var eventList = document.querySelector('ul');
 var selectionHeader = document.querySelector('.selected-container');
 var nullMessageSelector = document.querySelector('.null-selection');
 
+//
+// Welcome & Null messages for the sidebar.
+//
 var welcomeMessage = '<p>This would be a great place for introduction content. What is the Townhall project? How do contributions help?</p><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="1" fill="red" /></svg><p>Good place for a little graphic that nudges people to explore the map.</p><p>If you\'re aware of any meetings we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
 var nullMessage = '<p>No known upcoming events</p><p>If you\'re aware of any we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
+// 
+// Exit interaction for the 'x' so users can return to the initial about message
+//
 exit.addEventListener('click', function(){
   eventList.innerHTML = "";
   nullMessageSelector.innerHTML = welcomeMessage;
@@ -319,10 +327,10 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         });
 
         var msg;
-        // if (msg == "") {
-        //   msg = '';
-        // }
 
+        //
+        // Return null message if there's no meetings for that area
+        //
         if (msg == "") {
           nullMessageSelector.className = 'null-selection'
           nullMessageSelector.innerHTML = nullMessage
@@ -330,10 +338,15 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
           nullMessageSelector.className = 'null-selection hidden'
         }
 
-        // clear current contents
+        //
+        // Clear current contents
+        //
         eventList.innerHTML = "";
         exit.className = 'exit-select'
 
+        //
+        // Update sidebar content
+        //
         if (state) {
           selectionHeader.className = 'selected-container'
           selectionHeader.innerHTML = state_name + (districtNum !== 'Senate' ? ', district ' + districtNum : '');
@@ -341,8 +354,12 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
           selectionHeader.className = 'selected-container hidden'
           selectionHeader.innerHTML = "";
         }
-        // add in new events
+        // and finally add in the event contents
         eventList.innerHTML = msg;
+
+        //
+        // Old popup code
+        //
 
         // var popup = new mapboxgl.Popup({ offset: [0, -15] })
         //  .setLngLat(e.lngLat)
