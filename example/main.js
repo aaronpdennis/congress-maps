@@ -15,6 +15,10 @@ var eventList = document.querySelector('ul');
 var selectionHeader = document.querySelector('.selected-container');
 var nullMessageSelector = document.querySelector('.null-selection');
 
+var readmeSelector;
+var moretextSelector;
+var districtCounter = 0
+
 //
 // Welcome & Null messages for the sidebar.
 //
@@ -163,7 +167,6 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         map.setFilter('districts_' + i, layerFilter);
         map.setFilter('districts_' + i + '_boundary', layerFilter);
         map.setFilter('districts_' + i + '_label', layerFilter);
-
       }
 
       // Create a generic filter for the focus state and district number that does not include color filtering
@@ -322,7 +325,19 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
             state = n['State'];
             districtNum = n['District'];
 
-            msg = msg + '<li class="event"><div class="event-date">' + date + ' ' + time + '</div><div class="event-person">' + member + ', '  + d +'</div><div class="event-type">' + (meeting_type ? '<dt>format </dt><dd>' + meeting_type + '</dd>' : '') + '</div><div class="event-location"><dt>location</dt><dd><p>' + location + '</p><p>' + address + '</p></dd></div></li>';
+            //
+            // Shorten Note text, hide behind a 'read more' option
+            //
+            if (notes.length > 64) {
+              noteFirst = notes.substring(0, 64)
+              noteSecond = notes.substring(64)
+
+              districtCounter++
+
+              notes = '<span class="event-notes__first"></span>' + noteFirst + '<span class="event-notes__elp event-notes__elp' + districtCounter + '">...</span><a class="event-readmore event-readmore__' + districtCounter + '">read more</a><span class="event-notes__second event-notes__second'+ districtCounter + ' hidden">' + noteSecond + '</span>'
+            }
+
+            msg = msg + '<li class="event"><div class="event-date">' + date + ' ' + time + '</div><div class="event-person">' + member + ', '  + d +'</div><div class="event-type">' + (meeting_type ? '<dt>format </dt><dd>' + meeting_type + '</dd>' : '') + '</div><div class="event-location"><dt>location</dt><dd><p>' + location + '</p><p>' + address + '</p></dd></div>' + (notes ? '<div class="event-notes"><dt>Details</dt><dd>' + notes + '</dd>' : '') + '</div></li>';
           }
         });
 
@@ -356,6 +371,37 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         }
         // and finally add in the event contents
         eventList.innerHTML = msg;
+
+        // if there are read mores, set those up
+        if(document.querySelector('.event-readmore')) {
+          for (var i = districtCounter; i >= 1; i--) {
+            let item = i
+
+            thisReadme = '.event-readmore__' + item
+            readmeSelector = document.querySelector(thisReadme)
+
+            readmeSelector.addEventListener('click', function(){
+              thisReadme = '.event-readmore__' + item
+              thisMore = '.event-notes__second' + item
+              thisEllpise = '.event-notes__elp' + item
+
+              readmeSelector = document.querySelector(thisReadme)
+              moretextSelector = document.querySelector(thisMore)
+              ellipseSelector = document.querySelector(thisEllpise)
+
+              console.log(item)
+              ellipseSelector.className = 'hidden'
+              readmeSelector.className = 'hidden'
+              moretextSelector.className = 'event-notes__second '
+            })
+          }
+        }
+
+        // readmeSelector = document.querySelector('event-readmore')
+        // moretextSelector = document.querySelector('event-notes__second')
+
+        // reset the ticker for district #
+        districtCounter = 0
 
         //
         // Old popup code

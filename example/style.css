@@ -88,6 +88,35 @@ h2 {
 
 }
 
+.event-notes {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  transition: all 2s;
+}
+
+.event-notes__first {
+}
+
+.event-notes__elp {
+  opacity: 0.5;
+}
+
+.event-readmore {
+  display: block;
+  width: 76px;
+  font-style: italic;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.event-readmore:hover {
+  opacity: 0.25;
+}
+
+.event-notes__second {
+}
+
 dt {
   font-size: 0.8rem;
   text-transform: uppercase;
