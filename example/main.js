@@ -26,7 +26,7 @@ var welcomeMessage = '<p>This would be a great place for introduction content. W
 
 var nullMessage = '<p>No known upcoming events</p><p>If you\'re aware of any we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
-// 
+//
 // Exit interaction for the 'x' so users can return to the initial about message
 //
 exit.addEventListener('click', function(){
@@ -39,8 +39,8 @@ exit.addEventListener('click', function(){
 });
 
 // Use GeoViewport and the window size to determine and appropriate center and zoom for the continental US
-// var continentalView = function(w,h) { return geoViewport.viewport([-128.8, 23.6, -65.4, 50.2], [w, h]); }
-// var continental = continentalView(window.innerWidth/2, window.innerHeight/2);
+var continentalView = function(w,h) { return geoViewport.viewport([-128.8, 23.6, -65.4, 50.2], [w, h]); }
+var continental = continentalView(window.innerWidth/2, window.innerHeight/2);
 
 //** INTERACTIVE MENU
 // Create an object to list all the possible districts for a given state or territory
@@ -183,8 +183,8 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
           districtAbbr = districtCode ? districtCode : '';
 
       // Determine the best center and zoom level for the new map focus and then go there
-      // var view = geoViewport.viewport(bboxes[stateAbbr + districtAbbr], [width/2, height/2]);
-      // map.jumpTo(view);
+      var view = geoViewport.viewport(bboxes[stateAbbr + districtAbbr], [width/2, height/2]);
+      map.jumpTo(view);
 
     }
 
@@ -216,7 +216,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
           // Reset the map style to its original style object and jump back to the continental view
           map.setStyle(baseStyle);
-          // map.jumpTo(continentalView(window.innerWidth/2, window.innerHeight/2));
+          map.jumpTo(continentalView(window.innerWidth/2, window.innerHeight/2));
 
           //** INTERACTIVE MENU
           // Empty the list of districts because no state is selected
@@ -437,8 +437,8 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         width = window.innerWidth,
         districtAbbr = districtCode ? districtCode : '';
 
-    // var view = geoViewport.viewport(bboxes[stateAbbr + districtAbbr], [width/2, height/2]);
-    // map.setView([view.center[1], view.center[0]], view.zoom + 1);
+    var view = geoViewport.viewport(bboxes[stateAbbr + districtAbbr], [width/2, height/2]);
+    map.setView([view.center[1], view.center[0]], view.zoom + 1);
 
   }
 
