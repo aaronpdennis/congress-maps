@@ -4,10 +4,6 @@ var fs = require('fs'),
 
 var stateCodes = JSON.parse(fs.readFileSync('states.json', 'utf8'));
 
-//load events
-
-var events = JSON.parse(fs.readFileSync('data/events.json', 'utf8'));
-
 // load the congressional district data
 
 var geojson = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
@@ -16,6 +12,7 @@ var geojson = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 // a state, usually over water, that is not included in any
 // congressional district --- filter these out
 
+console.log("filtering...")
 var filtered = geojson.features.filter(function(d) {
   return d.properties['CD115FP'] !== 'ZZ' ? true : false;
 });
@@ -56,7 +53,7 @@ colored.features.map(function(d) {
   // districts), "01", "02", ...). The Census data's CD115FP field
   // holds it in this format. Except for the island territories
   // which have "98", but are just at-large and should be "00".
-  var number = d.properties['CD115FP'];
+  var number = d.properties['CD114FP'];
   if (number == "98")
     number = "00";
 
@@ -71,60 +68,40 @@ colored.features.map(function(d) {
     }
   });
 
-  //find the events and add to the metadata
-  var meeting_type;
-  var date;
-  var time;
-  var location;
-  var address;
-  var notes;
-  events.map(function(n,i) {
-    //FIXME only gathers 1 event
-    if ((state + '-' + parseInt(number)) == n['District']) {
-      meeting_type = n['Meeting Type'];
-      date = n['Date'];
-      time = n['Time'];
-      location = n['Location'];
-      address = n['Street Address'] + ", " + n['City'] + ", " + n['State'] + ", " + n['Zip'];
-      notes = n['Notes'];
-    } 
-  }); 
-
   // add the district number and USPS state code to the metadata
   d.properties.number = number;
   d.properties.state = state;
-
-  // add the event to the metadata
-  d.properties.meeting_type = meeting_type;
-  d.properties.date = date;
-  d.properties.time = time;
-  d.properties.location = location;
-  d.properties.address = address;
-  d.properties.notes = notes;
 
   // add metadata to the label
   pt.properties = JSON.parse(JSON.stringify(d.properties)); // copy hack to avoid mutability issues
   pt.properties.title_short = state + ' ' + (number == "00" ? "At Large" : parseInt(number));
   pt.properties.title_long = state_name + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
 
+  console.log(pt.properties.title_short)
+
   // add a type property to distinguish between labels and boundaries
   pt.properties.group = 'label';
   d.properties.group = 'boundary';
 
   // add both the label point and congressional district to the mapData feature collection
-  mapData.features.push(pt);
-  mapData.features.push(d);
+  if (number != 'ZZ'){
+    console.log(number)
+    mapData.features.push(pt);
+    mapData.features.push(d);    
+  }
 
   // collect bounding boxes for the districts
   var bounds = turf.extent(d);
   districtBboxes[state + number] = bounds;
 
   // and for the states
-  if (stateBboxes[state]) {
-    stateBboxes[state].features.push(turf.bboxPolygon(bounds));
-  } else {
-    stateBboxes[state] = { type: 'FeatureCollection', features: [] };
-    stateBboxes[state].features.push(turf.bboxPolygon(bounds));
+  if (number != 'ZZ') {
+    if (stateBboxes[state]) {
+      stateBboxes[state].features.push(turf.bboxPolygon(bounds));
+    } else {
+      stateBboxes[state] = { type: 'FeatureCollection', features: [] };
+      stateBboxes[state].features.push(turf.bboxPolygon(bounds));
+    }
   }
 });
 
