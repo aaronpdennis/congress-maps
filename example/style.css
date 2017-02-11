@@ -4,10 +4,6 @@ body {
   color: #333;
 }
 
-#app {
-  display: table;
-}
-
 #map {
   position: absolute;
   top:0; 
@@ -19,7 +15,6 @@ body {
 /* SIDE MENU */
 #menu {
   position:absolute;
-  display: table-cell;
   top: 0;
   left: 0;
   background-color: white;
@@ -167,4 +162,28 @@ dd p {
 
 .hidden {
   display: none;
+}
+
+.usa-icon {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  background-image: url('graphics/usa.svg');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+  #map {
+    top: 24rem;
+    left: 0;
+    width: 100%
+  }
+
+  #menu {
+    border-right: 0;
+    width: 100%;
+    height: 24rem;
+  }
 }
