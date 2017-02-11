@@ -1,15 +1,30 @@
-body { margin:0; padding:0; }
-#map { position:absolute; top:0; bottom:0; width:100%; }
+body { 
+  margin:0;
+  padding:0;
+  color: #333;
+}
 
-/* INTERACTIVE MENU */
+#app {
+  display: table;
+}
+
+#map {
+  position: absolute;
+  top:0; 
+  bottom:0;
+  left: 26rem;
+  width: calc(100% - 26rem);
+}
+
+/* SIDE MENU */
 #menu {
   position:absolute;
+  display: table-cell;
   top: 0;
   left: 0;
   background-color: white;
   width: 26rem;
   height: 100%;
-  color: #222;
   font-family: 'Open Sans', Arial, sans-serif;
   border-right: 1px solid #aaa;
   box-shadow: 0px 0px 14px #aaa;   

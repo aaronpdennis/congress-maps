@@ -24,51 +24,57 @@
 </head>
 <body>
 
-  <!-- Map Container -->
-  <div id='map'></div>
+  <div id='app'>
+    <!-- Map Container -->
+    <div id='map'></div>
 
-  <!-- INTERACTIVE MENU -->
-  <div id='menu'>
-    <header>
-      <h2>The Townhall Project</h2>
-      <p>State:
-      <select id='state'>
-        <option value=""></option>
-      </select></p>
-    </header>
-    <section>
-      <div class="selected-container hidden">
-        <!-- Populated via Javascript -->
-      </div>
-
-      <div class="exit-select hidden">✕</div>
-
-      <div class="null-case">
-        <div class="null-selection">
-          <p>This would be a great place for introduction content. What is the Townhall project? How do contributions help?</p>
-
-          <svg height="100" width="100">
-              <circle cx="50" cy="50" r="40" stroke="black" stroke-width="1" fill="red" />
-          </svg>
-
-          <p>Good place for a little graphic that nudges people to explore the map.</p>
-
-          <p>If you're aware of any meetings we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>
+    <!-- INTERACTIVE MENU -->
+    <div id='menu'>
+      <header>
+        <h2>The Townhall Project</h2>
+        <p>State:
+        <select id='state'>
+          <option value=""></option>
+        </select></p>
+        <p>District:
+        <select id='district'>
+          <option value=""></value>
+        </select></p>
+      </header>
+      <section>
+        <div class="selected-container hidden">
+          <!-- Populated via Javascript -->
         </div>
-      </div>
 
-      <ul class="event-container">
-      </ul>
-    </section>
-    <footer class="footer">
-    </footer>
+        <div class="exit-select hidden">✕</div>
+
+        <div class="null-case">
+          <div class="null-selection">
+            <p>This would be a great place for introduction content. What is the Townhall project? How do contributions help?</p>
+
+            <svg height="100" width="100">
+                <circle cx="50" cy="50" r="40" stroke="black" stroke-width="1" fill="red" />
+            </svg>
+
+            <p>Good place for a little graphic that nudges people to explore the map.</p>
+
+            <p>If you're aware of any meetings we missed, feel free to <a href="https://docs.google.com/spreadsheets/d/1yq1NT9DZ2z3B8ixhid894e77u9rN5XIgOwWtTW72IYA/htmlview?sle=true">contact us.</a>
+          </div>
+        </div>
+
+        <ul class="event-container">
+        </ul>
+      </section>
+      <footer class="footer">
+      </footer>
+    </div>
+
+    <!-- Load in some useful data about the states -->
+    <script src='./states.js'></script>
+    <script src='./bboxes.js'></script>
+
+    <script src='./main.js'></script>
   </div>
-
-  <!-- Load in some useful data about the states -->
-  <script src='./states.js'></script>
-  <script src='./bboxes.js'></script>
-
-  <script src='./main.js'></script>
 
   </body>
 </html>

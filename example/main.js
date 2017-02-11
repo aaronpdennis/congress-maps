@@ -1,15 +1,11 @@
-//** MODIFY THIS SECTION
-// Specify YOUR Mapbox default access token
-var accessToken = 'pk.eyJ1IjoibWlrZWxtYXJvbiIsImEiOiJjaWZlY25lZGQ2cTJjc2trbmdiZDdjYjllIn0.Wx1n0X7aeCQyDTnK6_mrGw';
+// Specify Mapbox default access token
+var accessToken = 'pk.eyJ1IjoiZG1vcmlhcnR5IiwiYSI6Ikd3T29EOWMifQ.-DKJ4ernht84AZmc6Bk51Q';
 
-//** MODIFY THIS SECTION
-// Specify YOUR uploaded Mapbox Studio style URL
-var styleURL = 'mapbox://styles/mikelmaron/ciynm3esc008q2sp9f7jdawnw';
-var mapId = 'mikelmaron.cd-114-2015'; // used by the click handler only
+// Specify uploaded Mapbox Studio style URL
+var styleURL = 'mapbox://styles/dmoriarty/ciyyzloid003n2sq88m2ftdm3';
+var mapId = 'dmoriarty.cd-114-2015'; // used by the click handler only
 
-//
 // HTML Element Queries. Also used for click events on the map
-//
 var exit = document.querySelector('.exit-select');
 var eventList = document.querySelector('ul');
 var selectionHeader = document.querySelector('.selected-container');
@@ -19,42 +15,65 @@ var readmeSelector;
 var moretextSelector;
 var districtCounter = 0
 
+// - - - - - - - - - - - -
 //
+//  MENU CONTENT
+//
+// - - - - - - - - - - - -
+
 // Welcome & Null messages for the sidebar.
-//
 var welcomeMessage = '<p>This would be a great place for introduction content. What is the Townhall project? How do contributions help?</p><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="1" fill="red" /></svg><p>Good place for a little graphic that nudges people to explore the map.</p><p>If you\'re aware of any meetings we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
 var nullMessage = '<p>No known upcoming events</p><p>If you\'re aware of any we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
+// - - - - - - - - - - - -
 //
-// Exit interaction for the 'x' so users can return to the initial about message
+//  GEOVIEWPORT VARIABLES
 //
-exit.addEventListener('click', function(){
-  eventList.innerHTML = "";
-  nullMessageSelector.innerHTML = welcomeMessage;
-  nullMessageSelector.className = 'null-selection'
-  selectionHeader.className = 'selected-container hidden';
-  exit.className = 'exit-select hidden';
-  selectionHeader.innerHTML = "";
-});
+// - - - - - - - - - - - -
 
 // Use GeoViewport and the window size to determine and appropriate center and zoom for the continental US
 var continentalView = function(w,h) { return geoViewport.viewport([-128.8, 23.6, -65.4, 50.2], [w, h]); }
 var continental = continentalView(window.innerWidth/2, window.innerHeight/2);
 
-//** INTERACTIVE MENU
+// - - - - - - - - - - - -
+//
+//  MENU COMPONENTS
+//
+// - - - - - - - - - - - -
+
+// Exit interaction for the 'x' so users can return to the initial about message
+exit.addEventListener('click', function(){
+  
+  // Rest event list  
+  eventList.innerHTML = "";
+
+  // Replace sidebar content
+  nullMessageSelector.innerHTML = welcomeMessage;
+  nullMessageSelector.className = 'null-selection'
+
+  // Hide header
+  selectionHeader.className = 'selected-container hidden';
+  selectionHeader.innerHTML = "";
+
+  // Hide Exit Handle
+  exit.className = 'exit-select hidden';
+
+  // Reset Map Selections
+  map.setLayoutProperty('selected-fill', 'visibility', 'none');
+  map.setLayoutProperty('selected-border', 'visibility', 'none');
+});
+
 // Create an object to list all the possible districts for a given state or territory
 var stateList = states.map(function(d) { return { name: d.Name, abbr: d.USPS }; });
 var possibleDistricts = {};
 stateList.map(function(d) { possibleDistricts[d.abbr] = [] });
 
-//** INTERACTIVE MENU
 // For each state, add the numbers of its districts
 for (d in bboxes) {
   possibleDistricts[d.slice(0,2)].push(d.slice(2,d.length));
 }
 
-//** INTERACTIVE MENU
 // Sort in ascending order each state's list of districts
 for (d in possibleDistricts) {
   possibleDistricts[d].sort(function(a,b) {
@@ -64,7 +83,6 @@ for (d in possibleDistricts) {
   if (possibleDistricts[d].length === 2) possibleDistricts[d] = ['00'];
 }
 
-//** INTERACTIVE MENU
 // Add an option to the interactive State menu for each state
 stateList.map(function(d) {
   $('#state')
@@ -72,7 +90,6 @@ stateList.map(function(d) {
       .attr('value', d.abbr).text(d.name));
 })
 
-//** INTERACTIVE MENU
 // Create an event listener that responds to the selection of a state from the menu
 $('#state').change(function() {
   if (this.value === '') { window.location.hash = '#' }
@@ -83,7 +100,6 @@ $('#state').change(function() {
   }
 });
 
-//** INTERACTIVE MENU
 // Create an event listener that responds to the selection of a district from the menu
 $('#district').change(function() {
   var hash = window.location.hash;
@@ -97,6 +113,12 @@ $('#district').change(function() {
 var townhallproject = {};
 var states = {};
 
+// - - - - - - - - - - - -
+//
+//  INTERACTIVE MAP
+//
+// - - - - - - - - - - - -
+
 // Checks for support of Mapbox GL. Works with most modern browsers.
 if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
@@ -105,8 +127,8 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
   var map = new mapboxgl.Map({
       container: 'map',
       style: styleURL,
-      center: [-115, 39],
-      zoom: 3
+      center: continental.center,
+      zoom: continental.zoom
   });
 
   // Once map is fully loaded...
@@ -121,14 +143,74 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
     // Disable using touch gestures for map rotation
     map.touchZoomRotate.disableRotation();
 
-    // load townhallproject.json
-    $.getJSON( "../data/townhallproject.json", function( data ) {
-      townhallproject = data;
-    });
-
     $.getJSON( "../states.json", function( data ) {
       states = data;
     });
+
+    // load townhallproject.json
+    $.getJSON( "../data/townhallproject.json", function( data ) {
+
+      filterFromData(data)
+      townhallproject = data;
+    });
+
+    function filterFromData(data, thisState, thisDistrict) {
+      // Set up filter for which districts actually have meetings
+      var filterInitial = ['any']
+      var districtNum = ''
+      var stateNum = ''
+      var filterGeoID = ''
+
+      if(thisState) {
+        console.log(thisState)
+      }
+
+      if(thisDistrict) {
+        console.log(thisDistrict)
+      }
+
+      // For each event...
+      for (var i = data.length - 1; i >= 0; i--) {
+        sAbbr = data[i].State
+
+        // Map state abbreviations to the FIPS code
+        states.map(function(n,i) {
+          if (sAbbr == n['USPS']) {
+            stateNum = n['FIPS']
+          }
+        });
+
+        // Start by checking if it's a Senator or District 
+        if (data[i].District === 'Senate') {
+
+          filterInitial.push(['==', 'state', sAbbr])
+
+        // Now look for district congressmen meeting
+        } else if (sAbbr) {
+          districtNum = data[i].District.substring(3)
+          // Add 0 to the start so it matches the GEOID
+
+          if (districtNum.length === 1) {
+            districtNum = '0' + districtNum
+          }
+
+          if (stateNum < 10) {
+            stateNum = '0' + stateNum
+          }
+
+          filterGeoID = stateNum + districtNum
+          filterInitial.push(['==', 'GEOID', filterGeoID])
+        }
+      }
+
+      // for (var i = filterInitial.length - 1; i >= 0; i--) {
+      //   console.log(filterInitial[i])
+      // }
+
+      // Add those filters
+      map.setFilter('district_fill', filterInitial);
+      map.setFilter('district_glow', filterInitial);
+    }
 
     // Given a state postal abbreviation and a US Census district number, focus the map on that area
     function focusMap(stateAbbr, districtCode) {
@@ -143,31 +225,24 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
       });
       if (districtCode) $('#district').val(districtCode);
 
-      // For each district color layer in the map, apply some filters...
-      for (var i = 1; i <= 5; i++) {
+      // - - - - - - - - - - - -
+      //
+      //  FILTERS FOR DISTRICTS
+      //
+      // - - - - - - - - - - - -
+      filterFromData(townhallproject, stateAbbr, districtCode)
 
-        // The filter that filters based on color is the one we want to preserve
-        // If there are already multiple filters applied, it will be the last one
-        var exisitingFilter = map.getFilter('districts_' + i);
-        if (exisitingFilter[0] === 'all') {
-          exisitingFilter = exisitingFilter[exisitingFilter.length - 1];
-        }
+      var filter = ['all'];
 
-        // Create a fresh filter to be applied
-        var filter = ['all'];
+      // Add filters for the focus state and district number
 
-        // Add filters for the focus state and district number
-        if (stateAbbr) filter.push(['==', 'state', stateAbbr]);
-        if (districtCode) filter.push(['==', 'number', districtCode]);
+      if (stateAbbr) filter.push(['==', 'state', stateAbbr]);
+      if (districtCode) filter.push(['==', 'number', districtCode]);
 
-        // Add the existing color filter
-        var layerFilter = filter.concat([exisitingFilter]);
-
-        // Set new layer filter for each district layer in the map
-        map.setFilter('districts_' + i, layerFilter);
-        map.setFilter('districts_' + i + '_boundary', layerFilter);
-        map.setFilter('districts_' + i + '_label', layerFilter);
-      }
+      // Set new layer filter for each district layer in the map
+      map.setFilter('district_fill', filter);
+      map.setFilter('district_glow', filter);
+      map.setFilter('district_label', filter);
 
       // Create a generic filter for the focus state and district number that does not include color filtering
       var boundaryFilter = ['all'];
@@ -175,7 +250,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
       if (districtCode) boundaryFilter.push(['==', 'number', districtCode]);
 
       // Apply the generic filter to the boundary lines
-      map.setFilter('districts_boundary_line', boundaryFilter);
+      map.setFilter('district_border', boundaryFilter);
 
       // Determine current window height and width and whether the bbox should focus on a single district
       var height = window.innerHeight,
@@ -236,8 +311,14 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
     initial = false;
 
     // A click handler that shows what was under the cursor where
-    // the user clicked.
+
+    // - - - - - - - - - - - -
+    //
+    //  FEATURE INTERACTION
+    //
+    // - - - - - - - - - - - -
     map.on("click", function(e) {
+
       var district = null;
 
       if (1) {
@@ -250,7 +331,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         var features = map.queryRenderedFeatures(
           e.point,
           {
-            layers: ["districts_1", "districts_2", "districts_3", "districts_4", "districts_5"]
+            layers: ["district_fill"]
           });
         if (features.length > 0)
           // The feature properties come from the original GeoJSON uploaded to Mapbox.
@@ -278,6 +359,30 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
               district = resp.features[0];
           }
         });
+      }
+
+      // Check for visibility of the 'selected' view
+      var visibility = map.getLayoutProperty('selected-fill', 'visibility');
+
+      if (district) {
+        // If there are no selections, turn dem layers on
+        if (visibility === 'none') {
+          map.setLayoutProperty('selected-fill', 'visibility', 'visible');
+          map.setLayoutProperty('selected-border', 'visibility', 'visible');
+        }
+
+        // Filter for which district has been selected
+        var filter = ['all', ['==', 'state', district.properties.state], ['==', 'CD114FP', district.properties.CD114FP]];
+
+        // Set that layer filter to the selected
+        map.setFilter('selected-fill', filter);
+        map.setFilter('selected-border', filter);        
+      } else {
+        // If there are no selections, turn dem layers off
+        if (visibility === 'visible') {
+          map.setLayoutProperty('selected-fill', 'visibility', 'none');
+          map.setLayoutProperty('selected-border', 'visibility', 'none');
+        }
       }
 
       // Ok now we have the district either from the client-side query or the
@@ -308,8 +413,9 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         var state;
         var msg = "";
         townhallproject.map(function(n,i) {
+
           //FIXME only gathers 1 event
-          if (((district.properties.state + '-' + parseInt(district.properties.number)) == n['District']) || (state_name == n['CState'] && n['District'] == 'Senate')) {
+          if (((district.properties.state + '-' + parseInt(district.properties.number)) == n['District']) || (district.properties.state == n['State'] && n['District'] == 'Senate')) {
 
             member = n['Member'];
             d = n['District'];
@@ -359,9 +465,12 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         eventList.innerHTML = "";
         exit.className = 'exit-select'
 
+        // - - - - - - - - - - - -
         //
-        // Update sidebar content
+        //  UPDATE MENU CONTENT
         //
+        // - - - - - - - - - - - -
+
         if (state) {
           selectionHeader.className = 'selected-container'
           selectionHeader.innerHTML = state_name + (districtNum !== 'Senate' ? ', district ' + districtNum : '');
@@ -389,7 +498,6 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
               moretextSelector = document.querySelector(thisMore)
               ellipseSelector = document.querySelector(thisEllpise)
 
-              console.log(item)
               ellipseSelector.className = 'hidden'
               readmeSelector.className = 'hidden'
               moretextSelector.className = 'event-notes__second '
