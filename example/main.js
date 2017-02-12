@@ -22,7 +22,7 @@ var districtCounter = 0
 // - - - - - - - - - - - -
 
 // Welcome & Null messages for the sidebar.
-var welcomeMessage = '<p>This would be a great place for introduction content. What is the Townhall project? How do contributions help?</p><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="1" fill="red" /></svg><p>Good place for a little graphic that nudges people to explore the map.</p><p>If you\'re aware of any meetings we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
+var welcomeMessage = '<p>The Town Hall Project 2018 is an entirely volunteer-run, grassroots effort that empowers constituents across the country to have face-to-face conversations with their elected representatives.</p><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="1" fill="red" /></svg><p>Good place for a little graphic that nudges people to explore the map.</p><p>If you\'re aware of any meetings we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
 var nullMessage = '<p>No known upcoming events</p><p>If you\'re aware of any we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
@@ -413,9 +413,17 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
             state = n['State'];
             districtNum = n['District'];
 
-            //
+            // Check Note for an HTML link... still WIP
+            var regex = /(http(s?))\:\/\//gi;
+
+            if (regex.test(notes)) {
+              var addAnchors = notes.replace(/(http(s?))\:\/\//gi, '<a href="https://') + '">Event Link</a>'
+
+              console.log('there is a link here')
+              // console.log(addAnchors)              
+            }
+
             // Shorten Note text, hide behind a 'read more' option
-            //
             if (notes.length > 64) {
               noteFirst = notes.substring(0, 64)
               noteSecond = notes.substring(64)
@@ -476,13 +484,12 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
               thisMore = '.event-notes__second' + item
               thisEllpise = '.event-notes__elp' + item
 
-              readmeSelector = document.querySelector(thisReadme)
               moretextSelector = document.querySelector(thisMore)
-              ellipseSelector = document.querySelector(thisEllpise)
 
-              ellipseSelector.className = 'hidden'
-              readmeSelector.className = 'hidden'
-              moretextSelector.className = 'event-notes__second '
+              $(thisEllpise).fadeOut()
+              $(thisReadme).fadeOut('fast', function(){
+                moretextSelector.className = 'event-notes__second '                
+              })
             })
           }
         }
