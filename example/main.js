@@ -303,6 +303,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
     // - - - - - - - - - - - -
     map.on("click", function(e) {
       var district = null;
+      clearSidemenu()
 
       if (1) {
         // The map control provides a client-side-only way to determine what
