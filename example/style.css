@@ -58,7 +58,7 @@ Colors
   overflow: scroll;
 }
 
-.null-seflection p {
+.null-selection p {
   text-align: left;
 }
 
@@ -75,6 +75,14 @@ header {
 .menu-select {
   text-align: center;
   margin-top: 0.25rem;
+  font-size: 0.8.5rem;
+  color: #6496af;
+}
+
+.menu-select select {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  min-width: 200px;
 }
 
 .event-container {

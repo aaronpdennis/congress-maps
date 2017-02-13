@@ -413,25 +413,26 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
             state = n['State'];
             districtNum = n['District'];
 
-            // Check Note for an HTML link... still WIP
-            var regex = /(http(s?))\:\/\//gi;
+            // Check Note for an HTML link and add those anchor tags if so.
+            var regex = /(http(s?))\:\/\/.+/gi
 
             if (regex.test(notes)) {
-              var addAnchors = notes.replace(/(http(s?))\:\/\//gi, '<a href="https://') + '">Event Link</a>'
-
-              console.log('there is a link here')
-              // console.log(addAnchors)              
+              var regex2 = /(http(s?))\:\/\/.+/gi
+              var itsalink = regex2.exec(notes)
+              if(itsalink) {
+                var notes = notes.replace(/(http(s?))\:\/\/.+/gi, '<a target="_blank" href="') + itsalink[0] + '">Event Link</a>'
+              }
             }
 
             // Shorten Note text, hide behind a 'read more' option
-            if (notes.length > 64) {
-              noteFirst = notes.substring(0, 64)
-              noteSecond = notes.substring(64)
+            // if (notes.length > 64) {
+            //   noteFirst = notes.substring(0, 64)
+            //   noteSecond = notes.substring(64)
 
-              districtCounter++
+            //   districtCounter++
 
-              notes = '<span class="event-notes__first"></span>' + noteFirst + '<span class="event-notes__elp event-notes__elp' + districtCounter + '">...</span><a class="event-readmore event-readmore__' + districtCounter + '">read more</a><span class="event-notes__second event-notes__second'+ districtCounter + ' hidden">' + noteSecond + '</span>'
-            }
+            //   notes = '<span class="event-notes__first"></span>' + noteFirst + '<span class="event-notes__elp event-notes__elp' + districtCounter + '">...</span><a class="event-readmore event-readmore__' + districtCounter + '">read more</a><span class="event-notes__second event-notes__second'+ districtCounter + ' hidden">' + noteSecond + '</span>'
+            // }
 
             msg = msg + '<li class="event"><div class="event-date">' + date + ' ' + time + '</div><div class="event-person">' + member + ', '  + d +'</div><div class="event-type">' + (meeting_type ? '<dt>format </dt><dd>' + meeting_type + '</dd>' : '') + '</div><div class="event-location"><dt>location</dt><dd><p>' + location + '</p><p>' + address + '</p></dd></div>' + (notes ? '<div class="event-notes"><dt>Details</dt><dd>' + notes + '</dd>' : '') + '</div></li>';
           }
