@@ -55,7 +55,7 @@ Colors
   font-family: 'Open Sans', Arial, sans-serif;
   border-right: 1px solid #005b95;
   box-shadow: 0px 0px 14px #aaa;   
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .null-selection p {

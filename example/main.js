@@ -22,9 +22,11 @@ var districtCounter = 0
 // - - - - - - - - - - - -
 
 // Welcome & Null messages for the sidebar.
-var welcomeMessage = '<p>The Town Hall Project 2018 is an entirely volunteer-run, grassroots effort that empowers constituents across the country to have face-to-face conversations with their elected representatives.</p><svg height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="1" fill="red" /></svg><p>Good place for a little graphic that nudges people to explore the map.</p><p>If you\'re aware of any meetings we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
+var welcomeMessage = '<p>The Town Hall Project is an entirely volunteer-run, grassroots effort that empowers constituents across the country to have face-to-face conversations with their elected representatives.</p><p>Select a highlighted district to view when and where represenatives from that area are holding meetings.</p><img src="graphics/guide.gif" width="250px"></img><p>If you\'re aware of any events we\'ve missed, feel free to <a href="https://docs.google.com/spreadsheets/d/1yq1NT9DZ2z3B8ixhid894e77u9rN5XIgOwWtTW72IYA/htmlview?sle=true">contact us.</a>';
 
-var nullMessage = '<p>No known upcoming events</p><p>If you\'re aware of any we missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
+console.log(welcomeMessage)
+
+var nullMessage = '<p>No known upcoming events</p><p>If you\'re aware of any events we\'ve missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
 // - - - - - - - - - - - -
 //
@@ -135,12 +137,10 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
     uDiv.innerHTML = '<span class="usa-icon"></span>';
     uDiv.addEventListener('click', function(){
       clearSidemenu();
+      window.location.hash = '#'
       map.flyTo(continentalView(window.innerWidth/2, window.innerHeight/2));
     });
     document.querySelector('.mapboxgl-ctrl-group').appendChild(uDiv);
-
-    // Disable using touch gestures for map rotation
-    map.touchZoomRotate.disableRotation();
 
     $.getJSON( "../states.json", function( data ) {
       states = data;
@@ -274,8 +274,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         if (!initial) {
 
           // Reset the map style to its original style object and jump back to the continental view
-          map.setStyle(baseStyle);
-          map.jumpTo(continentalView(window.innerWidth/2, window.innerHeight/2));
+          map.flyTo(continentalView(window.innerWidth/2, window.innerHeight/2));
 
           //** INTERACTIVE MENU
           // Empty the list of districts because no state is selected
