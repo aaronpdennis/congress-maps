@@ -159,14 +159,23 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         selectableStates.indexOf(fullName) === -1 ? selectableStates.push(fullName) : '';
       }
 
+      selectableStates.unshift('United States')
+
       for (var i = selectableStates.length - 1; i >= 0; i--) {
-        states.map(function(n,j) {
-          if (n['Name'] === selectableStates[i]) {
-            $('#state')
-              .append($("<option></option>")
-              .attr('value', n['USPS']).text(selectableStates[i]))
-          }
-        });
+        if (selectableStates[i] === 'United States') {
+          $('#state')
+            .prepend($("<option>United States</option>")
+            .attr('value', '')
+          )
+        } else {
+          states.map(function(n,j) {
+            if (n['Name'] === selectableStates[i]) {
+              $('#state')
+                .append($("<option></option>")
+                .attr('value', n['USPS']).text(selectableStates[i]))
+            }
+          });
+        }
       }
     });
 
@@ -193,8 +202,9 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         }
 
         // Uncomment below to get individual district data 
-        // if (stateNum === '06') {
-        //   if (data[i].District === 'CA-01') {
+        // if (stateNum === '04') {
+        //   console.log(data[i])
+        //   if (data[i].District === 'AZ-04') {
         //     console.log(data[i])            
         //   }
         // }
@@ -400,15 +410,15 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         var district;
         var state;
         var filterDis;
+        var fillerDis
         var msg = "";
         townhallproject.map(function(n,i) {
-          filterDis = district.properties.number
 
           if(district.properties.number.charAt(0) === '0') {
-            filterDis 
+            fillerDis = district.properties.number.charAt(1)
           }
 
-          if (((district.properties.state + '-' + filterDis) == n['District']) || (state_name == n['Home CState'] && n['District'] == 'Senate')) {
+          if (((district.properties.state + '-' + district.properties.number) == n['District']) || (district.properties.state + '-' + fillerDis) == n['District'] || (state_name == n['Home CState'] && n['District'] == 'Senate')) {
 
             member = n['Member'];
             d = n['District'];
