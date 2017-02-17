@@ -12,8 +12,9 @@ var geojson = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 // a state, usually over water, that is not included in any
 // congressional district --- filter these out
 
+console.log("filtering...")
 var filtered = geojson.features.filter(function(d) {
-  return d.properties['CD114FP'] !== 'ZZ' ? true : false;
+  return d.properties['CD115FP'] !== 'ZZ' ? true : false;
 });
 var districts = { 'type': 'FeatureCollection', 'features': filtered };
 
@@ -49,7 +50,7 @@ colored.features.map(function(d) {
   var pt = turf.point([parseFloat(d.properties['INTPTLON']), parseFloat(d.properties['INTPTLAT'])]);
 
   // Get the district number in two-digit form ("00" (for at-large
-  // districts), "01", "02", ...). The Census data's CD114FP field
+  // districts), "01", "02", ...). The Census data's CD115FP field
   // holds it in this format. Except for the island territories
   // which have "98", but are just at-large and should be "00".
   var number = d.properties['CD114FP'];
@@ -76,24 +77,31 @@ colored.features.map(function(d) {
   pt.properties.title_short = state + ' ' + (number == "00" ? "At Large" : parseInt(number));
   pt.properties.title_long = state_name + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
 
+  console.log(pt.properties.title_short)
+
   // add a type property to distinguish between labels and boundaries
   pt.properties.group = 'label';
   d.properties.group = 'boundary';
 
   // add both the label point and congressional district to the mapData feature collection
-  mapData.features.push(pt);
-  mapData.features.push(d);
+  if (number != 'ZZ'){
+    console.log(number)
+    mapData.features.push(pt);
+    mapData.features.push(d);    
+  }
 
   // collect bounding boxes for the districts
   var bounds = turf.extent(d);
   districtBboxes[state + number] = bounds;
 
   // and for the states
-  if (stateBboxes[state]) {
-    stateBboxes[state].features.push(turf.bboxPolygon(bounds));
-  } else {
-    stateBboxes[state] = { type: 'FeatureCollection', features: [] };
-    stateBboxes[state].features.push(turf.bboxPolygon(bounds));
+  if (number != 'ZZ') {
+    if (stateBboxes[state]) {
+      stateBboxes[state].features.push(turf.bboxPolygon(bounds));
+    } else {
+      stateBboxes[state] = { type: 'FeatureCollection', features: [] };
+      stateBboxes[state].features.push(turf.bboxPolygon(bounds));
+    }
   }
 });
 

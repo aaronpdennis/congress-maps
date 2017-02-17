@@ -1,0 +1,285 @@
+body {
+  margin:0;
+  padding:0;
+  color: #333;
+  font-family: 'Hind';
+  font-weight: 400;
+}
+
+a:link {
+    transition: all 0.2s;
+    color: #ec8891;
+}
+
+/* visited link */
+a:visited {
+    color: #ec8891;
+}
+
+/* mouse over link */
+a:hover {
+    color: #c55b65;
+}
+
+/* selected link */
+a:active {
+    color: #c55b65;
+}
+/*
+
+Colors
+
+#132149 - Dark Blue
+#005b95 - Med Blue
+#6496af - Lite Blue
+#d8e4eb - Litest Blue
+
+*/
+
+#map {
+  position: absolute;
+  top:0;
+  bottom:0;
+  left: 20rem;
+  width: calc(100% - 20rem);
+}
+
+/* SIDE MENU */
+#menu {
+  position:absolute;
+  top: 0;
+  left: 0;
+  background-color: #eee;
+  width: 20rem;
+  height: 100%;
+  font-family: 'Open Sans', Arial, sans-serif;
+  border-right: 1px solid #005b95;
+  box-shadow: 0px 0px 14px #aaa;
+  overflow-y: scroll;
+}
+
+.null-selection p {
+  text-align: left;
+}
+
+header {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px solid #6496af;
+  background-color: #eee;
+  padding-bottom: 0.5rem;
+  box-shadow: 0px 1px 2px #e7dbc0;
+}
+
+header p {
+  margin: 0;
+}
+
+.menu-select {
+  margin: 0.5rem 0 0.5rem 1.5rem;
+  font-size: 0.8.5rem;
+  color: #6496af;
+}
+
+.menu-select select {
+  font-size: 1rem;
+  min-width: 200px;
+}
+
+.event-container {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color:white;
+}
+
+.exit-select {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  opacity: 0.5;
+  transition: all 0.2s;
+  z-index: 101;
+  cursor: pointer;
+}
+
+.exit-select:hover {
+  opacity: 0.75;
+}
+
+section {
+  position: relative;
+}
+
+h2 {
+  color: #132149;
+  padding-left: 1.5rem;
+  font-family: 'Hind';
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin: 0.75rem 0 0.5rem 0;
+  line-height: 1.5rem;
+}
+
+h2 span {
+  opacity: 0.9;
+  font-weight: 800;
+  color: #6496af;
+}
+
+.selected-container {
+  text-align: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #132149;
+  color: white;
+  font-size: 1.2rem;
+  background-color: #6496af;
+}
+
+.event {
+  list-style: none;
+  font-size: 0.9rem;
+  padding: 1.25rem 2rem 1.75rem 2rem;
+  border-bottom: 1px solid #ccc;
+  line-height: 1.4rem;
+  box-shadow: 0px 1px 4px #d8e4eb
+}
+
+.event-date {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #005b95;
+}
+
+.event-person {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #132149;
+}
+
+.event-descriptor {
+  opacity: 0.4;
+  margin-right: 0.25rem;
+}
+
+.event-type {
+
+}
+
+.event-notes {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  transition: all 2s;
+}
+
+.event-notes__first {
+}
+
+.event-notes__elp {
+  opacity: 0.5;
+}
+
+.event-readmore {
+  display: block;
+  width: 120px;
+  text-align: center;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.event-readmore:hover {
+  color: #aaa;
+}
+
+.event-notes__second {
+}
+
+dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.7;
+  color: #6496af;
+  float: left;
+}
+
+dd {
+  margin: 0;
+  margin-top: 0.25rem;
+  margin-left: 90px;
+}
+
+dd p {
+  margin: 0;
+}
+
+.null-case {
+  display: table;
+  position: absolute;
+  height: 100%;
+  top: 0;
+}
+
+.null-selection {
+  display: table-cell;
+  padding: 1rem 3rem 4rem;
+  border-bottom:1px solid #6496af;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  background-color:white;
+}
+
+.hidden {
+  display: none;
+}
+
+.usa-icon {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  background-image: url('graphics/usa.svg');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+  #map {
+    top: 24rem;
+    left: 0;
+    width: 100%
+  }
+
+  #menu {
+    border-right: 0;
+    width: 100%;
+    height: 24rem;
+  }
+}
+
+.reps-name {
+  font-size: 0.9rem;
+  color: #132149;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.reps-number {
+  font-size: 1rem;
+  margin-top: 0;
+  color: #6496af;
+}
+
+.reps-image {
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+}

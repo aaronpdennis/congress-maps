@@ -39,11 +39,11 @@ var states = [
     "FIPS": 10,
     "USPS": "DE"
   },
-  {
-    "Name": "District of Columbia",
-    "FIPS": 11,
-    "USPS": "DC"
-  },
+//  {
+//    "Name": "District of Columbia",
+//    "FIPS": 11,
+//    "USPS": "DC"
+//  },
   {
     "Name": "Florida",
     "FIPS": 12,
@@ -253,30 +253,30 @@ var states = [
     "Name": "Wyoming",
     "FIPS": 56,
     "USPS": "WY"
-  },
-  {
-    "Name": "Guam",
-    "FIPS": 66,
-    "USPS": "GU"
-  },
-  {
-    "Name": "Northern Mariana Islands",
-    "FIPS": 69,
-    "USPS": "MP"
-  },
-  {
-    "Name": "American Samoa",
-    "FIPS": 60,
-    "USPS": "AS"
-  },
-  {
-    "Name": "Puerto Rico",
-    "FIPS": 72,
-    "USPS": "PR"
-  },
-  {
-    "Name": "Virgin Islands",
-    "FIPS": 78,
-    "USPS": "VI"
-  }
+  }//,
+//  {
+//    "Name": "Guam",
+//    "FIPS": 66,
+//    "USPS": "GU"
+//  },
+//  {
+//    "Name": "Northern Mariana Islands",
+//    "FIPS": 69,
+//    "USPS": "MP"
+//  },
+//  {
+//    "Name": "American Samoa",
+//    "FIPS": 60,
+//    "USPS": "AS"
+//  },
+//  {
+//    "Name": "Puerto Rico",
+//    "FIPS": 72,
+//    "USPS": "PR"
+//  },
+//  {
+//    "Name": "Virgin Islands",
+//    "FIPS": 78,
+//    "USPS": "VI"
+//  }
 ]
