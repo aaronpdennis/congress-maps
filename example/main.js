@@ -150,6 +150,8 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
       filterFromData(data)
       townhallproject = data;
 
+      return;
+
       $('#state').empty();
       selectableStates = []
 
