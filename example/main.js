@@ -24,7 +24,7 @@ var districtCounter = 0
 // Welcome & Null messages for the sidebar.
 var welcomeMessage = '<p>The Town Hall Project is an entirely volunteer-run, grassroots effort that empowers constituents across the country to have face-to-face conversations with their elected representatives.</p><p>Select a highlighted district to view when and where represenatives from that area are holding meetings.</p><img src="graphics/guide.gif" width="250px"></img><p>If you\'re aware of any events we\'ve missed, feel free to <a href="https://docs.google.com/spreadsheets/d/1yq1NT9DZ2z3B8ixhid894e77u9rN5XIgOwWtTW72IYA/htmlview?sle=true">contact us.</a>';
 
-var nullMessage = '<p>No known upcoming events</p><p>If you\'re aware of any events we\'ve missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
+var nullMessage = '<p>No known upcoming events</p><p>Contact your representatives and ask for a meeting!</p><p>If you\'re aware of any events they\'ve missed, feel free to <a href="https://townhallproject.com/#submit">submit them.</a>';
 
 // - - - - - - - - - - - -
 //
@@ -93,6 +93,7 @@ $('#district').change(function() {
 
 var townhallproject = {};
 var states = {};
+var contacts = {};
 
 // - - - - - - - - - - - -
 //
@@ -142,6 +143,10 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
     $.getJSON( "../states.json", function( data ) {
       states = data;
+    });
+
+    $.getJSON( "../data/contacts.json", function( data ) {
+      contacts = data;
     });
 
     // load townhallproject.json
@@ -203,15 +208,15 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
           stateNum = '0' + stateNum
         }
 
-        // Uncomment below to get individual district data 
+        // Uncomment below to get individual district data
         // if (stateNum === '04') {
         //   console.log(data[i])
         //   if (data[i].District === 'AZ-04') {
-        //     console.log(data[i])            
+        //     console.log(data[i])
         //   }
         // }
 
-        // Start by checking if it's a Senator or District 
+        // Start by checking if it's a Senator or District
         if (data[i].District === 'Senate') {
 
           filterInitial.push(['==', 'STATEFP', stateNum.toString()])
@@ -225,7 +230,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
             districtNum = '0' + districtNum
           }
 
-          filterGeoID = stateNum + districtNum  
+          filterGeoID = stateNum + districtNum
           filterInitial.push(['==', 'GEOID', filterGeoID])
         }
       }
@@ -376,7 +381,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
         // Set that layer filter to the selected
         map.setFilter('selected-fill', filter);
-        map.setFilter('selected-border', filter);        
+        map.setFilter('selected-border', filter);
       } else {
         // If there are no selections, turn dem layers off
         if (visibility === 'visible') {
@@ -461,11 +466,29 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
           }
         });
 
+        var reps = '';
+        contacts.map(function(n,i) {
+          if(district.properties.number.charAt(0) === '0') {
+            fillerDis = district.properties.number.charAt(1)
+          }
+
+          if (
+            ((district.properties.state + '-' + district.properties.number) == (n['state'] + '-' + n['district']))
+            || ((district.properties.state + '-' + fillerDis) == (n['state'] + '-' + n['district']))
+            || (district.properties.state == n['state'] && n['district'] == 'Senate')) {
+
+            reps = reps + '<br/><span style="font-size: 0.8rem;">' + (n['district'] == 'Senate' ? 'Senator ' : 'Representative ') + n['name'] + ' ' + n['phone'] + '</span>';
+          }
+        });
+
         var msg;
 
         //
         // Return null message if there's no meetings for that area
         //
+        if (msg == "") {
+          msg = nullMessage;
+        }
         if (msg == "") {
           nullMessageSelector.className = 'null-selection'
           nullMessageSelector.innerHTML = nullMessage
@@ -485,9 +508,9 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         //
         // - - - - - - - - - - - -
 
-        if (state) {
+        if (state_name) {
           selectionHeader.className = 'selected-container'
-          selectionHeader.innerHTML = state_name + (districtNum !== 'Senate' ? ', district ' + districtNum : '');
+          selectionHeader.innerHTML = state_name + '-' + district.properties.number + '<br/>' + reps; //state_name + (districtNum !== 'Senate' ? ', district ' + districtNum : '') + reps;
         } else {
           selectionHeader.className = 'selected-container hidden'
           selectionHeader.innerHTML = "";
@@ -512,7 +535,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
               $(thisEllpise).fadeOut()
               $(thisReadme).fadeOut('fast', function(){
-                moretextSelector.className = 'event-notes__second '                
+                moretextSelector.className = 'event-notes__second '
               })
             })
           }
@@ -585,7 +608,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 }
 
 function clearSidemenu() {
-  // Rest event list  
+  // Rest event list
   eventList.innerHTML = "";
 
   // Replace sidebar content
