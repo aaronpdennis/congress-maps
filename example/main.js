@@ -24,8 +24,6 @@ var districtCounter = 0
 // Welcome & Null messages for the sidebar.
 var welcomeMessage = '<p>The Town Hall Project is an entirely volunteer-run, grassroots effort that empowers constituents across the country to have face-to-face conversations with their elected representatives.</p><p>Select a highlighted district to view when and where represenatives from that area are holding meetings.</p><img src="graphics/guide.gif" width="250px"></img><p>If you\'re aware of any events we\'ve missed, feel free to <a href="https://docs.google.com/spreadsheets/d/1yq1NT9DZ2z3B8ixhid894e77u9rN5XIgOwWtTW72IYA/htmlview?sle=true">contact us.</a>';
 
-console.log(welcomeMessage)
-
 var nullMessage = '<p>No known upcoming events</p><p>If you\'re aware of any events we\'ve missed, feel free to <a href="https://www.google.com/search?q=the+Townhall+Project&oq=The+Townhall+Project&aqs=chrome.0.69i59j69i57j69i61j69i64l3.2297j0j4&sourceid=chrome&ie=UTF-8">contact us.</a>';
 
 // - - - - - - - - - - - -
@@ -193,6 +191,13 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         if (stateNum < 10) {
           stateNum = '0' + stateNum
         }
+
+        // Uncomment below to get individual district data 
+        // if (stateNum === '06') {
+        //   if (data[i].District === 'CA-01') {
+        //     console.log(data[i])            
+        //   }
+        // }
 
         // Start by checking if it's a Senator or District 
         if (data[i].District === 'Senate') {
@@ -394,9 +399,16 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         var member;
         var district;
         var state;
+        var filterDis;
         var msg = "";
         townhallproject.map(function(n,i) {
-          if (((district.properties.state + '-' + parseInt(district.properties.number)) == n['District']) || (state_name == n['Home CState'] && n['District'] == 'Senate')) {
+          filterDis = district.properties.number
+
+          if(district.properties.number.charAt(0) === '0') {
+            filterDis 
+          }
+
+          if (((district.properties.state + '-' + filterDis) == n['District']) || (state_name == n['Home CState'] && n['District'] == 'Senate')) {
 
             member = n['Member'];
             d = n['District'];
