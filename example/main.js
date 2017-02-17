@@ -1,5 +1,5 @@
 // Specify Mapbox default access token
-var accessToken = 'pk.eyJ1IjoiZG1vcmlhcnR5IiwiYSI6Ikd3T29EOWMifQ.-DKJ4ernht84AZmc6Bk51Q';
+var accessToken = 'pk.eyJ1IjoiZG1vcmlhcnR5IiwiYSI6ImNpejlid2Y1djAxNWsyeHFwNTVoM2ZibWEifQ.MlGaldJiUQ91EDGdjJxLsA';
 
 // Specify uploaded Mapbox Studio style URL
 var styleURL = 'mapbox://styles/dmoriarty/ciyyzloid003n2sq88m2ftdm3';
