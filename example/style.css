@@ -63,7 +63,6 @@ Colors
 }
 
 header {
-  text-align: center;
   display: inline-block;
   width: 100%;
   border-bottom: 1px solid #6496af;
@@ -72,15 +71,17 @@ header {
   box-shadow: 0px 1px 2px #e7dbc0;
 }
 
+header p {
+  margin: 0;
+}
+
 .menu-select {
-  text-align: center;
-  margin-top: 0.25rem;
+  margin: 0.5rem 0 0.5rem 1.5rem;
   font-size: 0.8.5rem;
   color: #6496af;
 }
 
 .menu-select select {
-  margin-left: 0.5rem;
   font-size: 1rem;
   min-width: 200px;
 }
@@ -112,15 +113,19 @@ section {
 
 h2 {
   color: #132149;
+  padding-left: 1.5rem;
   font-family: 'Hind';
   font-weight: 700;
   font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  margin: 0.75rem 0 0 0;
+  margin: 0.75rem 0 0.5rem 0;
+  line-height: 1.5rem;
 }
 
 h2 span {
+  opacity: 0.9;
+  font-weight: 800;
   color: #6496af;
 }
 
@@ -257,4 +262,24 @@ dd p {
     width: 100%;
     height: 24rem;
   }
+}
+
+.reps-name {
+  font-size: 0.9rem;
+  color: #132149;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.reps-number {
+  font-size: 1rem;
+  margin-top: 0;
+  color: #6496af;
+}
+
+.reps-image {
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
 }

@@ -477,7 +477,7 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
             || ((district.properties.state + '-' + fillerDis) == (n['state'] + '-' + n['district']))
             || (district.properties.state == n['state'] && n['district'] == 'Senate')) {
 
-            reps = reps + '<br/><span style="font-size: 0.8rem;">' + (n['district'] == 'Senate' ? 'Senator ' : 'Representative ') + n['name'] + ' ' + n['phone'] + '</span>';
+            reps = reps + '<p class="reps-name">' + (n['district'] == 'Senate' ? 'Senator ' : 'Representative ') + n['name'] + ' ' + '</p><p class="reps-number"><img class="reps-image" src="graphics/phone.svg" />' + n['phone'] + '</p>';
           }
         });
 
@@ -486,13 +486,15 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         //
         // Return null message if there's no meetings for that area
         //
+
+        var nullMessage = '<p>No known upcoming events</p><p>Contact your representatives and ask for a meeting!</p></p>' + reps + '</p><p>If you\'re aware of any events they\'ve missed, feel free to <a href="https://townhallproject.com/#submit">submit them.</a>';
+
         if (msg == "") {
           msg = nullMessage;
-        }
-        if (msg == "") {
           nullMessageSelector.className = 'null-selection'
           nullMessageSelector.innerHTML = nullMessage
         } else {
+          msg = msg + '<li class="event"><p>Contact your representatives and ask for a meeting!</p><p>' + reps + '</li>'
           nullMessageSelector.className = 'null-selection hidden'
         }
 
@@ -510,39 +512,14 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
 
         if (state_name) {
           selectionHeader.className = 'selected-container'
-          selectionHeader.innerHTML = state_name + '-' + district.properties.number + '<br/>' + reps; //state_name + (districtNum !== 'Senate' ? ', district ' + districtNum : '') + reps;
+          selectionHeader.innerHTML = state_name + '-' + district.properties.number; //state_name + (districtNum !== 'Senate' ? ', district ' + districtNum : '') + reps;
         } else {
           selectionHeader.className = 'selected-container hidden'
           selectionHeader.innerHTML = "";
         }
         // and finally add in the event contents
+
         eventList.innerHTML = msg;
-
-        // if there are read mores, set those up
-        if(document.querySelector('.event-readmore')) {
-          for (var i = districtCounter; i >= 1; i--) {
-            let item = i
-
-            thisReadme = '.event-readmore__' + item
-            readmeSelector = document.querySelector(thisReadme)
-
-            readmeSelector.addEventListener('click', function(){
-              thisReadme = '.event-readmore__' + item
-              thisMore = '.event-notes__second' + item
-              thisEllpise = '.event-notes__elp' + item
-
-              moretextSelector = document.querySelector(thisMore)
-
-              $(thisEllpise).fadeOut()
-              $(thisReadme).fadeOut('fast', function(){
-                moretextSelector.className = 'event-notes__second '
-              })
-            })
-          }
-        }
-
-        // readmeSelector = document.querySelector('event-readmore')
-        // moretextSelector = document.querySelector('event-notes__second')
 
         // reset the ticker for district #
         districtCounter = 0
