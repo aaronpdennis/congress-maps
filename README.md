@@ -88,6 +88,6 @@ See the click handler for an example of how to use the Mapbox API to get the con
 
 #### Examples:
 
-To show districts in the state of Virginia: http://www.aarondennis.org/congress-maps/example/#state=VA
+To show districts in the state of Virginia: http://aaronpdennis.github.io/congress-maps/example/#state=VA
 
-To show the 5th district of California: http://www.aarondennis.org/congress-maps/example/#state=CA&district=05
+To show the 5th district of California: http://aaronpdennis.github.io/congress-maps/example/#state=CA&district=05
