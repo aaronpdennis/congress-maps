@@ -13,7 +13,7 @@ var geojson = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 // congressional district --- filter these out
 
 var filtered = geojson.features.filter(function(d) {
-  return d.properties['CD114FP'] !== 'ZZ' ? true : false;
+  return d.properties['CD115FP'] !== 'ZZ' ? true : false;
 });
 var districts = { 'type': 'FeatureCollection', 'features': filtered };
 
@@ -49,10 +49,10 @@ colored.features.map(function(d) {
   var pt = turf.point([parseFloat(d.properties['INTPTLON']), parseFloat(d.properties['INTPTLAT'])]);
 
   // Get the district number in two-digit form ("00" (for at-large
-  // districts), "01", "02", ...). The Census data's CD114FP field
+  // districts), "01", "02", ...). The Census data's CD115FP field
   // holds it in this format. Except for the island territories
   // which have "98", but are just at-large and should be "00".
-  var number = d.properties['CD114FP'];
+  var number = d.properties['CD115FP'];
   if (number == "98")
     number = "00";
 
