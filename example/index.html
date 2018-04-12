@@ -18,7 +18,7 @@
     <link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
 
     <!-- GeoViewport -->
-    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script>
+	<script src='https://api.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script>
 
     <style>
 
@@ -72,12 +72,12 @@
 
 //** MODIFY THIS SECTION
 // Specify YOUR Mapbox default access token
-var accessToken = 'pk.eyJ1IjoiYWFyb25kZW5uaXMiLCJhIjoiem5LLURoYyJ9.T3tswGTI5ve8_wE-a02cMw';
+var accessToken = 'pk.eyJ1IjoiZ2VuZ2hpc2hhY2siLCJhIjoiZ2x6WjZhbyJ9.P8at90QQiy0C8W_mc21w6Q';
 
 //** MODIFY THIS SECTION
 // Specify YOUR uploaded Mapbox Studio style URL
-var styleURL = 'mapbox://styles/aarondennis/cioafmhk70047adnmt3gz2kd0';
-var mapId = 'aarondennis.cd-114-2015'; // used by the click handler only
+var styleURL = 'mapbox://styles/genghishack/cjfwqo0gp18zp2rmisyc71bbw';
+var mapId = 'genghishack.cd-115-2017'; // used by the click handler only
 
 
 // Use GeoViewport and the window size to determine and appropriate center and zoom for the continental US
@@ -278,11 +278,22 @@ if (mapboxgl.supported({ failIfMajorPerformanceCaveat: true })) {
         // features that are currently shown on the map. So if you've filtered
         // the districts so only a state or a single district is showing, this
         // will restrict the query to those districts.
-        var features = map.queryRenderedFeatures(
-          e.point,
-          {
-            layers: ["districts_1", "districts_2", "districts_3", "districts_4", "districts_5"]
-          });
+	      var features = map.queryRenderedFeatures(
+			      e.point,
+			      {
+				      layers: [
+					      "districts_1",
+					      "districts_2",
+					      "districts_3",
+					      "districts_4",
+					      "districts_5",
+					      "districts_1_label",
+					      "districts_2_label",
+					      "districts_3_label",
+					      "districts_4_label",
+					      "districts_5_label"
+				      ]
+			      });
         if (features.length > 0)
           // The feature properties come from the original GeoJSON uploaded to Mapbox.
           district = features[0].properties;
