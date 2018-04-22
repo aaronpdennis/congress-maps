@@ -4,6 +4,8 @@ var fs = require('fs'),
 
 var stateCodes = JSON.parse(fs.readFileSync('states.json', 'utf8'));
 
+var currentLegislators = JSON.parse(fs.readFileSync('data/legislators-current.json'));
+
 // load the congressional district data
 
 var geojson = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
@@ -57,13 +59,31 @@ colored.features.map(function (d) {
 		number = "00";
 
 	// map the state FIPS code in the STATEFP attribute to the USPS
-	// state abbreviation and the state's name
+	// state abbreviation and the state's name.  Map the current
+	// legislators to their states/districts.
 	var state;
 	var state_name;
+	var senate = [];
+	var house;
+
 	stateCodes.map(function (n, i) {
 		if (parseInt(d.properties['STATEFP']) === parseInt(n['FIPS'])) {
 			state = n['USPS'];
 			state_name = n['Name'];
+		}
+	});
+
+	currentLegislators.map(function(n, i) {
+		var latestTerm = n.terms[n.terms.length - 1];
+
+		if (state == latestTerm.state) {
+			if (latestTerm.type == 'sen') {
+				senate.push(n);
+			} else if (latestTerm.type == 'rep') {
+				if (parseInt(d.properties['CD115FP']) === parseInt(latestTerm.district)) {
+					house = n;
+				}
+			}
 		}
 	});
 
@@ -72,6 +92,8 @@ colored.features.map(function (d) {
 	d.properties.state = state;
 	d.properties.title_short = state + ' ' + (number == "00" ? "At Large" : parseInt(number));
 	d.properties.title_long = state_name + '’s ' + (number == "00" ? "At Large" : ordinal(parseInt(number))) + ' Congressional District';
+	d.properties.senate = senate;
+	d.properties.house = house;
 
 	// add metadata to the label
 	pt.properties = JSON.parse(JSON.stringify(d.properties)); // copy hack to avoid mutability issues
