@@ -43,7 +43,7 @@ npm install
 
 #### Creating the map:
 
-To complete these steps, run the commands below. Set `MAPBOX_USERNAME` to your Mapbox username, `MAPBOX_DEFAULT_ACCESS_TOKEN` to your Mapbox default access token, and `MAPBOX_ACESS_TOKEN` to a `uploads:write` scope access token from your [Mapbox account](https://www.mapbox.com/studio/account/tokens).
+To complete these steps, run the commands below. Set `MAPBOX_USERNAME` to your Mapbox username, `MAPBOX_DEFAULT_ACCESS_TOKEN` to your Mapbox default access token, and `MAPBOX_WRITE_SCOPE_ACCESS_TOKEN` to a `uploads:write` scope access token from your [Mapbox account](https://www.mapbox.com/studio/account/tokens).
 
 ```
 # setup Mapbox account name and access tokens
@@ -54,19 +54,19 @@ export MAPBOX_WRITE_SCOPE_ACCESS_TOKEN=<your mapbox write scope access token>
 # create directory to store data
 mkdir data
 
-# dowload Census boundaries data, unzip the data, and convert it to GeoJSON
-wget -P data ftp://ftp2.census.gov/geo/tiger/TIGER2015/CD/tl_2015_us_cd114.zip
-unzip data/tl_2015_us_cd114.zip -d ./data/
-ogr2ogr -f GeoJSON -t_srs crs:84 data/congressional_districts.geojson data/tl_2015_us_cd114.shp
+# download Census boundaries data, unzip the data, and convert it to GeoJSON
+wget -P data ftp://ftp2.census.gov/geo/tiger/TIGER2017/CD/tl_2017_us_cd115.zip
+unzip data/tl_2017_us_cd115.zip -d ./data/
+ogr2ogr -f GeoJSON -t_srs crs:84 data/congressional_districts.geojson data/tl_2017_us_cd115.shp
 
 # run processing on data
 node process.js data/congressional_districts.geojson
 
 # create Mapbox vector tiles from data
-tippecanoe -o data/cd-114-2015.mbtiles -f -z 12 -Z 0 -B 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
+tippecanoe -o data/cd-115-2017.mbtiles -f -z 12 -Z 0 -B 0 -pS -pp -l districts -n "US Congressional Districts" data/map.geojson
 
 # upload map data to Mapbox.com
-node upload.js data/cd-114-2015.mbtiles
+node upload.js data/cd-115-2017.mbtiles
 
 # modify mapbox-style-template.json to use your Mapbox account and save as data/mapbox-style.json
 sed s/'USER'/"$MAPBOX_USERNAME"/g mapbox-style-template.json > data/mapbox-style.json

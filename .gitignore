@@ -1,3 +1,4 @@
 data
 node_modules
 data/mapbox-style.json
+*.iml
